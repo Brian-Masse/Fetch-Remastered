@@ -36,9 +36,13 @@ class Dog: SKSpriteNode {
         
         
         self.animator = Animator( [
-            Animation(State.home, animates: SKAction.animate(with: sitAtlas, timePerFrame: 0.1), for: self),
-            Animation(State.throwing, animates: SKAction.animate(with: runAtlas, timePerFrame: 0.1), for: self, waitForCompletion: false),
+            Animation(State.home, animates: { return SKAction.animate(with: self.sitAtlas , timePerFrame: 0.1) }, for: self),
+            Animation(State.throwing, animates: { return SKAction.animate(with: self.runAtlas, timePerFrame: 0.1) }, for: self, waitForCompletion: false),
         ])
+    }
+    
+    func test() -> State {
+        return States.currentState
     }
     
     func update() {
@@ -119,18 +123,22 @@ class Ball: SKSpriteNode {
         States.currentState = State.throwing
     }
     
+
     func setupAnimations() {
         var stretchVar: CGFloat {
             return (min(2, max((velocity / 140), 1)))
         }
         
         animator = Animator([
-            Animation(State.throwing, animates: SKAction.group([
-                SKAction.animate(with: ballAtlas, timePerFrame: 0.1),
-                SKAction.scaleY(to: stretchVar, duration: 0)
-            ]), for: self)
-
-
+            Animation(State.throwing, animates: animateStretch, for: self)
+        ])
+    }
+    
+    func animateStretch() -> SKAction {
+        let stretchVar: CGFloat = (min(2, max((velocity / 140), 1)))
+        return SKAction.group([
+            SKAction.animate(with: ballAtlas, timePerFrame: 0.1),
+            SKAction.scaleY(to: stretchVar, duration: 0)
         ])
     }
     

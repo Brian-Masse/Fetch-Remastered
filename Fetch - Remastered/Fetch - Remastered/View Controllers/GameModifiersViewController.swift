@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GoogleMobileAds
+import SwiftUI
 
 class GameModifiersViewController: UIViewController {
     
@@ -212,7 +213,12 @@ class GameModifiersViewController: UIViewController {
     var dogUnlocks = Array([Bool()])
     // 0-throwUpgardes, 1-moneyUpgrades, 2-aeroUpgrades
     // 0-throwUpgrades, 1-moneyUpgrades, 2-aeroUpgrades
-
+    
+    struct testView: View {
+        var body: some View {
+            Text("funny")
+        }
+    }
     
     lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height + 1500)
     

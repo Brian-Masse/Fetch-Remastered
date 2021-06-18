@@ -44,7 +44,6 @@ class Animation {
     
     let waitForCompletion: Bool
     let repeating: Bool
-    let animation: SKAction
     
     var running: Bool = false
     let triggerState: State
@@ -53,25 +52,27 @@ class Animation {
     }
     
     let target: SKNode
+    let animationConstructor: () -> SKAction
     
     
-    init(_ triggerState: State, animates animation: SKAction, for target: SKNode, waitForCompletion: Bool = true, repeating: Bool = true) {
-        
-        var penis = "is Funny"
+    init(_ triggerState: State, animates animationConstructor: @escaping () -> SKAction, for target: SKNode, waitForCompletion: Bool = true, repeating: Bool = true) {
+    
         self.triggerState = triggerState
         self.target = target
+        self.animationConstructor = animationConstructor
         
         self.waitForCompletion = waitForCompletion
         self.repeating = repeating
-        self.animation = animation
+        
     }
     
     func update(_ first: Bool) {
         if (currentState == triggerState || first) && !running {
             self.running = true
+            
             if !self.waitForCompletion { target.removeAllActions() }
             if !target.hasActions() {
-                target.run(animation) {
+                target.run(animationConstructor()) {
                     self.running = false
                     self.target.removeAllActions()
                     if self.repeating { self.update(false) }
