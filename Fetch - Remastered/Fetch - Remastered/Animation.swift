@@ -56,6 +56,8 @@ class Animation {
     
     
     init(_ triggerState: State, animates animation: SKAction, for target: SKNode, waitForCompletion: Bool = true, repeating: Bool = true) {
+        
+        var penis = "is Funny"
         self.triggerState = triggerState
         self.target = target
         
