@@ -40,10 +40,6 @@ var velocityLabel: FlippingLabel?
 
 var pixelSize: CGFloat = 0
 
-var currentBall: Ball!
-var currentDog: Dog!
-
-
 
 
 func updateStateToThrowComplete() {

@@ -21,6 +21,7 @@
 		C953C00C24DCDE9E0011F5F8 /* goldCoins.sks in Resources */ = {isa = PBXBuildFile; fileRef = C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */; };
 		C960164724E0A88B000AFCE9 /* Puffer.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C960164624E0A88B000AFCE9 /* Puffer.atlas */; };
 		C960164924E0CABA000AFCE9 /* Spike.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C960164824E0CAB9000AFCE9 /* Spike.atlas */; };
+		C9662499267E4AE9002317D7 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9662498267E4AE9002317D7 /* Ball.swift */; };
 		C9670B6E24DC35A000BD5F7B /* Disk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9670B6D24DC35A000BD5F7B /* Disk.atlas */; };
 		C9670B7424DC36C200BD5F7B /* Earth.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9670B7324DC36C200BD5F7B /* Earth.atlas */; };
 		C9670B7624DC4ACA00BD5F7B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */; };
@@ -128,6 +129,7 @@
 		C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = goldCoins.sks; sourceTree = "<group>"; };
 		C960164624E0A88B000AFCE9 /* Puffer.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Puffer.atlas; sourceTree = "<group>"; };
 		C960164824E0CAB9000AFCE9 /* Spike.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Spike.atlas; sourceTree = "<group>"; };
+		C9662498267E4AE9002317D7 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		C9670B6D24DC35A000BD5F7B /* Disk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Disk.atlas; sourceTree = "<group>"; };
 		C9670B7324DC36C200BD5F7B /* Earth.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Earth.atlas; sourceTree = "<group>"; };
 		C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				C99B9BD32679780700B79947 /* Animation.swift */,
 				C96F2CFA26692D60006F99AF /* UIOverlayController.swift */,
 				C9A9CA432671351100FF8199 /* Dog.swift */,
+				C9662498267E4AE9002317D7 /* Ball.swift */,
 				C98F212624D4548000D709F9 /* View Controllers */,
 				C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */,
 				C9AF7B9724D392670030D5A9 /* Main.storyboard */,
@@ -626,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9662499267E4AE9002317D7 /* Ball.swift in Sources */,
 				C9AF7B8424D375A10030D5A9 /* GameScene.swift in Sources */,
 				C9A9CA442671351100FF8199 /* Dog.swift in Sources */,
 				C99B9BCE2675BB1800B79947 /* Flipping Label.swift in Sources */,

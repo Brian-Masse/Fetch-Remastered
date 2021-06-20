@@ -99,10 +99,9 @@ class GameScene: SKScene {
     
     var rubberBall = Ball(skin: "Tennis", stretch: true)
     var mickey = Dog(skin: "Mickey")
+    var currentBall: Ball!
+    var currentDog: Dog!
     
-
-    
-
     
     var dateOfThrow = Date.init()
     var firstSwipePositon = CGPoint(x: -444, y: -444)
@@ -211,8 +210,10 @@ class GameScene: SKScene {
     
     func updateVelocityLabel() {
         setUpVelocityLabel()
-        let trimmedVelocity = velocity.trimCGFloat(2)
-        velocityLabel?.update(newAmount: trimmedVelocity, usingQueue: false, speed: min(8, max(0.8, velocity / 10)))
+        let referenceToVelocity = currentBall.physicsBody!.velocity.dy
+        let trimmedVelocity = referenceToVelocity.trimCGFloat(2)
+        
+        velocityLabel?.update(newAmount: trimmedVelocity, usingQueue: false, speed: min(8, max(0.8, referenceToVelocity / 10)))
     }
     
     func setUpVelocityLabel() {

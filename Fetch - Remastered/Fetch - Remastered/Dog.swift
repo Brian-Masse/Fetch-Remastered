@@ -35,10 +35,10 @@ class Dog: SKSpriteNode {
         setup()
         
         
-        self.animator = Animator( [
-            Animation(State.home, animates: { return SKAction.animate(with: self.sitAtlas , timePerFrame: 0.1) }, for: self),
-            Animation(State.throwing, animates: { return SKAction.animate(with: self.runAtlas, timePerFrame: 0.1) }, for: self, waitForCompletion: false),
-        ])
+//        self.animator = Animator( [
+//            Animation(State.home, animates: { return SKAction.animate(with: self.sitAtlas , timePerFrame: 0.1) }, for: self),
+//            Animation(State.throwing, animates: { return SKAction.animate(with: self.runAtlas, timePerFrame: 0.1) }, for: self, waitForCompletion: false),
+//        ])
     }
     
     func test() -> State {
@@ -46,7 +46,7 @@ class Dog: SKSpriteNode {
     }
     
     func update() {
-        position = currentBall.position
+        position = globalScene.currentBall.position
     }
     
     func setup() {
@@ -67,86 +67,3 @@ class Dog: SKSpriteNode {
     }
     
 }
-
-
-
-
-class Ball: SKSpriteNode {
-    var skin: String = ""
-    var ballAtlas: [SKTexture] = []
-    var stretch: Bool = false
-    
-    var animator: Animator? = nil
-    
-    
-    
-    init(skin: String, stretch: Bool) {
-        super.init(texture: nil, color: .white, size: CGSize(width: 50, height: 50))
-        
-        self.stretch = stretch
-        self.skin = skin
-    
-        initializePhysics()
-        createTextureAtlasses()
-        
-        calculatePixelWidth()
-        setupAnimations()
-    }
-    
-    func calculatePixelWidth() {
-        pixelSize = (self.size.width / texture!.size().width)
-    }
-    
-    func initializePhysics() {
-        let physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        physicsBody.affectedByGravity = false
-        physicsBody.linearDamping = friction
-        physicsBody.mass = 200
-        self.physicsBody = physicsBody
-    }
-    
-    func createTextureAtlasses() {
-        ballAtlas = createTextureAtlas(atlasName: skin, contentName: "ball")
-        texture = ballAtlas[0]
-    }
-    
-    func monitorSelf() {
-        velocity = physicsBody!.velocity.dy
-        if (physicsBody?.velocity.dy)! < 0.1 && States.currentState == State.throwing {
-            States.currentState = State.throwOver
-            updateStateToThrowComplete()
-        }
-    }
-    
-    func throwSelf() {
-        physicsBody!.applyImpulse(CGVector(dx: 0, dy: velocity * throwModifier))
-        States.currentState = State.throwing
-    }
-    
-
-    func setupAnimations() {
-        var stretchVar: CGFloat {
-            return (min(2, max((velocity / 140), 1)))
-        }
-        
-        animator = Animator([
-            Animation(State.throwing, animates: animateStretch, for: self)
-        ])
-    }
-    
-    func animateStretch() -> SKAction {
-        let stretchVar: CGFloat = (min(2, max((velocity / 140), 1)))
-        return SKAction.group([
-            SKAction.animate(with: ballAtlas, timePerFrame: 0.1),
-            SKAction.scaleY(to: stretchVar, duration: 0)
-        ])
-    }
-    
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-

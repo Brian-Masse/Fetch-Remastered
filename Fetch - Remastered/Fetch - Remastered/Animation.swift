@@ -32,8 +32,10 @@ class Animator {
     }
     
     func update() {
-        if let animation = animations.first(where: {$0.triggerState == state}) {
-            animation.update(true)
+        for animation in animations {
+            if animation.triggerState == state {
+                animation.update(true)
+            }
         }
     }
 }
@@ -52,14 +54,16 @@ class Animation {
     }
     
     let target: SKNode
-    let animationConstructor: () -> SKAction
+    let animationConstructor: (() -> SKAction)?
+    let optionalBlock: (() -> Void)?
     
     
-    init(_ triggerState: State, animates animationConstructor: @escaping () -> SKAction, for target: SKNode, waitForCompletion: Bool = true, repeating: Bool = true) {
+    init(_ triggerState: State, animates animationConstructor: (() -> SKAction)?, for target: SKNode, waitForCompletion: Bool = true, repeating: Bool = true, insteadRun block: (() -> Void)? = nil) {
     
         self.triggerState = triggerState
         self.target = target
         self.animationConstructor = animationConstructor
+        self.optionalBlock = block
         
         self.waitForCompletion = waitForCompletion
         self.repeating = repeating
@@ -67,17 +71,31 @@ class Animation {
     }
     
     func update(_ first: Bool) {
+        
         if (currentState == triggerState || first) && !running {
-            self.running = true
+            if let _ = optionalBlock {
+                runBlock()
+            }else {
+                runAnimation()
+            }
             
-            if !self.waitForCompletion { target.removeAllActions() }
-            if !target.hasActions() {
-                target.run(animationConstructor()) {
-                    self.running = false
-                    self.target.removeAllActions()
-                    if self.repeating { self.update(false) }
-                }
+        }
+    }
+    
+    func runAnimation() {
+        self.running = true
+        
+        if !self.waitForCompletion { target.removeAllActions() }
+        if !target.hasActions() {
+            target.run(animationConstructor!()) {
+                self.running = false
+                self.target.removeAllActions()
+                if self.repeating { self.update(false) }
             }
         }
+    }
+    
+    func runBlock() {
+        optionalBlock!()
     }
 }
