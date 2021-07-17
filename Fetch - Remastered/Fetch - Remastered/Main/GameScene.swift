@@ -147,6 +147,8 @@ class GameScene: SKScene {
         
         GameView.game.model.currentBall.monitorSelf()
         
+        
+        
     }
     
     override func didSimulatePhysics() {
@@ -175,7 +177,6 @@ class GameScene: SKScene {
         
         
         
-        createDistanceMarkers()
         //This initializes the lazy animators in the dog and ball
 //        let _ = (GameView.game.model.currentDog.animator.itemObserver)
 //        let _ = (GameView.game.model.currentBall.animator.itemObserver)
@@ -187,6 +188,8 @@ class GameScene: SKScene {
         
         virtualCamera = CameraObject(GameView.game.model.currentBall)
         addChild(virtualCamera)
+        
+        createDistanceMarkers()
         
 //        checkForSaved()
 //        renderParticles()
@@ -210,6 +213,16 @@ class GameScene: SKScene {
         addChild(GameView.game.model.currentDog)
         
         GameView.game.changeState(.home)
+    }
+    
+    func sizeDidChange(in size: CGSize) {
+        guard let _ = virtualCamera else { return }
+        
+        virtualCamera.setScale(896 / size.height)
+        markerManager.destory()
+        createDistanceMarkers()
+        
+        
     }
     
     func holdBall() {
@@ -287,9 +300,9 @@ class GameScene: SKScene {
         for i in 0...1000000 {
             if i.isMultiple(of: 10) {
                 
-                let halfWidth = globalFrame.width / 2
+                let halfWidth = (size.width / 2) * virtualCamera.xScale
                 
-                let marker = SKSpriteNode(color: .gray, size: CGSize(width: width(c:10), height: width(c:2)))
+                let marker = SKSpriteNode(color: .gray, size: CGSize(width: 10, height: 2))
                 marker.anchorPoint = CGPoint(x: 1, y: 0.5)
                 marker.position = CGPoint(x: halfWidth, y: CGFloat(i))
                 marker.zPosition = 1
@@ -299,7 +312,7 @@ class GameScene: SKScene {
                     
                     let markerNumber = SKLabelNode(text: "\(i)")
                     markerNumber.fontName = defaultFont.main
-                    markerNumber.fontSize = width(c: 30)
+                    markerNumber.fontSize = 30
                     markerNumber.horizontalAlignmentMode = .right
                     markerNumber.position = CGPoint(x: halfWidth, y: marker.position.y + width(c: 1))
                     markerNumber.zPosition = 2
@@ -367,6 +380,15 @@ class GameScene: SKScene {
                 subscriber.position.y
             }
             return sortedPositions
+        }
+        
+        mutating func destory() {
+            for subscriber in renderedSubscribers {
+                subscriber.removeFromParent()
+            }
+            renderedSubscribers.removeAll()
+            subscribers.removeAll()
+            coorespondingPositions.removeAll()
         }
     }
     

@@ -16,6 +16,7 @@ class CameraObject: SKCameraNode {
     init(_ targetObject: SKNode?) {
         super.init()
         self.targetObject = targetObject
+        self.setScale(896 / globalFrame.size.height)
     }
     
     func update() {

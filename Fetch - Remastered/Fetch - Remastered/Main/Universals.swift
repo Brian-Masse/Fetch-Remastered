@@ -15,7 +15,7 @@ let defaults = UserDefaults.standard
 let defaultFont = ShadowedFont(main:   "Fetch_remasteredFont-Regular", shadow: "Fetchremasteredshadow-Regular")
 let titleFont = ShadowedFont(main: "Fetchremasteretitle-Regular", shadow: "Fetchremasteredtitleshadow-Rg")
 
-let globalFrame = UIScreen.main.bounds
+var globalFrame = UIScreen.main.bounds
 let globalScene = GameScene(size: UIScreen.main.bounds.size)
 
 //MARK: Modifiers:

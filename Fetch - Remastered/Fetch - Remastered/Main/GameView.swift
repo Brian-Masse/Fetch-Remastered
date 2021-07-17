@@ -17,10 +17,22 @@ struct GameView: View {
     
     let test: SKView = SKView()
     
+    func createGameScene(in size: CGSize) -> GameScene {
+        
+        if size != globalFrame.size {
+            globalScene.size = size
+            globalScene.sizeDidChange(in: size)
+            globalFrame.size = size
+        }
+        return globalScene
+    }
+    
     var body: some View {
         ZStack {
-
-            SpriteView(scene: globalScene)
+            GeometryReader { geo in
+                
+            
+                SpriteView(scene: createGameScene(in: geo.size))
                 .ignoresSafeArea()
                 
             VStack(alignment: .leading) {
@@ -44,6 +56,7 @@ struct GameView: View {
 
                 }
             }
+        }
         }
     }
 }
@@ -73,9 +86,6 @@ struct menuButton: View {
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        GameView()
-////        CosmeticsSheet(viewModel: game)
-////            .aspectRatio(contentMode: .fit)
-////            .padding(.bottom, -40.0)
 //    }
 //}
 

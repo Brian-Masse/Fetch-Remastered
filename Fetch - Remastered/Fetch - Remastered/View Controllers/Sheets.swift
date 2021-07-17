@@ -12,62 +12,65 @@ struct CosmeticsSheet: View {
     @ObservedObject var viewModel: FetchClassicInterpreter
     
     var body: some View {
-        VStack() {
-            ShadowFont(text: "Cosmetics:", fontStruct: titleFont, fontSize: globalFrame.size.width * constants.majorTitleSize)
-                .frame(width: globalFrame.width, alignment: .leading)
-                .padding([.top, .leading])
+        GeometryReader { geo in
+            VStack(alignment: .leading) {
+                ShadowFont(text: "Cosmetics:", fontStruct: titleFont, fontSize: geo.size.width * constants.majorTitleSize)
+                    .padding([.top, .leading])
+                                
+                GeometryReader() { geometry in
+                    ScrollView(.vertical) {
+                        VStack {
+                            CosmeticsDisplayer(dog: viewModel.model.currentDog.type, ball: viewModel.model.currentBall.type, width: geometry.size.width)
+                            SkinSelector(title: "Dog Skins:", objectList: viewModel.model.dogs, inWidth: geo.size.width)
+                            Spacer(minLength: 30)
+                            SkinSelector(title: "Ball Skins:", objectList: viewModel.model.balls, inWidth: geo.size.width)
                             
-            GeometryReader() { geometry in
-                ScrollView(.vertical) {
-                    VStack {
-                        CosmeticsDisplayer(dog: viewModel.model.currentDog.type, ball: viewModel.model.currentBall.type)
-                        SkinSelector(title: "Dog Skins:", objectList: viewModel.model.dogs)
-                        Spacer(minLength: 30)
-                        SkinSelector(title: "Ball Skins:", objectList: viewModel.model.balls)
-                        
+                        }
+                        .frame(width: geometry.size.width)
                     }
-                    .frame(width: geometry.size.width)
                 }
             }
+            .foregroundColor(constants.fontColor)
+            .background(Image("CosmeticBack").resizable().ignoresSafeArea())
         }
-        .foregroundColor(constants.fontColor)
-        .background(Image("CosmeticBack").resizable().ignoresSafeArea())
+        
         
     }
     struct constants {
         static let iconsPerRow: CGFloat = 3
         static let majorTitleSize: CGFloat = 0.15
-        static let minorTitleSize: CGFloat = 40
+        static let minorTitleSize: CGFloat = 0.1
         static let cardTitleScale: CGFloat = 0.5
         static let cardMinorTitleScale: CGFloat = 0.48
         static let cardMinorTitlePadding: CGFloat = 0.1
-        static let minorTitlePadding: CGFloat = 3
+        static let minorTitlePadding: CGFloat = 10
         static let glowSize: CGFloat = 150
         static let poofSize: CGFloat = 80
         static let fontColor: Color = .white
         static let topPadding: CGFloat = 100
         static let skinPreview: CGFloat = 90
+        static let tilePadding: CGFloat = 0.008
     }
 }
 
 struct SkinSelector<objectType: gameObject>: View{
     let title: String
     let objectList: [objectType]
+    let inWidth: CGFloat
 
     var body: some View {
-        VStack {
-            ShadowFont(text: title, fontStruct: titleFont, fontSize: CosmeticsSheet.constants.minorTitleSize)
-                .frame(width: globalFrame.width, alignment: .leading)
+        VStack(alignment: .leading) {
+            ShadowFont(text: title, fontStruct: titleFont, fontSize: inWidth * CosmeticsSheet.constants.minorTitleSize)
                 .padding(.leading)
-
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: globalFrame.size.width / CosmeticsSheet.constants.iconsPerRow , maximum: .infinity), spacing: 0)], spacing: 0) {
+            
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: inWidth / CosmeticsSheet.constants.iconsPerRow , maximum: .infinity), spacing: 0)], spacing: 0) {
                 ForEach(objectList) { object in
                     Button(action: {
                         
                     }) {
                         createSelectorContent(object: object)
                             .aspectRatio(contentMode: .fill)
-                            .padding(2)
+                            .padding(CosmeticsSheet.constants.tilePadding * inWidth)
                     }
                 }
             }
@@ -137,67 +140,65 @@ struct SkinSelector<objectType: gameObject>: View{
 struct CosmeticsDisplayer: View {
     let dog: Dog
     let ball: Ball
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            ShadowFont(text: "Current Look:", fontStruct: titleFont, fontSize: CosmeticsSheet.constants.minorTitleSize)
-                .padding([.top, .leading], CosmeticsSheet.constants.minorTitlePadding)
-                .zIndex(100)
-            withAnimation {
-                HStack {
-                    Spacer()
-                    createObjectPreviews(object: dog)
-                    Spacer()
-                    createObjectPreviews(object: ball)
-                    Spacer()
-                }
-            }
-        }
-        .modifier(framify())
-    }
-}
-
-struct createObjectPreviews<objectType: gameObject>: View {
-    let object: objectType
-    @State var animatingPoof: Bool = false
-
-    var body: some View {
-        ZStack {
-            PixelImage(object.skin)
-                .frame(minWidth: CosmeticsSheet.constants.skinPreview)
-                .aspectRatio(contentMode: .fill)
-                .background(PixelImage("glow").frame(minWidth: CosmeticsSheet.constants.glowSize , minHeight: CosmeticsSheet.constants.glowSize))
-                .padding(.bottom, CosmeticsSheet.constants.minorTitlePadding)
-                .animation(.linear(duration: 0.001))
-
-            if animatingPoof {
-                let size = CGSize(width: CosmeticsSheet.constants.poofSize, height: CosmeticsSheet.constants.poofSize)
-                animatedImage(fps: 0.1, in: "Poof", repeatCount: 1, boundTo: size, completion: { animatingPoof = false })
-            }
-        }.onChange(of: object) { value in
-            animatingPoof = true
-        }
-    }
-}
-
-struct framify: ViewModifier {
-    static let uiImage: UIImage = UIImage(named: "frame")!
+    let width: CGFloat
+    static let uiImage = UIImage(named: "frame")!
     let aspectRatio = uiImage.size.height / uiImage.size.width
     
     var frameImage: some View {
         PixelImage("frame")
             .padding(.horizontal)
-            .frame(minWidth: globalFrame.width)
+            .frame(minWidth: width,  minHeight: width * aspectRatio)
+        
     }
-    func body(content: Content) -> some View {
-        content
+    
+    var body: some View {
+        
+        ZStack {
+            frameImage
+                
+            GeometryReader { geo in
+                VStack(alignment: .leading) {
+                    ShadowFont(text: "Current Look:", fontStruct: titleFont, fontSize: geo.size.width * CosmeticsSheet.constants.minorTitleSize)
+                        .padding(.leading, CosmeticsSheet.constants.minorTitlePadding)
+                        .zIndex(100)
+                    GeometryReader { reducedGeo in
+                        withAnimation {
+                            HStack {
+                                Spacer()
+                                createObjectPreviews(object: dog, geo: reducedGeo)
+                                Spacer()
+                                createObjectPreviews(object: ball, geo: reducedGeo)
+                                Spacer()
+                            }
+                        }
+                    }
+                    
+                }
+            }
             .padding()
-            .frame(maxWidth: globalFrame.width, maxHeight: globalFrame.width * aspectRatio)
-            .overlay(frameImage)
+        }
     }
-    struct constants {
-        static let verticalSafeArea: CGFloat = 10
-        static let horizontalSafeArea: CGFloat = 25
+}
+
+struct createObjectPreviews<objectType: gameObject>: View {
+    let object: objectType
+    let geo: GeometryProxy
+    @State var animatingPoof: Bool = false
+
+    var body: some View {
+            ZStack {
+                PixelImage(object.skin)
+                    .frame(maxHeight: geo.size.height)
+                    .background(PixelImage("glow").frame(minWidth: CosmeticsSheet.constants.glowSize , minHeight: CosmeticsSheet.constants.glowSize))
+                    .animation(.linear(duration: 0.001))
+
+                if animatingPoof {
+                    let size = CGSize(width: CosmeticsSheet.constants.poofSize, height: CosmeticsSheet.constants.poofSize)
+                    animatedImage(fps: 0.1, in: "Poof", repeatCount: 1, boundTo: size, completion: { animatingPoof = false })
+                }
+            }.onChange(of: object) { value in
+                animatingPoof = true
+            }
     }
 }
 
