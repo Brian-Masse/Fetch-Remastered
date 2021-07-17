@@ -77,6 +77,15 @@ struct FetchClassic {
 
         for dog in dogs { if dog.isCurrent { currentDog = CurrentDog(dog: dog) } }
         for ball in balls { if ball.isCurrent { currentBall = CurrentBall(ball: ball) } }
+        
+        if currentDog == nil {
+            currentDog = CurrentDog(dog: dogs[0])
+            dogs[0].isCurrent = true
+        }
+        if currentBall == nil {
+            currentBall = CurrentBall(ball: balls[0])
+            balls[0].isCurrent = true
+        }
     }
     
     func loadDogsAndBalls<objectType: gameObject>(in list: inout [objectType])  {

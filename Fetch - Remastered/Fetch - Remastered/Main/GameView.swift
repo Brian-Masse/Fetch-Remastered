@@ -69,14 +69,14 @@ struct menuButton: View {
         }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView()
-//        CosmeticsSheet(viewModel: game)
-//            .aspectRatio(contentMode: .fit)
-//            .padding(.bottom, -40.0)
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameView()
+////        CosmeticsSheet(viewModel: game)
+////            .aspectRatio(contentMode: .fit)
+////            .padding(.bottom, -40.0)
+//    }
+//}
 
 

@@ -13,7 +13,7 @@ struct CosmeticsSheet: View {
     
     var body: some View {
         VStack() {
-            ShadowFont(text: "Cosmetics:", fontStruct: titleFont, fontSize: constants.majorTitleSize)
+            ShadowFont(text: "Cosmetics:", fontStruct: titleFont, fontSize: globalFrame.size.width * constants.majorTitleSize)
                 .frame(width: globalFrame.width, alignment: .leading)
                 .padding([.top, .leading])
                             
@@ -32,10 +32,11 @@ struct CosmeticsSheet: View {
         }
         .foregroundColor(constants.fontColor)
         .background(Image("CosmeticBack").resizable().ignoresSafeArea())
+        
     }
     struct constants {
         static let iconsPerRow: CGFloat = 3
-        static let majorTitleSize: CGFloat = 68
+        static let majorTitleSize: CGFloat = 0.15
         static let minorTitleSize: CGFloat = 40
         static let cardTitleScale: CGFloat = 0.5
         static let cardMinorTitleScale: CGFloat = 0.48
@@ -203,9 +204,9 @@ struct framify: ViewModifier {
 
 
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CosmeticsSheet(viewModel: GameView.game)
-//
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        CosmeticsSheet(viewModel: GameView.game)
+
+    }
+}
