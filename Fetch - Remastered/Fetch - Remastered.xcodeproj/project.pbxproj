@@ -12,77 +12,43 @@
 		C9042C1224E5712200783805 /* gold2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9042C0F24E5712200783805 /* gold2.mp3 */; };
 		C9042C1324E5712200783805 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9042C1024E5712200783805 /* wind.wav */; };
 		C9042C1624E5EC3800783805 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9042C1524E5EC3700783805 /* beep.mp3 */; };
-		C90A513624DA4A730063A10D /* Disco.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C90A513524DA4A730063A10D /* Disco.atlas */; };
-		C90E939024E1A3FC00B72742 /* Clock.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C90E938F24E1A3FC00B72742 /* Clock.atlas */; };
-		C9191CCB24EB5E88004E0EE3 /* FoxRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9191CCA24EB5E88004E0EE3 /* FoxRun.atlas */; };
-		C9191CCD24EB5EFE004E0EE3 /* FoxSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9191CCC24EB5EFE004E0EE3 /* FoxSit.atlas */; };
 		C91D437A2675556D00B166A8 /* Universals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D43792675556D00B166A8 /* Universals.swift */; };
+		C93D2E30268BAEEF00C981E0 /* Fetchremasteredshadow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C93D2E2F268BAEEF00C981E0 /* Fetchremasteredshadow-Regular.ttf */; };
+		C93D2E3B268C21E600C981E0 /* Fetchremasteredtitleshadow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C93D2E39268C21E500C981E0 /* Fetchremasteredtitleshadow-Regular.ttf */; };
+		C93D2E3C268C21E600C981E0 /* Fetchremasteretitle-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C93D2E3A268C21E600C981E0 /* Fetchremasteretitle-Regular.ttf */; };
 		C94CC55C24D9DADF00C0274C /* GameModifiersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CC55B24D9DADF00C0274C /* GameModifiersExtension.swift */; };
 		C953C00C24DCDE9E0011F5F8 /* goldCoins.sks in Resources */ = {isa = PBXBuildFile; fileRef = C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */; };
-		C960164724E0A88B000AFCE9 /* Puffer.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C960164624E0A88B000AFCE9 /* Puffer.atlas */; };
-		C960164924E0CABA000AFCE9 /* Spike.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C960164824E0CAB9000AFCE9 /* Spike.atlas */; };
+		C95AAB10268D2DC80063A62E /* UIUniversals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95AAB0F268D2DC80063A62E /* UIUniversals.swift */; };
 		C9662499267E4AE9002317D7 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9662498267E4AE9002317D7 /* Ball.swift */; };
-		C9670B6E24DC35A000BD5F7B /* Disk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9670B6D24DC35A000BD5F7B /* Disk.atlas */; };
-		C9670B7424DC36C200BD5F7B /* Earth.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9670B7324DC36C200BD5F7B /* Earth.atlas */; };
 		C9670B7624DC4ACA00BD5F7B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */; };
-		C96A53C924D65B7A00F9597E /* Tennis.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96A53C824D65B7A00F9597E /* Tennis.atlas */; };
-		C96D405324E8383300E6D621 /* MickeyRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96D405224E8383300E6D621 /* MickeyRun.atlas */; };
-		C96D405724E8385900E6D621 /* MickeySit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96D405624E8385900E6D621 /* MickeySit.atlas */; };
-		C96D405924E8393800E6D621 /* BullRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96D405824E8393800E6D621 /* BullRun.atlas */; };
-		C96D405D24E83AF900E6D621 /* BullSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96D405C24E83AF900E6D621 /* BullSit.atlas */; };
-		C96D406024E87A4D00E6D621 /* PoodleRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96D405E24E87A4C00E6D621 /* PoodleRun.atlas */; };
-		C96D406124E87A4D00E6D621 /* PoodleSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C96D405F24E87A4C00E6D621 /* PoodleSit.atlas */; };
-		C96F2CFB26692D60006F99AF /* UIOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F2CFA26692D60006F99AF /* UIOverlayController.swift */; };
-		C98B0DBF24E355D2004E1C81 /* Air.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C98B0DBE24E355D2004E1C81 /* Air.atlas */; };
 		C98C31D924E40FD500217317 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98C31D824E40FD500217317 /* Stickers.xcassets */; };
 		C98C31DD24E40FD500217317 /* Fetch - Remastered Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C98C31D624E40FD200217317 /* Fetch - Remastered Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C98C31E424E42BEC00217317 /* Rubix.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C98C31E324E42BEC00217317 /* Rubix.atlas */; };
 		C98F212124D4545200D709F9 /* GameModifiersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F212024D4545200D709F9 /* GameModifiersViewController.swift */; };
 		C98F212324D4546400D709F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F212224D4546400D709F9 /* ProfileViewController.swift */; };
 		C98F212524D4546E00D709F9 /* GoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F212424D4546E00D709F9 /* GoldViewController.swift */; };
 		C98F212924D4C62700D709F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F212824D4C62700D709F9 /* StoreKit.framework */; };
 		C99B9BCE2675BB1800B79947 /* Flipping Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9BCD2675BB1800B79947 /* Flipping Label.swift */; };
 		C99B9BD226767AA600B79947 /* Fetch_remasteredFont-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C99B9BD12676781500B79947 /* Fetch_remasteredFont-Regular.ttf */; };
-		C99B9BD42679780800B79947 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9BD32679780700B79947 /* Animation.swift */; };
-		C99C266F24E9C812007775D0 /* BlackRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C99C266D24E9C812007775D0 /* BlackRun.atlas */; };
-		C99C267024E9C812007775D0 /* BlackSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C99C266E24E9C812007775D0 /* BlackSit.atlas */; };
-		C99C267324E9E824007775D0 /* DalSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C99C267124E9E824007775D0 /* DalSit.atlas */; };
-		C99C267424E9E824007775D0 /* DalRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C99C267224E9E824007775D0 /* DalRun.atlas */; };
-		C9A0E7B524EC313B0063E177 /* BotRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E7B324EC313B0063E177 /* BotRun.atlas */; };
-		C9A0E7B624EC313B0063E177 /* BotSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E7B424EC313B0063E177 /* BotSit.atlas */; };
-		C9A0E7B924EC5D830063E177 /* BudSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E7B724EC5D830063E177 /* BudSit.atlas */; };
-		C9A0E7BC24EC5E880063E177 /* BudRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E7BB24EC5E880063E177 /* BudRun.atlas */; };
-		C9A0E7BF24ECA9070063E177 /* SpaceRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E7BD24ECA9070063E177 /* SpaceRun.atlas */; };
-		C9A0E7C024ECA9070063E177 /* SpaceSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E7BE24ECA9070063E177 /* SpaceSit.atlas */; };
+		C99B9BD42679780800B79947 /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9BD32679780700B79947 /* CustomAnimation.swift */; };
 		C9A9CA442671351100FF8199 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A9CA432671351100FF8199 /* Dog.swift */; };
-		C9AF7B7E24D375A10030D5A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF7B7D24D375A10030D5A9 /* AppDelegate.swift */; };
 		C9AF7B8424D375A10030D5A9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF7B8324D375A10030D5A9 /* GameScene.swift */; };
 		C9AF7B8624D375A10030D5A9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF7B8524D375A10030D5A9 /* GameViewController.swift */; };
 		C9AF7B8B24D375A20030D5A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */; };
 		C9AF7B8E24D375A20030D5A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9AF7B8C24D375A20030D5A9 /* LaunchScreen.storyboard */; };
 		C9AF7B9924D392670030D5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9AF7B9724D392670030D5A9 /* Main.storyboard */; };
 		C9AF7B9C24D3939A0030D5A9 /* PixelEmulator-xq08.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9AF7B9A24D392CD0030D5A9 /* PixelEmulator-xq08.ttf */; };
-		C9B73FAB24DDF230000BE716 /* Orange.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9B73FAA24DDF230000BE716 /* Orange.atlas */; };
-		C9B73FAD24DE0BB9000BE716 /* Apple.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9B73FAC24DE0BB8000BE716 /* Apple.atlas */; };
-		C9B73FAF24DE2AB4000BE716 /* Lemon.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9B73FAE24DE2AB4000BE716 /* Lemon.atlas */; };
+		C9BC16E92687661700C81391 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BC16E82687661700C81391 /* model.swift */; };
 		C9BCEB19267318F7002DF882 /* CameraObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCEB18267318F6002DF882 /* CameraObject.swift */; };
-		C9BDD8CC24DA02C100D9E516 /* Rubber.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9BDD8CB24DA02C100D9E516 /* Rubber.atlas */; };
-		C9CA3C3324E1CB6A003027CD /* Saturn.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9CA3C3224E1CB6A003027CD /* Saturn.atlas */; };
-		C9CA3C3524E1FFE7003027CD /* Moon.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9CA3C3424E1FFE7003027CD /* Moon.atlas */; };
-		C9CAC15524DEF66100C9E543 /* Beach.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9CAC15424DEF66100C9E543 /* Beach.atlas */; };
-		C9CAC15724DF71E300C9E543 /* Death.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9CAC15624DF71E200C9E543 /* Death.atlas */; };
-		C9D9A46A24DAEA65001784ED /* Foot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A46924DAEA65001784ED /* Foot.atlas */; };
-		C9D9A46C24DAFFBA001784ED /* Base.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A46B24DAFFBA001784ED /* Base.atlas */; };
-		C9D9A46E24DB7AFB001784ED /* Basket.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A46D24DB7AFB001784ED /* Basket.atlas */; };
 		C9D9A47124DB8E39001784ED /* clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A46F24DB8E39001784ED /* clouds.sks */; };
 		C9D9A47224DB8E39001784ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A47024DB8E39001784ED /* Assets.xcassets */; };
-		C9E98DB624FFE7380081FE9C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E98DB524FFE7380081FE9C /* File.swift */; };
+		C9DFBEF226857BD20046F8F4 /* Fetch-RemasteredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFBEF126857BD20046F8F4 /* Fetch-RemasteredApp.swift */; };
+		C9DFBEF7268699A30046F8F4 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFBEF6268699A30046F8F4 /* Sheets.swift */; };
+		C9DFBEF92686A7330046F8F4 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFBEF82686A7330046F8F4 /* ViewModels.swift */; };
+		C9E98DB624FFE7380081FE9C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E98DB524FFE7380081FE9C /* GameView.swift */; };
 		C9FD364824FE945B00409963 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364724FE945B00409963 /* Fire.sks */; };
 		C9FD364A24FE954000409963 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364924FE954000409963 /* Smoke.sks */; };
 		C9FD364C24FE9FB600409963 /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364B24FE9FB600409963 /* Snow.sks */; };
 		C9FD364E24FEA3ED00409963 /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364D24FEA3ED00409963 /* Rain.sks */; };
-		C9FF4E6D24EB14FC00E43A3F /* HoundSit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9FF4E6B24EB14FC00E43A3F /* HoundSit.atlas */; };
-		C9FF4E7A24EB188400E43A3F /* HoundRun.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9FF4E7924EB188400E43A3F /* HoundRun.atlas */; };
 		E03F9075C1729E9D9F5F2CD1 /* Pods_Fetch___Remastered_Stickers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,33 +85,19 @@
 		C9042C0F24E5712200783805 /* gold2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gold2.mp3; sourceTree = "<group>"; };
 		C9042C1024E5712200783805 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
 		C9042C1524E5EC3700783805 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
-		C90A513524DA4A730063A10D /* Disco.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Disco.atlas; sourceTree = "<group>"; };
-		C90E938F24E1A3FC00B72742 /* Clock.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Clock.atlas; sourceTree = "<group>"; };
-		C9191CCA24EB5E88004E0EE3 /* FoxRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FoxRun.atlas; sourceTree = "<group>"; };
-		C9191CCC24EB5EFE004E0EE3 /* FoxSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FoxSit.atlas; sourceTree = "<group>"; };
 		C91D43792675556D00B166A8 /* Universals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universals.swift; sourceTree = "<group>"; };
 		C92C43A824D79810003EF9CC /* Fetch-Remastered.kra */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fetch-Remastered.kra"; sourceTree = "<group>"; };
+		C93D2E2F268BAEEF00C981E0 /* Fetchremasteredshadow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fetchremasteredshadow-Regular.ttf"; sourceTree = "<group>"; };
+		C93D2E39268C21E500C981E0 /* Fetchremasteredtitleshadow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fetchremasteredtitleshadow-Regular.ttf"; sourceTree = "<group>"; };
+		C93D2E3A268C21E600C981E0 /* Fetchremasteretitle-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fetchremasteretitle-Regular.ttf"; sourceTree = "<group>"; };
 		C94CC55B24D9DADF00C0274C /* GameModifiersExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModifiersExtension.swift; sourceTree = "<group>"; };
 		C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = goldCoins.sks; sourceTree = "<group>"; };
-		C960164624E0A88B000AFCE9 /* Puffer.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Puffer.atlas; sourceTree = "<group>"; };
-		C960164824E0CAB9000AFCE9 /* Spike.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Spike.atlas; sourceTree = "<group>"; };
+		C95AAB0F268D2DC80063A62E /* UIUniversals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUniversals.swift; sourceTree = "<group>"; };
 		C9662498267E4AE9002317D7 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
-		C9670B6D24DC35A000BD5F7B /* Disk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Disk.atlas; sourceTree = "<group>"; };
-		C9670B7324DC36C200BD5F7B /* Earth.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Earth.atlas; sourceTree = "<group>"; };
 		C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		C96A53C824D65B7A00F9597E /* Tennis.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Tennis.atlas; sourceTree = "<group>"; };
-		C96D405224E8383300E6D621 /* MickeyRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MickeyRun.atlas; sourceTree = "<group>"; };
-		C96D405624E8385900E6D621 /* MickeySit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MickeySit.atlas; sourceTree = "<group>"; };
-		C96D405824E8393800E6D621 /* BullRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BullRun.atlas; sourceTree = "<group>"; };
-		C96D405C24E83AF900E6D621 /* BullSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BullSit.atlas; sourceTree = "<group>"; };
-		C96D405E24E87A4C00E6D621 /* PoodleRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PoodleRun.atlas; sourceTree = "<group>"; };
-		C96D405F24E87A4C00E6D621 /* PoodleSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PoodleSit.atlas; sourceTree = "<group>"; };
-		C96F2CFA26692D60006F99AF /* UIOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIOverlayController.swift; sourceTree = "<group>"; };
-		C98B0DBE24E355D2004E1C81 /* Air.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Air.atlas; sourceTree = "<group>"; };
 		C98C31D624E40FD200217317 /* Fetch - Remastered Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Fetch - Remastered Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98C31D824E40FD500217317 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
 		C98C31DA24E40FD500217317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C98C31E324E42BEC00217317 /* Rubix.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Rubix.atlas; sourceTree = "<group>"; };
 		C98F212024D4545200D709F9 /* GameModifiersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModifiersViewController.swift; sourceTree = "<group>"; };
 		C98F212224D4546400D709F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C98F212424D4546E00D709F9 /* GoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldViewController.swift; sourceTree = "<group>"; };
@@ -153,20 +105,9 @@
 		C99B9BCB2675B68300B79947 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		C99B9BCD2675BB1800B79947 /* Flipping Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flipping Label.swift"; sourceTree = "<group>"; };
 		C99B9BD12676781500B79947 /* Fetch_remasteredFont-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fetch_remasteredFont-Regular.ttf"; sourceTree = "<group>"; };
-		C99B9BD32679780700B79947 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		C99C266D24E9C812007775D0 /* BlackRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BlackRun.atlas; sourceTree = "<group>"; };
-		C99C266E24E9C812007775D0 /* BlackSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BlackSit.atlas; sourceTree = "<group>"; };
-		C99C267124E9E824007775D0 /* DalSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DalSit.atlas; sourceTree = "<group>"; };
-		C99C267224E9E824007775D0 /* DalRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DalRun.atlas; sourceTree = "<group>"; };
-		C9A0E7B324EC313B0063E177 /* BotRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BotRun.atlas; sourceTree = "<group>"; };
-		C9A0E7B424EC313B0063E177 /* BotSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BotSit.atlas; sourceTree = "<group>"; };
-		C9A0E7B724EC5D830063E177 /* BudSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BudSit.atlas; sourceTree = "<group>"; };
-		C9A0E7BB24EC5E880063E177 /* BudRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BudRun.atlas; sourceTree = "<group>"; };
-		C9A0E7BD24ECA9070063E177 /* SpaceRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SpaceRun.atlas; sourceTree = "<group>"; };
-		C9A0E7BE24ECA9070063E177 /* SpaceSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SpaceSit.atlas; sourceTree = "<group>"; };
+		C99B9BD32679780700B79947 /* CustomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		C9A9CA432671351100FF8199 /* Dog.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		C9AF7B7A24D375A10030D5A9 /* Fetch - Remastered.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch - Remastered.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9AF7B7D24D375A10030D5A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9AF7B8324D375A10030D5A9 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C9AF7B8524D375A10030D5A9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,27 +115,18 @@
 		C9AF7B8F24D375A20030D5A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9AF7B9824D392670030D5A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9AF7B9A24D392CD0030D5A9 /* PixelEmulator-xq08.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PixelEmulator-xq08.ttf"; sourceTree = "<group>"; };
-		C9B73FAA24DDF230000BE716 /* Orange.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Orange.atlas; sourceTree = "<group>"; };
-		C9B73FAC24DE0BB8000BE716 /* Apple.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Apple.atlas; sourceTree = "<group>"; };
-		C9B73FAE24DE2AB4000BE716 /* Lemon.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Lemon.atlas; sourceTree = "<group>"; };
+		C9BC16E82687661700C81391 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		C9BCEB18267318F6002DF882 /* CameraObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraObject.swift; sourceTree = "<group>"; };
-		C9BDD8CB24DA02C100D9E516 /* Rubber.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Rubber.atlas; sourceTree = "<group>"; };
-		C9CA3C3224E1CB6A003027CD /* Saturn.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Saturn.atlas; sourceTree = "<group>"; };
-		C9CA3C3424E1FFE7003027CD /* Moon.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Moon.atlas; sourceTree = "<group>"; };
-		C9CAC15424DEF66100C9E543 /* Beach.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Beach.atlas; sourceTree = "<group>"; };
-		C9CAC15624DF71E200C9E543 /* Death.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Death.atlas; sourceTree = "<group>"; };
-		C9D9A46924DAEA65001784ED /* Foot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Foot.atlas; sourceTree = "<group>"; };
-		C9D9A46B24DAFFBA001784ED /* Base.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Base.atlas; sourceTree = "<group>"; };
-		C9D9A46D24DB7AFB001784ED /* Basket.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Basket.atlas; sourceTree = "<group>"; };
 		C9D9A46F24DB8E39001784ED /* clouds.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = clouds.sks; sourceTree = "<group>"; };
 		C9D9A47024DB8E39001784ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C9E98DB524FFE7380081FE9C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		C9DFBEF126857BD20046F8F4 /* Fetch-RemasteredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fetch-RemasteredApp.swift"; sourceTree = "<group>"; };
+		C9DFBEF6268699A30046F8F4 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
+		C9DFBEF82686A7330046F8F4 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		C9E98DB524FFE7380081FE9C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C9FD364724FE945B00409963 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		C9FD364924FE954000409963 /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
 		C9FD364B24FE9FB600409963 /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
 		C9FD364D24FEA3ED00409963 /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
-		C9FF4E6B24EB14FC00E43A3F /* HoundSit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = HoundSit.atlas; sourceTree = "<group>"; };
-		C9FF4E7924EB188400E43A3F /* HoundRun.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = HoundRun.atlas; sourceTree = "<group>"; };
 		CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Fetch___Remastered_Stickers.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32032213D10C29FFEE270AB /* Pods-Fetch - Remastered.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered.debug.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,64 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				C92C43A824D79810003EF9CC /* Fetch-Remastered.kra */,
-				C96D405024E837C200E6D621 /* Dog Atlases */,
-				C96A53C724D65B7A00F9597E /* Ball Atlases */,
 			);
 			path = Drawings;
-			sourceTree = "<group>";
-		};
-		C96A53C724D65B7A00F9597E /* Ball Atlases */ = {
-			isa = PBXGroup;
-			children = (
-				C98C31E324E42BEC00217317 /* Rubix.atlas */,
-				C98B0DBE24E355D2004E1C81 /* Air.atlas */,
-				C9CA3C3424E1FFE7003027CD /* Moon.atlas */,
-				C9CA3C3224E1CB6A003027CD /* Saturn.atlas */,
-				C90E938F24E1A3FC00B72742 /* Clock.atlas */,
-				C960164824E0CAB9000AFCE9 /* Spike.atlas */,
-				C960164624E0A88B000AFCE9 /* Puffer.atlas */,
-				C9CAC15624DF71E200C9E543 /* Death.atlas */,
-				C9CAC15424DEF66100C9E543 /* Beach.atlas */,
-				C9B73FAE24DE2AB4000BE716 /* Lemon.atlas */,
-				C9B73FAC24DE0BB8000BE716 /* Apple.atlas */,
-				C9B73FAA24DDF230000BE716 /* Orange.atlas */,
-				C9670B7324DC36C200BD5F7B /* Earth.atlas */,
-				C9670B6D24DC35A000BD5F7B /* Disk.atlas */,
-				C9D9A46D24DB7AFB001784ED /* Basket.atlas */,
-				C9D9A46B24DAFFBA001784ED /* Base.atlas */,
-				C9D9A46924DAEA65001784ED /* Foot.atlas */,
-				C90A513524DA4A730063A10D /* Disco.atlas */,
-				C9BDD8CB24DA02C100D9E516 /* Rubber.atlas */,
-				C96A53C824D65B7A00F9597E /* Tennis.atlas */,
-			);
-			path = "Ball Atlases";
-			sourceTree = "<group>";
-		};
-		C96D405024E837C200E6D621 /* Dog Atlases */ = {
-			isa = PBXGroup;
-			children = (
-				C9A0E7BD24ECA9070063E177 /* SpaceRun.atlas */,
-				C9A0E7BE24ECA9070063E177 /* SpaceSit.atlas */,
-				C9A0E7BB24EC5E880063E177 /* BudRun.atlas */,
-				C9A0E7B724EC5D830063E177 /* BudSit.atlas */,
-				C9A0E7B324EC313B0063E177 /* BotRun.atlas */,
-				C9A0E7B424EC313B0063E177 /* BotSit.atlas */,
-				C9191CCC24EB5EFE004E0EE3 /* FoxSit.atlas */,
-				C9191CCA24EB5E88004E0EE3 /* FoxRun.atlas */,
-				C9FF4E7924EB188400E43A3F /* HoundRun.atlas */,
-				C9FF4E6B24EB14FC00E43A3F /* HoundSit.atlas */,
-				C99C267224E9E824007775D0 /* DalRun.atlas */,
-				C99C267124E9E824007775D0 /* DalSit.atlas */,
-				C99C266D24E9C812007775D0 /* BlackRun.atlas */,
-				C99C266E24E9C812007775D0 /* BlackSit.atlas */,
-				C96D405E24E87A4C00E6D621 /* PoodleRun.atlas */,
-				C96D405F24E87A4C00E6D621 /* PoodleSit.atlas */,
-				C96D405C24E83AF900E6D621 /* BullSit.atlas */,
-				C96D405824E8393800E6D621 /* BullRun.atlas */,
-				C96D405624E8385900E6D621 /* MickeySit.atlas */,
-				C96D405224E8383300E6D621 /* MickeyRun.atlas */,
-			);
-			path = "Dog Atlases";
 			sourceTree = "<group>";
 		};
 		C98C31D724E40FD200217317 /* Fetch - Remastered Stickers */ = {
@@ -324,6 +200,8 @@
 				C98F212224D4546400D709F9 /* ProfileViewController.swift */,
 				C98F212424D4546E00D709F9 /* GoldViewController.swift */,
 				C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */,
+				C9DFBEF6268699A30046F8F4 /* Sheets.swift */,
+				C95AAB0F268D2DC80063A62E /* UIUniversals.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -366,16 +244,8 @@
 		C9AF7B7C24D375A10030D5A9 /* Fetch - Remastered */ = {
 			isa = PBXGroup;
 			children = (
-				C9E98DB524FFE7380081FE9C /* File.swift */,
-				C9AF7B7D24D375A10030D5A9 /* AppDelegate.swift */,
-				C9AF7B8324D375A10030D5A9 /* GameScene.swift */,
-				C9BCEB18267318F6002DF882 /* CameraObject.swift */,
-				C91D43792675556D00B166A8 /* Universals.swift */,
-				C99B9BCD2675BB1800B79947 /* Flipping Label.swift */,
-				C99B9BD32679780700B79947 /* Animation.swift */,
-				C96F2CFA26692D60006F99AF /* UIOverlayController.swift */,
-				C9A9CA432671351100FF8199 /* Dog.swift */,
-				C9662498267E4AE9002317D7 /* Ball.swift */,
+				C9DFBEF52685966B0046F8F4 /* Main */,
+				C9DFBEF3268596290046F8F4 /* GameClasses */,
 				C98F212624D4548000D709F9 /* View Controllers */,
 				C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */,
 				C9AF7B9724D392670030D5A9 /* Main.storyboard */,
@@ -388,6 +258,9 @@
 		C9AF7B9B24D392D50030D5A9 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C93D2E39268C21E500C981E0 /* Fetchremasteredtitleshadow-Regular.ttf */,
+				C93D2E3A268C21E600C981E0 /* Fetchremasteretitle-Regular.ttf */,
+				C93D2E2F268BAEEF00C981E0 /* Fetchremasteredshadow-Regular.ttf */,
 				C9AF7B9A24D392CD0030D5A9 /* PixelEmulator-xq08.ttf */,
 				C99B9BD12676781500B79947 /* Fetch_remasteredFont-Regular.ttf */,
 			);
@@ -406,6 +279,39 @@
 				C9FD364D24FEA3ED00409963 /* Rain.sks */,
 			);
 			path = Particles;
+			sourceTree = "<group>";
+		};
+		C9DFBEF3268596290046F8F4 /* GameClasses */ = {
+			isa = PBXGroup;
+			children = (
+				C9DFBEF4268596500046F8F4 /* Infastructure */,
+				C9A9CA432671351100FF8199 /* Dog.swift */,
+				C9662498267E4AE9002317D7 /* Ball.swift */,
+			);
+			path = GameClasses;
+			sourceTree = "<group>";
+		};
+		C9DFBEF4268596500046F8F4 /* Infastructure */ = {
+			isa = PBXGroup;
+			children = (
+				C9BCEB18267318F6002DF882 /* CameraObject.swift */,
+				C99B9BCD2675BB1800B79947 /* Flipping Label.swift */,
+				C99B9BD32679780700B79947 /* CustomAnimation.swift */,
+			);
+			path = Infastructure;
+			sourceTree = "<group>";
+		};
+		C9DFBEF52685966B0046F8F4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C9E98DB524FFE7380081FE9C /* GameView.swift */,
+				C9AF7B8324D375A10030D5A9 /* GameScene.swift */,
+				C91D43792675556D00B166A8 /* Universals.swift */,
+				C9BC16E82687661700C81391 /* model.swift */,
+				C9DFBEF126857BD20046F8F4 /* Fetch-RemasteredApp.swift */,
+				C9DFBEF82686A7330046F8F4 /* ViewModels.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,60 +405,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9A0E7B624EC313B0063E177 /* BotSit.atlas in Resources */,
-				C99C267324E9E824007775D0 /* DalSit.atlas in Resources */,
 				C9042C1124E5712200783805 /* gold1.wav in Resources */,
-				C99C266F24E9C812007775D0 /* BlackRun.atlas in Resources */,
-				C9B73FAD24DE0BB9000BE716 /* Apple.atlas in Resources */,
 				C9042C1624E5EC3800783805 /* beep.mp3 in Resources */,
-				C90A513624DA4A730063A10D /* Disco.atlas in Resources */,
-				C9D9A46C24DAFFBA001784ED /* Base.atlas in Resources */,
 				C9FD364A24FE954000409963 /* Smoke.sks in Resources */,
-				C9A0E7C024ECA9070063E177 /* SpaceSit.atlas in Resources */,
-				C9191CCB24EB5E88004E0EE3 /* FoxRun.atlas in Resources */,
-				C9670B7424DC36C200BD5F7B /* Earth.atlas in Resources */,
-				C9FF4E7A24EB188400E43A3F /* HoundRun.atlas in Resources */,
 				C9D9A47124DB8E39001784ED /* clouds.sks in Resources */,
 				C9AF7B9924D392670030D5A9 /* Main.storyboard in Resources */,
-				C960164724E0A88B000AFCE9 /* Puffer.atlas in Resources */,
-				C96D405324E8383300E6D621 /* MickeyRun.atlas in Resources */,
 				C9D9A47224DB8E39001784ED /* Assets.xcassets in Resources */,
-				C9BDD8CC24DA02C100D9E516 /* Rubber.atlas in Resources */,
-				C9CAC15524DEF66100C9E543 /* Beach.atlas in Resources */,
-				C90E939024E1A3FC00B72742 /* Clock.atlas in Resources */,
-				C960164924E0CABA000AFCE9 /* Spike.atlas in Resources */,
-				C96D405D24E83AF900E6D621 /* BullSit.atlas in Resources */,
-				C98B0DBF24E355D2004E1C81 /* Air.atlas in Resources */,
-				C9FF4E6D24EB14FC00E43A3F /* HoundSit.atlas in Resources */,
-				C9B73FAF24DE2AB4000BE716 /* Lemon.atlas in Resources */,
-				C99C267024E9C812007775D0 /* BlackSit.atlas in Resources */,
-				C9D9A46E24DB7AFB001784ED /* Basket.atlas in Resources */,
-				C99C267424E9E824007775D0 /* DalRun.atlas in Resources */,
-				C9670B6E24DC35A000BD5F7B /* Disk.atlas in Resources */,
-				C96D406124E87A4D00E6D621 /* PoodleSit.atlas in Resources */,
 				C9AF7B8B24D375A20030D5A9 /* Assets.xcassets in Resources */,
-				C96D405924E8393800E6D621 /* BullRun.atlas in Resources */,
-				C96D406024E87A4D00E6D621 /* PoodleRun.atlas in Resources */,
-				C9A0E7BF24ECA9070063E177 /* SpaceRun.atlas in Resources */,
-				C9B73FAB24DDF230000BE716 /* Orange.atlas in Resources */,
 				C9FD364C24FE9FB600409963 /* Snow.sks in Resources */,
 				C9042C1224E5712200783805 /* gold2.mp3 in Resources */,
-				C96A53C924D65B7A00F9597E /* Tennis.atlas in Resources */,
+				C93D2E30268BAEEF00C981E0 /* Fetchremasteredshadow-Regular.ttf in Resources */,
+				C93D2E3C268C21E600C981E0 /* Fetchremasteretitle-Regular.ttf in Resources */,
 				C9FD364E24FEA3ED00409963 /* Rain.sks in Resources */,
 				C9042C1324E5712200783805 /* wind.wav in Resources */,
-				C98C31E424E42BEC00217317 /* Rubix.atlas in Resources */,
-				C9CA3C3324E1CB6A003027CD /* Saturn.atlas in Resources */,
-				C9CA3C3524E1FFE7003027CD /* Moon.atlas in Resources */,
-				C9D9A46A24DAEA65001784ED /* Foot.atlas in Resources */,
 				C9AF7B9C24D3939A0030D5A9 /* PixelEmulator-xq08.ttf in Resources */,
 				C9FD364824FE945B00409963 /* Fire.sks in Resources */,
-				C9A0E7BC24EC5E880063E177 /* BudRun.atlas in Resources */,
-				C9191CCD24EB5EFE004E0EE3 /* FoxSit.atlas in Resources */,
-				C9A0E7B924EC5D830063E177 /* BudSit.atlas in Resources */,
-				C96D405724E8385900E6D621 /* MickeySit.atlas in Resources */,
 				C9AF7B8E24D375A20030D5A9 /* LaunchScreen.storyboard in Resources */,
-				C9A0E7B524EC313B0063E177 /* BotRun.atlas in Resources */,
-				C9CAC15724DF71E300C9E543 /* Death.atlas in Resources */,
+				C93D2E3B268C21E600C981E0 /* Fetchremasteredtitleshadow-Regular.ttf in Resources */,
 				C99B9BD226767AA600B79947 /* Fetch_remasteredFont-Regular.ttf in Resources */,
 				C953C00C24DCDE9E0011F5F8 /* goldCoins.sks in Resources */,
 			);
@@ -632,18 +501,21 @@
 				C9662499267E4AE9002317D7 /* Ball.swift in Sources */,
 				C9AF7B8424D375A10030D5A9 /* GameScene.swift in Sources */,
 				C9A9CA442671351100FF8199 /* Dog.swift in Sources */,
+				C9DFBEF7268699A30046F8F4 /* Sheets.swift in Sources */,
 				C99B9BCE2675BB1800B79947 /* Flipping Label.swift in Sources */,
+				C95AAB10268D2DC80063A62E /* UIUniversals.swift in Sources */,
 				C94CC55C24D9DADF00C0274C /* GameModifiersExtension.swift in Sources */,
-				C96F2CFB26692D60006F99AF /* UIOverlayController.swift in Sources */,
 				C98F212124D4545200D709F9 /* GameModifiersViewController.swift in Sources */,
+				C9BC16E92687661700C81391 /* model.swift in Sources */,
 				C98F212324D4546400D709F9 /* ProfileViewController.swift in Sources */,
 				C9AF7B8624D375A10030D5A9 /* GameViewController.swift in Sources */,
-				C9AF7B7E24D375A10030D5A9 /* AppDelegate.swift in Sources */,
 				C98F212524D4546E00D709F9 /* GoldViewController.swift in Sources */,
+				C9DFBEF92686A7330046F8F4 /* ViewModels.swift in Sources */,
 				C9BCEB19267318F7002DF882 /* CameraObject.swift in Sources */,
+				C9DFBEF226857BD20046F8F4 /* Fetch-RemasteredApp.swift in Sources */,
 				C91D437A2675556D00B166A8 /* Universals.swift in Sources */,
-				C9E98DB624FFE7380081FE9C /* File.swift in Sources */,
-				C99B9BD42679780800B79947 /* Animation.swift in Sources */,
+				C9E98DB624FFE7380081FE9C /* GameView.swift in Sources */,
+				C99B9BD42679780800B79947 /* CustomAnimation.swift in Sources */,
 				C9670B7624DC4ACA00BD5F7B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -822,7 +694,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -842,7 +714,7 @@
 				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -866,7 +738,7 @@
 				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
