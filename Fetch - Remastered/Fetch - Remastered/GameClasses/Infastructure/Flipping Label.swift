@@ -129,9 +129,9 @@ class FlippingCharacter: SKLabelNode {
     }
 
     init(position: CGPoint, isCurrent: Bool) {
-        super.init(fontNamed: defaultFont.main)
+        super.init(fontNamed: defaultFont.font)
         
-        fontSize = 100
+        fontSize = 33
         self.isCurrent = isCurrent
         self.positionOfCurrent = position
         

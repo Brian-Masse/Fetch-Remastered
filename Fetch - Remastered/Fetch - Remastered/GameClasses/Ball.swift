@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 
-class CurrentBall: SKSpriteNode, CurrentObject {
+class CurrentBall: SKSpriteNode, CurrentObject, ObservableObject {
     
     typealias currentType = Ball
     
@@ -21,7 +21,10 @@ class CurrentBall: SKSpriteNode, CurrentObject {
         }
     }
     var animator: Animator = Animator()
-        
+    
+    @Published var distance: CGFloat = 0
+    
+    
     var beingHeld: Bool = false {
         willSet {
             if newValue {
@@ -46,20 +49,21 @@ class CurrentBall: SKSpriteNode, CurrentObject {
     }
     
     func monitorSelf() {
+        
+        distance = position.y.trimCGFloat(2)
         if (physicsBody?.velocity.dy)! < 0.1 && GameView.game.model.currentState == .throwing {
             GameView.game.changeState(.throwOver)
         }
     }
 
     func throwSelf() {
-        physicsBody!.applyImpulse(CGVector(dx: 0, dy: velocity * throwModifier))
+        physicsBody!.applyImpulse(CGVector(dx: 0, dy: velocity * GameView.game.throwModifier))
         GameView.game.changeState(.throwing)        
     }
     
     func initializePhysics() {
         let physicsBody = SKPhysicsBody(rectangleOf: self.size)
         physicsBody.affectedByGravity = false
-        physicsBody.linearDamping = friction
         physicsBody.mass = 200
         self.physicsBody = physicsBody
     }

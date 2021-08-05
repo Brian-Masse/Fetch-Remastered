@@ -31,11 +31,10 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Fetchremasteretitle-Regular.ttf</string>
-		<string>Fetchremasteredtitleshadow-Regular.ttf</string>
-		<string>Fetchremasteredshadow-Regular.ttf</string>
-		<string>PixelEmulator-xq08.ttf</string>
-		<string>Fetch_remasteredFont-Regular.ttf</string>
+		<string>FetchBoldDefault.ttf</string>
+		<string>fetchTitleFont.ttf</string>
+		<string>fetchLowerFont.ttf</string>
+		<string>fetchDefaultText.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

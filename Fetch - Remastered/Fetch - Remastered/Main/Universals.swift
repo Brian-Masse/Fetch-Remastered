@@ -8,12 +8,10 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 let emptyColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
 let defaults = UserDefaults.standard
-
-let defaultFont = ShadowedFont(main:   "Fetch_remasteredFont-Regular", shadow: "Fetchremasteredshadow-Regular")
-let titleFont = ShadowedFont(main: "Fetchremasteretitle-Regular", shadow: "Fetchremasteredtitleshadow-Rg")
 
 var globalFrame = UIScreen.main.bounds
 let globalScene = GameScene(size: UIScreen.main.bounds.size)
@@ -22,8 +20,6 @@ let globalScene = GameScene(size: UIScreen.main.bounds.size)
 
 
 var friction = CGFloat(1)
-var throwModifier = CGFloat(1000)
-
 
 var virtualCamera: CameraObject!
 
@@ -138,10 +134,19 @@ extension CGFloat {
         trimmedFloat *= modifier
         trimmedFloat.round()
         trimmedFloat /= modifier
-        
+    
         return trimmedFloat
     }
 
+}
+
+extension CaseIterable where Self: Equatable{
+    
+    func next() -> Self {
+        let all = Self.allCases
+        let myIndex = all.firstIndex(of: self)!
+        return all[ all.index(after: myIndex) == all.endIndex ? all.startIndex: all.index(after: myIndex) ]
+    }
 }
 
 func findDistance(_ firstPoint: CGPoint, _ secondPoint: CGPoint = CGPoint(x: 0, y: 0)) -> CGFloat {
@@ -150,6 +155,27 @@ func findDistance(_ firstPoint: CGPoint, _ secondPoint: CGPoint = CGPoint(x: 0, 
     
     let distance = sqrt(Double( pow(xDis, 2) + pow(yDis, 2)) )
     return CGFloat(distance)
+}
+
+protocol Upgradable {
+    var value: CGFloat { get set }
+    var maxValue: CGFloat { get }
+    var id: String { get }
+    var maxxed: Bool  { get set }
+    
+    var title: String { get }
+    var description: String { get }
+    var buttonText: String { get }
+    
+    func saveSelf() -> Void // cannot be self mutating: it will be called on a copy of the modifier
+    
+    var shadowColor: Color { get }
+    var baseColor: Color { get }
+    
+    var iteration: Int { get set }
+    func returnCurrentPrice() -> Int
+    func returnCurrentIncriment() -> CGFloat
+    
 }
 
 protocol gameObject: Identifiable, Equatable, Codable {

@@ -27,10 +27,10 @@ class Animator {
         }
         self.target = target
         
-            itemObserver = GameView.game.$model
-                .sink() { [self] model in
-                    stateDidChange(model.currentState)
-                }
+        itemObserver = GameView.game.$model
+            .sink() { [self] model in
+                stateDidChange(model.currentState)
+            }
     }
     init() {}
     func stateDidChange(_ newState : FetchClassic.StateEnum) {

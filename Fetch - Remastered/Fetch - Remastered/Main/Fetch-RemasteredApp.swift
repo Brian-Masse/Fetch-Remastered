@@ -8,14 +8,14 @@
 
 import SwiftUI
 
+let gameView = GameView()
+
 @main
 
 struct FetchRemastered: App {
     var body: some Scene {
         WindowGroup {
-            GameView()
-                .ignoresSafeArea()
-            
+            gameView
         }
     }
 }

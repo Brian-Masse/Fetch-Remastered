@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 import SwiftUI
+import Combine
 
 
 class GameScene: SKScene {
@@ -103,6 +104,7 @@ class GameScene: SKScene {
     
     var dateOfThrow = Date.init()
     var firstSwipePositon = CGPoint(x: -444, y: -444)
+    let anchor = SKSpriteNode(texture: nil, color: .clear, size: CGSize(width: 0, height: 0))
     
     var wind: AVAudioPlayer? = {
         let url = Bundle.main.url(forResource: "wind", withExtension: "wav")
@@ -145,8 +147,9 @@ class GameScene: SKScene {
 //        unloadLights()
 //        checkRemoveCoinParticles()
         
+
+        GameView.game.duringThrowCheckStats() 
         GameView.game.model.currentBall.monitorSelf()
-        
         
         
     }
@@ -157,13 +160,14 @@ class GameScene: SKScene {
             camera = virtualCamera
         }
     
+        anchor.position = virtualCamera.position
+        
         GameView.game.model.currentDog.update()
         markerManager.targetDidChange()
     }
     
     func setup() {
-    
-        
+     
 //        var list: [CGFloat] = []
 //        for i in 0...30 {
 //            list.append(CGFloat(i))
@@ -181,6 +185,8 @@ class GameScene: SKScene {
 //        let _ = (GameView.game.model.currentDog.animator.itemObserver)
 //        let _ = (GameView.game.model.currentBall.animator.itemObserver)
         
+        
+        
         GameView.game.currentDog.setupAnimator()
         GameView.game.currentDog.defineTextureAndSize()
         GameView.game.currentBall.setupAnimator()
@@ -188,6 +194,8 @@ class GameScene: SKScene {
         
         virtualCamera = CameraObject(GameView.game.model.currentBall)
         addChild(virtualCamera)
+        
+        addChild(anchor)
         
         createDistanceMarkers()
         
@@ -263,36 +271,29 @@ class GameScene: SKScene {
             velocityLabel = FlippingLabel(displayedDigits: 9)
             
             let velocityText = SKLabelNode(text: "Velocity:")
-            velocityText.fontName = defaultFont.main
-            velocityText.fontSize = 100
-            velocityText.position.y += 40
+            velocityText.fontName = defaultFont.font
+            velocityText.fontSize = 33
             
-            velocityLabel!.addChild(velocityText)
-            virtualCamera.addChild(velocityLabel!)
+            
+            anchor.addChild(velocityText)
+            anchor.addChild(velocityLabel!)
                     
-            velocityLabel!.position.y -= 250
+            velocityText.position.y -= 250
+            velocityLabel!.position.y -= 300
             velocityLabel!.zPosition = 1000
         }
     }
     
     func checkForGold(distance: Int) {
-//        let goldAtThrowStart = GameView.game.gold
         var collectedGold = 0
-        for _ in 0...distance {
-            let random = Int.random(in: 0..<Int(1))
-            if random <= 20 { collectedGold += 1 }
-            if random <= 10 { collectedGold += 1 }
-            if random <= 5 { collectedGold += 1 }
-            if random <= 1 { collectedGold += 1 }
+        for _ in 0...(distance / 100) {
+            let random = Int.random(in: 0...Int( GameView.game.goldModifier.maxValue - GameView.game.goldModifier.value ))
+            if random <= 20 { collectedGold += 100 }
+            if random <= 10 { collectedGold += 100 }
+            if random <= 5 { collectedGold += 100 }
+            if random <= 1 { collectedGold += 100 }
+            GameView.game.changeGold(with: CGFloat(collectedGold))
         }
-        
-        GameView.game.changeGold(with: collectedGold)
-//        addedGold = goldCount - initGold
-//        goldCount = initGold
-//        if mostGold < goldCount {
-//            mostGold = goldCount
-//        }
-//        saveData()
     }
     
     func createDistanceMarkers() {
@@ -311,8 +312,8 @@ class GameScene: SKScene {
                     marker.size = CGSize(width: 30, height: 2)
                     
                     let markerNumber = SKLabelNode(text: "\(i)")
-                    markerNumber.fontName = defaultFont.main
-                    markerNumber.fontSize = 30
+                    markerNumber.fontName = defaultFont.font
+                    markerNumber.fontSize = 10
                     markerNumber.horizontalAlignmentMode = .right
                     markerNumber.position = CGPoint(x: halfWidth, y: marker.position.y + width(c: 1))
                     markerNumber.zPosition = 2
@@ -423,10 +424,10 @@ class GameScene: SKScene {
         if savedGold > 0 {
             goldCount = CGFloat(savedGold)
         }
-        let savedModifier = defaults.integer(forKey: savedModifierKey)
-        if savedModifier > 10 {
-            throwModifier = CGFloat(savedModifier)
-        }
+//        let savedModifier = defaults.integer(forKey: savedModifierKey)
+//        if savedModifier > 10 {
+//            throwModifier = CGFloat(savedModifier)
+//        }
         let savedProbability = defaults.integer(forKey: ProbabilityKey)
         if savedProbability > 0 {
             Probability = CGFloat(savedProbability)
@@ -1269,6 +1270,7 @@ class GameScene: SKScene {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
 //        if !tutorialComplete {
 //            if currentSlide.name == "welcome" {
 //                switchTutorialCards(cardName: "yard", position: CGPoint(x: frame.midX, y: frame.midY))
@@ -1314,7 +1316,6 @@ class GameScene: SKScene {
             if firstSwipePositon == CGPoint(x: -444, y: -444) {
                 if let currentTouchPosition = touches.first?.location(in: self) {
                     firstSwipePositon = currentTouchPosition
-
 
                     dateOfThrow = Date.init()
                 }

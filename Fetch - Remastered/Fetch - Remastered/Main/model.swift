@@ -43,6 +43,14 @@ struct FetchClassic {
     let dal         = Dog(skin: "Dal", cost: 90000, mouth: CGPoint(x: 22, y: 42))
     let bot         = Dog(skin: "Bot", cost: 90000, mouth: CGPoint(x: 12, y: 26))
     
+    var throwModifier = ThrowModifier()
+    var aeroModifier = AeroModifier()
+    var goldModifier = GoldModifier()
+    
+    var modifiers: [Upgradable] = []
+    
+    //MARK: States
+    var currentState: StateEnum = .home
     enum StateEnum {
         case home
         case throwing
@@ -52,6 +60,8 @@ struct FetchClassic {
         case returningPT2
     }
 
+    
+    //MARK: Current Dogs and Balls
     var currentBall: CurrentBall!
     var currentDog: CurrentDog!
     
@@ -62,13 +72,85 @@ struct FetchClassic {
         didSet { currentBall.type = determineCurrentObjects().1 }
     }
     
-    var currentState: StateEnum = .home
+    //MARK: Modifiers:
     
-    var gold: Int = 0
+    struct ThrowModifier: Upgradable {
+        let id = "throw"
+        var value: CGFloat = 1
+        let maxValue: CGFloat = 1000
+        var maxxed = false
+        
+        var title = "Arm Day"
+        var description: String { "x \(value) on all throWs!" }
+        var buttonText: String { "+ \(returnCurrentIncriment()) for \(returnCurrentPrice()) gold!" }
+        func saveSelf() { }
+        
+        var iteration = 0
+        func returnCurrentPrice() -> Int { (iteration * 3) + 5 }
+        func returnCurrentIncriment() -> CGFloat { (CGFloat(iteration) * 2) + 1 }
+        
+        let shadowColor = UpgradesSheet.constants.throwShadowGreen
+        let baseColor = UpgradesSheet.constants.throwGreen
+        
+    }
+    
+    struct AeroModifier: Upgradable {
+        let id = "aero"
+        var value: CGFloat = 0
+        let maxValue: CGFloat = 4.5
+        var friction: CGFloat { 5 - value }
+        var maxxed = false
+        
+        let title = "Aero-Dynamics:"
+        var description: String { "\(Int(value * 100)) % slow reduction!" }
+        var buttonText: String { "+ \(Int(returnCurrentIncriment().trimCGFloat(2) * 100)) % for \(returnCurrentPrice()) gold!" }
+        func saveSelf() { GameView.game.updateAeroModifier() }
+        
+        var iteration = 0
+        func returnCurrentPrice() -> Int { (iteration * 3) + 5 }
+        func returnCurrentIncriment() -> CGFloat { (CGFloat(iteration) * 0.02) + 0.01 }
+        
+        let shadowColor = UpgradesSheet.constants.aeroShadowPink
+        let baseColor = UpgradesSheet.constants.aeroPink
+        
+    }
+    
+    struct GoldModifier: Upgradable {
+        let id = "gold"
+        var value: CGFloat = 1
+        let maxValue: CGFloat = 100
+        var maxxed = false
+        
+        var title = "Gold Magnet"
+        var description: String { "\(value.trimCGFloat(2)) % chance of gold every yard!" }
+        var buttonText: String { "+ \(returnCurrentIncriment().trimCGFloat(2))% for \(returnCurrentPrice()) gold!" }
+        func saveSelf() { }
+        
+        var iteration = 0
+        func returnCurrentPrice() -> Int { (iteration * 3) + 5 }
+        func returnCurrentIncriment() -> CGFloat { (CGFloat(iteration) * 0.2) + 0.2 }
+        
+        let shadowColor = UpgradesSheet.constants.goldShadowTangerine
+        let baseColor = UpgradesSheet.constants.goldTengerine
+    }
+    
+    //MARK: gold
+    
+    @Graphable(0, for: "goldKey") var gold: CGFloat
+    var previousGold: Int = 0
+    
+    var speed = 1
+    
+    var stats = Stats()
+    
+    
+    @Graphable(0, for: "testKey") var testGraph: CGFloat
+    
+    
+    //MARK: init
     
     init() {
-        rubberBall.isCurrent = true
-        
+        modifiers = [throwModifier, aeroModifier, goldModifier]
         dogs = [ mickey, space, bud, fox, hound, black, poddle, bull, dal, bot ]
         balls = [ rubberBall, tennisBall, clock, disk, lemon, orange, baseBall, beachBall, deathStar, footBall, basketBall, moon, spikeBall, apple, disco, saturn, earth, puffer, rubix, air ]
 
@@ -86,6 +168,47 @@ struct FetchClassic {
             currentBall = CurrentBall(ball: balls[0])
             balls[0].isCurrent = true
         }
+        
+        for enumeration in modifiers.enumerated() {
+            modifiers[enumeration.offset].value = FetchClassic.retrieveData(defaultValue: CGFloat(0), for: enumeration.element.id + "value")
+            modifiers[enumeration.offset].iteration = FetchClassic.retrieveData(defaultValue: 0, for: enumeration.element.id + "iteration")
+            modifiers[enumeration.offset].maxxed = FetchClassic.retrieveData(defaultValue: false, for: enumeration.element.id + "maxxed")
+        }
+        updateAeroModifier()
+        
+        gold = FetchClassic.retrieveData(defaultValue: 0, for: "gold")
+        previousGold = FetchClassic.retrieveData(defaultValue: 0, for: "gold")
+        
+//        defaults.removeObject(forKey: "aerovalue")
+//        defaults.removeObject(forKey: "aeromaxxed")
+//        defaults.removeObject(forKey: "aeroiteration")
+        
+//        defaults.removeObject(forKey: "throwiteration")
+//        defaults.removeObject(forKey: "throwvalue")
+//        defaults.removeObject(forKey: "throwmaxxed")
+    }
+
+    //MARK: Save Functions
+    
+    static func saveData<DataType>(data: DataType, for key: String) {
+        defaults.setValue(data, forKey: key)
+    }
+    
+    static func retrieveData<DataType>(defaultValue: DataType, for key: String) -> DataType {
+        guard let value = defaults.value(forKey: key) as? DataType else {return defaultValue}
+        return value
+    }
+    
+    static func saveComplexData<DataType>(data: DataType, for key: String) where DataType: Codable {
+        let encodedData = try! JSONEncoder().encode(data)
+        defaults.setValue(encodedData, forKey: key)
+    }
+
+    static func retrieveComplexData<DataType>(defaultValue: DataType, for key: String) ->  DataType where DataType: Codable {
+        guard let retrievedData = defaults.value(forKey: key) as? Data else { return defaultValue}
+        let decodedData = try! JSONDecoder().decode(DataType.self, from: retrievedData)
+        return decodedData
+
     }
     
     func loadDogsAndBalls<objectType: gameObject>(in list: inout [objectType])  {
@@ -101,6 +224,20 @@ struct FetchClassic {
         }
     }
     
+    func determineCurrentObjects() -> (Dog, Ball) {
+        var currentDog: Dog!
+        var currentBall: Ball!
+        for dog in dogs {
+            if dog.isCurrent { currentDog = dog}
+        }
+        for ball in balls {
+            if ball.isCurrent { currentBall = ball}
+        }
+        return (currentDog, currentBall)
+    }
+    
+    
+    //MARK: Intent Functions
     
     mutating func changeState(_ newState: StateEnum) {
         currentState = newState
@@ -111,6 +248,7 @@ struct FetchClassic {
                 currentDog.position.y = currentBall.frame.minY - (currentDog.size.height / 2)
             case .throwing: globalScene.updateVelocityLabel()
             case .throwOver:
+                globalScene.speed = 1
                 currentBall.removeAllActions()
                 currentBall.defineTextureAndSize()
                 globalScene.checkForGold(distance: Int(currentBall.position.y))
@@ -128,29 +266,26 @@ struct FetchClassic {
         }
     }
     
-    func saveData<DataType>(data: DataType, for key: String) {
-        defaults.setValue(data, forKey: key)
+    mutating func updateAeroModifier() {
+        guard let index = modifiers.firstIndex(where: {$0.id == "aero" }) else { return }
+        currentBall.physicsBody!.linearDamping = (modifiers[index] as! AeroModifier).friction
     }
     
-    func retrieveData<DataType: Codable>(for key: String) -> DataType? {
-        guard let value = defaults.value(forKey: key) as? DataType else {return nil}
-        return value
-    }
-    
-    mutating func changeGold(change: Int) {
+    mutating func changeGold(change: CGFloat) {
+        previousGold = Int(gold)
         gold += change
     }
     
-    func determineCurrentObjects() -> (Dog, Ball) {
-        var currentDog: Dog!
-        var currentBall: Ball!
-        for dog in dogs {
-            if dog.isCurrent { currentDog = dog}
-        }
-        for ball in balls {
-            if ball.isCurrent { currentBall = ball}
-        }
-        return (currentDog, currentBall)
+    mutating func changeGameSpeed(change: Int) {
+        speed = change
+        globalScene.speed = CGFloat(speed)
+    }
+    
+    mutating func incrementModifier(_ modifier: Upgradable, with increment: CGFloat) {
+        guard let index = modifiers.firstIndex(where: {$0.id == modifier.id }) else { return }
+        modifiers[index].value = min(modifiers[index].value + increment, modifiers[index].maxValue)
+        modifiers[index].iteration += 1
+        if modifiers[index].value >= modifiers[index].maxValue {modifiers[index].maxxed = true; FetchClassic.saveData(data: modifiers[index].maxxed, for: modifiers[index].id + "maxxed") }
     }
 
     mutating func chooseActiveObjects<objectType: gameObject>(newObject: objectType, in list: inout [objectType]) {
@@ -160,7 +295,7 @@ struct FetchClassic {
                 list[enumeration.offset].isUnlocked = true
             }else { list[enumeration.offset].isCurrent = false }
             guard let encodedData = try? JSONEncoder().encode(list[enumeration.offset]) else { return }
-            saveData(data: encodedData, for: "\(enumeration.element.id)")
+            FetchClassic.saveData(data: encodedData, for: "\(enumeration.element.id)")
         }
     }
 }
