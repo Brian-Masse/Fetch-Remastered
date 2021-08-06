@@ -85,7 +85,7 @@ struct ShadowFont: View {
     var textStruct: some View {
         Text(text)
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.000000000001)
+            .minimumScaleFactor(1)
             .font(Font.custom(fontStruct.font, size: fontSize))
     }
     var body: some View {

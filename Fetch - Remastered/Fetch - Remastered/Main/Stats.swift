@@ -66,7 +66,7 @@ extension FetchClassic {
 struct Graphable {
     
     private let key: String
-    var projectedValue: [ GraphablePoint ] = [  GraphablePoint(value: 56, date: Date()) ]
+    var projectedValue: [ GraphablePoint ] = [  GraphablePoint(value: 0, date: Date()) ]
     
     
     

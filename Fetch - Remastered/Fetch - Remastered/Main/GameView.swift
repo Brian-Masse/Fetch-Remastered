@@ -239,10 +239,10 @@ struct GameView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("t")
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileSheet()
+//    }
+//}
 
 
