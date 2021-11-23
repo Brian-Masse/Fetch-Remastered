@@ -19,7 +19,6 @@ class CurrentDog: SKSpriteNode, CurrentObject {
         didSet {
             setupAnimator()
             defineTextureAndSize()
-
         }
     }
     
@@ -45,10 +44,10 @@ class CurrentDog: SKSpriteNode, CurrentObject {
     func setup() {
         self.position = CGPoint(x: 0, y: -120)
         if let size = scaleToPixels(node: self, modifier: 2) { self.size = size }
-        self.zPosition = 100
+        self.zPosition = GameScene.ZLayer.belowBall.rawValue
         
         self.addChild(head)
-        head.zPosition = 1002
+        head.zPosition = GameScene.ZLayer.aboveBall.rawValue
         head.alpha = 0
         head.anchorPoint = CGPoint(x: 0, y: 1)
         defineTextureAndSize()
@@ -85,7 +84,7 @@ class CurrentDog: SKSpriteNode, CurrentObject {
             Animator.CustomAnimation(triggerState: .throwOver, animates: { return run }, or: nil, withCompletion: nil, withKey: "frame"),
             Animator.CustomAnimation(triggerState: .caught, animates: { return sit }, or: nil, withCompletion: nil, withKey: "frame"),
             Animator.CustomAnimation(triggerState: .returning, animates: { return SKAction.rotate(toAngle: CGFloat.pi, duration: 0) }, or: nil, withCompletion: nil, withKey: "movement", repeating: 1),
-            Animator.CustomAnimation(triggerState: .returning, animates: nil, or: carryWalk, withCompletion: nil, withKey: "extra"),
+            Animator.CustomAnimation(triggerState: .returning, animates: { SKAction.moveBy(x: 0, y: -GameView.game.model.currentBall.position.y, duration:  ( Double(GameView.game.model.currentBall.position.y) / 1200) )  }, or: nil, withCompletion: nil, withKey: "extra"),
             Animator.CustomAnimation(triggerState: .returning, animates: { return run }, or: nil, withCompletion: nil, withKey: "frame"),
             Animator.CustomAnimation(triggerState: .returningPT2, animates: { return run }, or: nil, withCompletion: nil, withKey: "frame"),
             Animator.CustomAnimation(triggerState: .returningPT2, animates: { return SKAction.moveTo(y:  GameView.game.currentBall.frame.minY - (GameView.game.currentDog.size.height / 2), duration: 1/5) }, or: nil, withCompletion: { GameView.game.changeState(.home)}, withKey: "movement", repeating: 1)
@@ -120,7 +119,9 @@ struct Dog: gameObject, Codable {
     let UIPreview: UIImage?
     
     var isUnlocked = false
-    var isCurrent = false
+    var isCurrent = false {
+    didSet { if isCurrent { isUnlocked = true } }
+    }
     
     let mouthPos: CGPoint
     

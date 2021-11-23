@@ -16,11 +16,12 @@ class CameraObject: SKCameraNode {
     init(_ targetObject: SKNode?) {
         super.init()
         self.targetObject = targetObject
-        self.setScale(896 / globalFrame.size.height)
+        self.setScale(414 / globalFrame.width)
+        self.update()
     }
     
     func update() {
-        position = targetObject.position
+        position.y = (GameView.game.model.currentDog.position.y + GameView.game.model.currentBall.position.y) / 2
     }
     
     required init?(coder aDecoder: NSCoder) {

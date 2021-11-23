@@ -97,14 +97,31 @@ class GameScene: SKScene {
     let camp1 = SKLightNode()
     let camp2 = SKLightNode()
     
+    
+    let speedLines = SKEmitterNode(fileNamed: "speedLines")!
+    
     var markerManager: LoadingManager<SKNode>!
     
     var list: [CGFloat] = []
     
-    
     var dateOfThrow = Date.init()
     var firstSwipePositon = CGPoint(x: -444, y: -444)
     let anchor = SKSpriteNode(texture: nil, color: .clear, size: CGSize(width: 0, height: 0))
+    
+    
+    var cloudSpawner: CloudSpawner!
+    
+    
+    
+    enum ZLayer: CGFloat {
+        case background
+        case belowBall
+        case ball
+        case aboveBall
+        case seperator
+        case highGround
+        case UI
+    }
     
     var wind: AVAudioPlayer? = {
         let url = Bundle.main.url(forResource: "wind", withExtension: "wav")
@@ -150,8 +167,6 @@ class GameScene: SKScene {
 
         GameView.game.duringThrowCheckStats() 
         GameView.game.model.currentBall.monitorSelf()
-        
-        
     }
     
     override func didSimulatePhysics() {
@@ -187,6 +202,9 @@ class GameScene: SKScene {
         
         
         
+        GameView.game.model.sendAllDataToWidgets()
+        GameView.game.updateAeroModifier()
+        
         GameView.game.currentDog.setupAnimator()
         GameView.game.currentDog.defineTextureAndSize()
         GameView.game.currentBall.setupAnimator()
@@ -197,6 +215,12 @@ class GameScene: SKScene {
         
         addChild(anchor)
         
+        
+
+        
+        
+        
+        cloudSpawner = CloudSpawner({ scalingTextures(texture: "cloud\(min(Int.random(in: 1...5), 3))")  }, createAccessor(from: 0.5, to: 1), createAccessor(from: 4.5, to: 6), createAccessor(from: 5, to: 20), anchoredTo: anchor, in: { self.size })
         createDistanceMarkers()
         
 //        checkForSaved()
@@ -219,18 +243,35 @@ class GameScene: SKScene {
 
         addChild(GameView.game.model.currentBall)
         addChild(GameView.game.model.currentDog)
+       
+        setupBackgrounds()
         
         GameView.game.changeState(.home)
+    }
+    
+    func setupBackgrounds() {
+        SetupBackground("Bottom", for: .background)
+        SetupBackground("Top", for: .seperator)
+    }
+    
+    func SetupBackground(_ root: String, for zIndex: ZLayer ) {
+        let backgroundAtlas = createTextureAtlas(atlasName: root)
+        let background = SKSpriteNode(texture: backgroundAtlas[0])
+        background.size = CGSize(width: 414, height: (backgroundAtlas[0].size().height / backgroundAtlas[0].size().width) * 414)
+        background.anchorPoint = CGPoint(x: 0.5, y: 0)
+        background.position.y = -800
+        background.zPosition = zIndex.rawValue
+        
+        addChild(background)
+        background.run( SKAction.repeatForever( SKAction.animate(with: backgroundAtlas, timePerFrame: 0.25) ))
     }
     
     func sizeDidChange(in size: CGSize) {
         guard let _ = virtualCamera else { return }
         
-        virtualCamera.setScale(896 / size.height)
+        virtualCamera.setScale(414 / size.width)
         markerManager.destory()
         createDistanceMarkers()
-        
-        
     }
     
     func holdBall() {
@@ -253,60 +294,64 @@ class GameScene: SKScene {
         
     }
     
-    func updateVelocityLabel() {
-        setUpVelocityLabel()
-        let referenceToVelocity = GameView.game.model.currentBall.physicsBody!.velocity.dy
-        let trimmedVelocity = referenceToVelocity.trimCGFloat(2)
-        
-        velocityLabel?.update(newAmount: trimmedVelocity, usingQueue: false, speed: min(8, max(0.8, referenceToVelocity / 10)))
-        if GameView.game.model.currentState == .throwing {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
-                self.updateVelocityLabel()
-            }
-        }
-    }
-    
-    func setUpVelocityLabel() {
-        if velocityLabel == nil {
-            velocityLabel = FlippingLabel(displayedDigits: 9)
-            
-            let velocityText = SKLabelNode(text: "Velocity:")
-            velocityText.fontName = defaultFont.font
-            velocityText.fontSize = 33
-            
-            
-            anchor.addChild(velocityText)
-            anchor.addChild(velocityLabel!)
-                    
-            velocityText.position.y -= 250
-            velocityLabel!.position.y -= 300
-            velocityLabel!.zPosition = 1000
-        }
-    }
+//    func updateVelocityLabel() {
+//        setUpVelocityLabel()
+//        if velocityLabel!.parent == nil { anchor.addChild(velocityLabel!) }
+//        let referenceToVelocity = GameView.game.model.currentBall.physicsBody!.velocity.dy
+//        let trimmedVelocity = referenceToVelocity.trimCGFloat(2)
+//
+//        velocityLabel?.update(newAmount: trimmedVelocity, usingQueue: false, speed: min(8, max(0.8, referenceToVelocity / 10)))
+//        if GameView.game.model.currentState == .throwing {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
+//                self.updateVelocityLabel()
+//            }
+//        }
+//    }
+//
+//    func removeVeclocityLabel() {
+//        velocityLabel?.removeFromParent()
+//    }
+//
+//    func setUpVelocityLabel() {
+//        if velocityLabel == nil {
+//            velocityLabel = FlippingLabel(displayedDigits: 9)
+//
+//            let velocityText = SKLabelNode(text: "Velocity:")
+//            velocityText.fontName = defaultFont.font
+//            velocityText.fontSize = 33
+//
+//
+//            velocityLabel!.addChild(velocityText)
+//            anchor.addChild(velocityLabel!)
+//
+//            velocityText.position.y += 50
+//            velocityLabel!.position.y -= 300
+//            velocityLabel!.zPosition = ZLayer.UI.rawValue
+//        }
+//    }
     
     func checkForGold(distance: Int) {
         var collectedGold = 0
-        for _ in 0...(distance / 100) {
-            let random = Int.random(in: 0...Int( GameView.game.goldModifier.maxValue - GameView.game.goldModifier.value ))
-            if random <= 20 { collectedGold += 100 }
-            if random <= 10 { collectedGold += 100 }
-            if random <= 5 { collectedGold += 100 }
-            if random <= 1 { collectedGold += 100 }
-            GameView.game.changeGold(with: CGFloat(collectedGold))
+
+        let patternRepeatsFor = (CGFloat(distance) / 100)
+        for _ in 0...(100) {
+            let random = Int.random(in: 0...Int( 100 / GameView.game.goldModifier.value ))
+            if random <= 1 { collectedGold += 1 }
         }
+        GameView.game.changeGold(with: CGFloat(collectedGold) * patternRepeatsFor)
     }
     
     func createDistanceMarkers() {
         var markerList: [SKNode] = []
-        for i in 0...1000000 {
+        for i in -1000...1000000 {
             if i.isMultiple(of: 10) {
                 
                 let halfWidth = (size.width / 2) * virtualCamera.xScale
                 
-                let marker = SKSpriteNode(color: .gray, size: CGSize(width: 10, height: 2))
+                let marker = SKSpriteNode(color: .white, size: CGSize(width: 10, height: 2))
                 marker.anchorPoint = CGPoint(x: 1, y: 0.5)
                 marker.position = CGPoint(x: halfWidth, y: CGFloat(i))
-                marker.zPosition = 1
+                marker.zPosition = ZLayer.UI.rawValue
                 
                 if i.isMultiple(of: 100) {
                     marker.size = CGSize(width: 30, height: 2)
@@ -316,14 +361,13 @@ class GameScene: SKScene {
                     markerNumber.fontSize = 10
                     markerNumber.horizontalAlignmentMode = .right
                     markerNumber.position = CGPoint(x: halfWidth, y: marker.position.y + width(c: 1))
-                    markerNumber.zPosition = 2
+                    markerNumber.zPosition = ZLayer.UI.rawValue
                     
                     markerList.append(markerNumber)
                 }
                 if !(i - 10).isMultiple(of: 100) { markerList.append(marker) }
             }
         }
-        
         markerManager = LoadingManager(controls: markerList, following: GameView.game.currentBall, in: 1000)
     }
     
@@ -393,6 +437,60 @@ class GameScene: SKScene {
         }
     }
     
+    struct CloudSpawner {
+        
+        let textureAccessor: () -> SKTexture
+        let alphaAccessor: () -> CGFloat
+        let scaleAccessor: () -> CGFloat
+        let speedAccessor: () -> CGFloat
+        let anchor: SKSpriteNode
+        let size: () -> CGSize
+        
+        init( _ textureAccessor: @escaping () -> SKTexture,  _ alphaAccessor: @escaping () -> CGFloat,  _ scaleAccessor: @escaping () -> CGFloat,  _ speedAccessor: @escaping () -> CGFloat, anchoredTo anchor: SKSpriteNode, in size: @escaping () -> CGSize ) {
+            self.textureAccessor = textureAccessor
+            self.alphaAccessor = alphaAccessor
+            self.scaleAccessor = scaleAccessor
+            self.speedAccessor = speedAccessor
+            self.anchor = anchor
+            self.size = size
+            
+            spawnCloud()
+        }
+        
+        func spawnCloud() {
+            let node = SKSpriteNode(texture: textureAccessor() )
+            
+            let computedSize = size()
+            node.anchorPoint = CGPoint(x: 1, y: 0.5)
+            node.position = CGPoint( x: -(computedSize.width / 2) * virtualCamera.xScale, y:  CGFloat.random(in: -computedSize.height / 2...computedSize.height / 2  )  )
+            
+            let scale = scaleAccessor()
+            node.xScale = scale
+            node.yScale = scale
+            node.alpha = GameView.game.preferenceModel.cloudDensity == .off ? 0: alphaAccessor()
+            
+            node.zPosition = ZLayer.highGround.rawValue
+            
+            let distance = computedSize.width * 1.5
+            let speed = speedAccessor()
+            
+            let adjustedSpeed = (distance / 414) * speed
+            
+            node.run(SKAction.move(by: CGVector(dx: distance + (100 * scale), dy: 0), duration: Double( adjustedSpeed ) ), completion: { node.removeFromParent() }  )
+            
+            anchor.addChild(node)
+            DispatchQueue.main.asyncAfter(deadline: .now() + GameView.game.preferenceModel.cloudDensity.rawValue ) {
+                spawnCloud()
+            }
+        }
+    }
+    func createAccessor(from first: CGFloat, to last: CGFloat) -> () -> CGFloat {
+        return {
+            let random = CGFloat.random(in: first...last)
+            return random
+        }
+    }
+    
     
     
     
@@ -419,73 +517,73 @@ class GameScene: SKScene {
 //    }
     
 //
-    func checkForSaved() {
-        let savedGold = defaults.integer(forKey: savedGoldKey)
-        if savedGold > 0 {
-            goldCount = CGFloat(savedGold)
-        }
-//        let savedModifier = defaults.integer(forKey: savedModifierKey)
-//        if savedModifier > 10 {
-//            throwModifier = CGFloat(savedModifier)
+//    func checkForSaved() {
+//        let savedGold = defaults.integer(forKey: savedGoldKey)
+//        if savedGold > 0 {
+//            goldCount = CGFloat(savedGold)
 //        }
-        let savedProbability = defaults.integer(forKey: ProbabilityKey)
-        if savedProbability > 0 {
-            Probability = CGFloat(savedProbability)
-        }
-        let savedMostGold = defaults.integer(forKey: mostGoldKey)
-        if savedMostGold > 0 {
-            mostGold = CGFloat(savedMostGold)
-        }
-        let savedFarthestThrow = defaults.integer(forKey: farthestThrowKey)
-        if savedFarthestThrow > 0 {
-            farthestThrow = CGFloat(savedFarthestThrow)
-        }
-        let savedFriction = defaults.integer(forKey: frictionKey)
-        if savedFriction > 0 {
-            friction = CGFloat(savedFriction) / 1000
-        }
-        let savedBallSkin = defaults.string(forKey: ballKey)
-        if savedBallSkin != nil {
-            ballSkin = savedBallSkin!
-        }
-        let savedDogSkin = defaults.string(forKey: dogKey)
-        if savedDogSkin != nil {
-            dogSkin = savedDogSkin!
-        }
-        let savedClouds = defaults.bool(forKey: cloudKey)
-        if savedClouds {
-            cloudsOff = savedClouds
-        }
-        let savedSounds = defaults.bool(forKey: soundKey)
-        if savedSounds {
-            soundOff = savedSounds
-        }
-        let savedDiscovered = defaults.float(forKey: discoveredKey)
-        if savedDiscovered != 0{
-            discoveredPerc = CGFloat(savedDiscovered)
-        }
-        let savedTutorial = defaults.bool(forKey: tutorialKey)
-        tutorialComplete = savedTutorial
-
-        let savedReady = defaults.bool(forKey: throwReadyKey)
-        throwisReady = savedReady
-
-
-    }
-
-    func saveData() {
-        defaults.set(goldCount, forKey: savedGoldKey)
-        defaults.set(mostGold, forKey: mostGoldKey)
-        defaults.set(farthestThrow, forKey: farthestThrowKey)
-        defaults.set(ballSkin, forKey: ballKey)
-        defaults.set(dogSkin, forKey: dogKey)
-        defaults.set(cloudsOff, forKey: cloudKey)
-        defaults.set(soundOff, forKey: soundKey)
-        defaults.set(discoveredPerc, forKey: discoveredKey)
-        defaults.set(tutorialComplete, forKey: tutorialKey)
-        defaults.set(throwisReady, forKey: throwReadyKey)
-    }
+////        let savedModifier = defaults.integer(forKey: savedModifierKey)
+////        if savedModifier > 10 {
+////            throwModifier = CGFloat(savedModifier)
+////        }
+//        let savedProbability = defaults.integer(forKey: ProbabilityKey)
+//        if savedProbability > 0 {
+//            Probability = CGFloat(savedProbability)
+//        }
+//        let savedMostGold = defaults.integer(forKey: mostGoldKey)
+//        if savedMostGold > 0 {
+//            mostGold = CGFloat(savedMostGold)
+//        }
+//        let savedFarthestThrow = defaults.integer(forKey: farthestThrowKey)
+//        if savedFarthestThrow > 0 {
+//            farthestThrow = CGFloat(savedFarthestThrow)
+//        }
+//        let savedFriction = defaults.integer(forKey: frictionKey)
+//        if savedFriction > 0 {
+//            friction = CGFloat(savedFriction) / 1000
+//        }
+//        let savedBallSkin = defaults.string(forKey: ballKey)
+//        if savedBallSkin != nil {
+//            ballSkin = savedBallSkin!
+//        }
+//        let savedDogSkin = defaults.string(forKey: dogKey)
+//        if savedDogSkin != nil {
+//            dogSkin = savedDogSkin!
+//        }
+//        let savedClouds = defaults.bool(forKey: cloudKey)
+//        if savedClouds {
+//            cloudsOff = savedClouds
+//        }
+//        let savedSounds = defaults.bool(forKey: soundKey)
+//        if savedSounds {
+//            soundOff = savedSounds
+//        }
+//        let savedDiscovered = defaults.float(forKey: discoveredKey)
+//        if savedDiscovered != 0{
+//            discoveredPerc = CGFloat(savedDiscovered)
+//        }
+//        let savedTutorial = defaults.bool(forKey: tutorialKey)
+//        tutorialComplete = savedTutorial
 //
+//        let savedReady = defaults.bool(forKey: throwReadyKey)
+//        throwisReady = savedReady
+//
+//
+//    }
+//
+//    func saveData() {
+//        defaults.set(goldCount, forKey: savedGoldKey)
+//        defaults.set(mostGold, forKey: mostGoldKey)
+//        defaults.set(farthestThrow, forKey: farthestThrowKey)
+//        defaults.set(ballSkin, forKey: ballKey)
+//        defaults.set(dogSkin, forKey: dogKey)
+//        defaults.set(cloudsOff, forKey: cloudKey)
+//        defaults.set(soundOff, forKey: soundKey)
+//        defaults.set(discoveredPerc, forKey: discoveredKey)
+//        defaults.set(tutorialComplete, forKey: tutorialKey)
+//        defaults.set(throwisReady, forKey: throwReadyKey)
+//    }
+////
 //    func saveModifier() {
 //        defaults.set(throwModifier, forKey: savedModifierKey)
 //        defaults.set(Probability, forKey: ProbabilityKey)
@@ -1271,6 +1369,9 @@ class GameScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
+        GameView.game.model.currentBall.position.y += 200
+        GameView.game.model.currentDog.position.y += 200
+        
 //        if !tutorialComplete {
 //            if currentSlide.name == "welcome" {
 //                switchTutorialCards(cardName: "yard", position: CGPoint(x: frame.midX, y: frame.midY))
@@ -1332,6 +1433,8 @@ class GameScene: SKScene {
             if let currentTouchPosition = touches.first?.location(in: self) {
                 if firstSwipePositon.y < currentTouchPosition.y && firstSwipePositon != CGPoint(x: -444, y: -444) {
                     velocity = (currentTouchPosition.y - firstSwipePositon.y) / CGFloat(timePassedSinceThrow)
+                    
+                
 
                     //reset the firstSwipePosition to arbitrary value:
                     firstSwipePositon = CGPoint(x: -444, y: -444)

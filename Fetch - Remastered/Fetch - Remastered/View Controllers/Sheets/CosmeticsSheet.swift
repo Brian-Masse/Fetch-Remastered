@@ -9,29 +9,40 @@
 import SwiftUI
 
 struct CosmeticsSheet: View {
-    @ObservedObject var viewModel: FetchClassicInterpreter = GameView.game
+    
+    @EnvironmentObject var game: FetchClassicInterpreter
+    
+    @ViewBuilder
+    static func createCosmeticsText(_ text: String, with font: ShadowedFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
+        ShadowFont(text, with: font, in: size, shadowColor: Colors.cosmeticsShadow, lineLimit: lineLimit, lightShadowColor: Colors.cosmeticsLighShadow, darkShadowColor: Colors.darkShadow)
+            .modifier(appearancedMod(lightColor: Colors.cosmeticsLightColor, darkColor: .white))
+    }
+    
+    @ViewBuilder
+    static func createGlow() -> some View {
+        PixelImage(appearanced("glow"))
+    }
     
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading) {
                 
-                ShadowFont("Cosmetics:", with: titleFont, in: geo.size.width * UIConstants.majorTitleSize, lightShadowColor: constants.shadowColor, darkShadowColor: UIConstants.darkShadow)
+                CosmeticsSheet.createCosmeticsText("Cosmetics:", with: titleFont, in: 40)
                     .padding([.top, .leading])
                             
                 GeometryReader() { geometry in
                     ScrollView(.vertical) {
                         VStack {
-                            CosmeticsDisplayer(dog: viewModel.model.currentDog.type, ball: viewModel.model.currentBall.type, width: geometry.size.width)
-                            SkinSelector(title: "Dog Skins:", objectList: viewModel.model.dogs, inWidth: geo.size.width)
+                            CosmeticsDisplayer(dog: game.model.currentDog.type, ball: game.model.currentBall.type, width: geometry.size.width)
+                            SkinSelector(title: "Dog Skins:", objectList: game.model.dogs, inWidth: geo.size.width, costAccessorObject: game.dogs[0])
                             Spacer(minLength: 30)
-                            SkinSelector(title: "Ball Skins:", objectList: viewModel.model.balls, inWidth: geo.size.width)
+                            SkinSelector(title: "Ball Skins:", objectList: game.model.balls, inWidth: geo.size.width, costAccessorObject: game.balls[0])
                             
                         }
                         .frame(width: geometry.size.width)
                     }
                 }
             }
-            .modifier(appearancedMod( lightColor: constants.fontColor ))
             .background(Image(appearanced("CosmeticBack")).resizable().ignoresSafeArea())
         }
         
@@ -43,44 +54,57 @@ struct CosmeticsSheet: View {
         
         static let cardText: CGFloat = 0.14
         static let tilePadding: CGFloat = 0.008
-        
-        static let fontColor: Color = Color(UIColor(red: 255 / 255, green: 190 / 255, blue: 189 / 255, alpha: 1))
-        static let shadowColor: Color = Color(UIColor(red: 255 / 255, green: 137 / 255, blue: 139 / 255, alpha: 1))
-        
         static let topPadding: CGFloat = 100
     }
 }
 
 struct SkinSelector<objectType: gameObject>: View{
+    
+    @EnvironmentObject var game: FetchClassicInterpreter
+    
     let title: String
     let objectList: [objectType]
     let inWidth: CGFloat
+    
+    @State var showingAlert = false
+    @State var costAccessorObject: objectType
 
     var body: some View {
         VStack(alignment: .leading) {
-            ShadowFont(title, with: titleFont, in: inWidth * UIConstants.minorTitleSize, lightShadowColor: CosmeticsSheet.constants.shadowColor, darkShadowColor: UIConstants.darkShadow)
+            CosmeticsSheet.createCosmeticsText(title, with: titleFont, in: 30)
                 .padding(.leading)
             
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: inWidth / CosmeticsSheet.constants.iconsPerRow , maximum: .infinity), spacing: 0)], spacing: CosmeticsSheet.constants.verticalCardSpacing ) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: max(min(((inWidth - 414) + 100), 150), 100), maximum: .infinity), spacing: 0)], spacing: CosmeticsSheet.constants.verticalCardSpacing ) {
                 ForEach(objectList) { object in
                     Button(action: {
-                        
+                        withAnimation {
+                            if game.canPruchase(cost: object.cost, for: object.isUnlocked) || object.isUnlocked {
+                                game.chooseObject(object: object)
+                            }
+                            else { showingAlert = true; costAccessorObject = object }
+                        }
                     }) {
                         createSelectorContent(object: object)
                             .aspectRatio(contentMode: .fill)
                             .padding(CosmeticsSheet.constants.tilePadding * inWidth)
+                            .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("Not Enough Gold"), message: Text("\nTry playing with your dog to collect some more :)\n\nYou only need \(costAccessorObject.cost - game.gold) more!"), dismissButton: .default(Text("back to throwing!")))
+                            }
+                        
                     }
                 }
             }
         }
+        .modifier(framify(Colors.cosmeticsShadow))
+        .padding(5)
     }
     struct createSelectorContent<objectType: gameObject>: View {
+    
+        @EnvironmentObject var game: FetchClassicInterpreter
+        @State var animatingLock: Bool = false
         
         let object: objectType
         let tileBack = animatedImage(fps: 0.05, in: "CosmeticTileBack", repeatCount: 1) {  }
-        
-        @State var animatingLock: Bool = false
-        @State var showingAlert = false
         
         var body: some View {
             GeometryReader { geo in
@@ -97,41 +121,32 @@ struct SkinSelector<objectType: gameObject>: View{
                         .padding()
                         .zIndex(1)
                     VStack {
-                        ShadowFont("\(object.skin)", with: lowerFont, in: geo.size.width * CosmeticsSheet.constants.cardText, lightShadowColor: CosmeticsSheet.constants.shadowColor, darkShadowColor: UIConstants.darkShadow)
+                        CosmeticsSheet.createCosmeticsText("\(object.skin)", with: lowerFont, in: geo.size.width * CosmeticsSheet.constants.cardText)
                             .padding(.top, -geo.size.height * 0.066)
                             .zIndex(4)
                         Spacer()
                     }
                     if !object.isUnlocked {
-                            PixelImage( "lock")
-                                .transition(.identity)
-                                .zIndex(3)
+                        CosmeticsSheet.createGlow()
+                            .zIndex(2)
+                        PixelImage( "lock")
+                            .frame(maxHeight: geo.size.height / 3)
+                            .transition(.identity)
+                            .zIndex(3)
                         VStack {
                             Spacer()
-                            ShadowFont("\(object.cost)", with: defaultFont, in: geo.size.width * CosmeticsSheet.constants.cardText, lightShadowColor: CosmeticsSheet.constants.shadowColor, darkShadowColor: UIConstants.darkShadow)
+                            CosmeticsSheet.createCosmeticsText("\(object.cost)", with: defaultFont, in: geo.size.width * CosmeticsSheet.constants.cardText)
                                 .transition(.scale)
                         }
                             .zIndex(4)
                     }else {
                         if animatingLock {
-                            animatedImage(fps: 0.1, in: "Lock", repeatCount: 1) { animatingLock = false }
+                            animatedImage(fps: 0.1, in: "lock", repeatCount: 1) { animatingLock = false }
                                 .transition(AnyTransition.asymmetric(insertion: .identity, removal: .opacity))
                                 .zIndex(3)
                         }
                     }
-                }
-            }
-            .onTapGesture {
-                withAnimation {
-                    if GameView.game.canPruchase(cost: object.cost) || object.isUnlocked {
-                        GameView.game.chooseObject(object: object)
-                        if !object.isUnlocked { animatingLock = true }
-                    }
-                    else { showingAlert = true }
-                }
-            }
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Not Enough Gold"), message: Text("\nTry playing with your dog to collect some more :)\n\nYou only need \(object.cost - GameView.game.gold) more!"), dismissButton: .default(Text("back to throwing!")))
+                }.onChange(of: object.isUnlocked, perform: { _ in animatingLock = true} )
             }
         }
     }
@@ -139,70 +154,49 @@ struct SkinSelector<objectType: gameObject>: View{
 }
 
 struct CosmeticsDisplayer: View {
+    
+    @EnvironmentObject var game: FetchClassicInterpreter
+    
     let dog: Dog
     let ball: Ball
     let width: CGFloat
-    static let uiImage = UIImage(named: "frame")!
-    let aspectRatio = uiImage.size.height / uiImage.size.width
-    
-    var frameImage: some View {
-        PixelImage( GameView.game.preferenceModel.appearance == .light ? "pinkFrame": "frame")
-            .padding(.horizontal)
-            .frame(minWidth: width,  minHeight: width * aspectRatio)
-        
-    }
     
     var body: some View {
-        
-        ZStack {
-            frameImage
-                
-            GeometryReader { geo in
-                VStack(alignment: .leading) {
-                    ShadowFont("Current Look:", with: titleFont, in: geo.size.width * UIConstants.minorTitleSize, lightShadowColor: CosmeticsSheet.constants.shadowColor, darkShadowColor: UIConstants.darkShadow)
-                        .padding(.leading)
-                        .zIndex(100)
-                    GeometryReader { reducedGeo in
-                        withAnimation {
-                            HStack {
-                                Spacer()
-                                createObjectPreviews(object: dog, geo: reducedGeo)
-                                Spacer()
-                                createObjectPreviews(object: ball, geo: reducedGeo)
-                                Spacer()
-                            }
-                        }
-                    }
-                }
+        VStack(alignment: .leading) {
+            CosmeticsSheet.createCosmeticsText("Current Look:", with: titleFont, in: 30)
+            HStack {
+                Spacer()
+                ObjectPreview(object: dog, width: width)
+                Spacer()
+                ObjectPreview(object: ball, width: width)
+                Spacer()
             }
-            .padding()
-        }
+        }.modifier(framify(Colors.cosmeticsShadow))
+        .padding(5)
     }
 }
 
-struct createObjectPreviews<objectType: gameObject>: View {
+struct ObjectPreview<objectType: gameObject>: View {
+    
+    @EnvironmentObject var game: FetchClassicInterpreter
+    
     let object: objectType
-    let geo: GeometryProxy
+    let width: CGFloat
     @State var animatingPoof: Bool = false
 
     var body: some View {
-            ZStack {
-                PixelImage(object.skin)
-                    .frame(maxHeight: geo.size.height)
-                    .background( PixelImage(GameView.game.preferenceModel.appearance == .light ? "pinkGlow": "glow"))
-                    .animation(.linear(duration: 0.001))
-                    .overlay(
-                        GeometryReader { testGeo in
-                            if animatingPoof {
-                                animatedImage(fps: 0.1, in: "Poof", repeatCount: 1, completion: { animatingPoof = false })
-                            }
-                        }
-                    )
-
-                
-            }.onChange(of: object) { value in
-                animatingPoof = true
-            }
+        PixelImage(object.skin)
+            .frame(width: width / 3)
+            .background( CosmeticsSheet.createGlow() )
+            .animation(nil)
+            .onChange(of: object) { value in animatingPoof = true }
+            .overlay(
+                GeometryReader { _ in
+                    if animatingPoof {
+                        animatedImage(fps: 0.1, in: "Poof", repeatCount: 1, completion: { animatingPoof = false })
+                    }
+                }
+            )
     }
 }
 

@@ -19,8 +19,6 @@ let globalScene = GameScene(size: UIScreen.main.bounds.size)
 //MARK: Modifiers:
 
 
-var friction = CGFloat(1)
-
 var virtualCamera: CameraObject!
 
 var velocity = CGFloat(0)
@@ -141,7 +139,6 @@ extension CGFloat {
 }
 
 extension CaseIterable where Self: Equatable{
-    
     func next() -> Self {
         let all = Self.allCases
         let myIndex = all.firstIndex(of: self)!
@@ -159,6 +156,8 @@ func findDistance(_ firstPoint: CGPoint, _ secondPoint: CGPoint = CGPoint(x: 0, 
 
 protocol Upgradable {
     var value: CGFloat { get set }
+    var accessor: FetchClassic.Stats.SubscriptAcessor { get }
+    
     var maxValue: CGFloat { get }
     var id: String { get }
     var maxxed: Bool  { get set }
@@ -169,8 +168,9 @@ protocol Upgradable {
     
     func saveSelf() -> Void // cannot be self mutating: it will be called on a copy of the modifier
     
-    var shadowColor: Color { get }
-    var baseColor: Color { get }
+    var darkShadow: Color { get }
+    var lightFontColor: Color { get }
+    var lightShadow: Color { get }
     
     var iteration: Int { get set }
     func returnCurrentPrice() -> Int
@@ -196,3 +196,31 @@ protocol CurrentObject: Equatable {
     func defineTextureAndSize() -> Void
     
 }
+
+extension Date {
+    static let calendar = Calendar.current
+    static let formatter = DateFormatter()
+    
+    func getInt( for component: Calendar.Component ) -> Int {
+        return Date.calendar.dateComponents([component], from: self).value(for: component)!
+    }
+    
+    func textualize(with name: String) -> String {
+        Date.formatter.dateFormat = name
+        return Date.formatter.string(from: self)
+    }
+    
+    func localizeDescription( with description: Calendar.Component ) -> String {
+        switch description {
+        
+        case .year: return textualize(with: "YYYY")
+        case .month: return textualize(with: "MMMM") + " " + textualize(with: "YYYY")
+        default:
+            var day = textualize(with: "E")
+            let month = textualize(with: "MMMM")
+            day += ", \(month) \(self.getInt(for: .day) )"
+            return day
+        }
+    }
+}
+

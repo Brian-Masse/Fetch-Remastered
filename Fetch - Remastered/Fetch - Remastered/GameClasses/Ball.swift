@@ -37,7 +37,7 @@ class CurrentBall: SKSpriteNode, CurrentObject, ObservableObject {
         self.type = ball
         
         super.init(texture: nil, color: .white, size: CGSize(width: 50, height: 50))
-        self.zPosition = 101
+        self.zPosition = GameScene.ZLayer.ball.rawValue
         
         initializePhysics()
         defineTextureAndSize()
@@ -49,9 +49,9 @@ class CurrentBall: SKSpriteNode, CurrentObject, ObservableObject {
     }
     
     func monitorSelf() {
-        
         distance = position.y.trimCGFloat(2)
-        if (physicsBody?.velocity.dy)! < 0.1 && GameView.game.model.currentState == .throwing {
+        if (physicsBody?.velocity.dy)! < 10 && GameView.game.model.currentState == .throwing {
+            physicsBody!.velocity.dy = 0 
             GameView.game.changeState(.throwOver)
         }
     }
@@ -73,13 +73,14 @@ class CurrentBall: SKSpriteNode, CurrentObject, ObservableObject {
         animator = Animator(animate: self, with: [
             Animator.CustomAnimation(triggerState: .throwing, animates: nil, or: animateStretch, withCompletion: nil, withKey: "extra"),
             Animator.CustomAnimation(triggerState: .throwing, animates: animateSpin, or: nil, withCompletion: nil, withKey: "frame"),
-            Animator.CustomAnimation(triggerState: .returning, animates: { return SKAction.moveBy(x: 0, y: -500, duration: 1) }, or: nil, withCompletion: { GameView.game.changeState(.returningPT2) }, withKey: "movement", repeating: 1)
+            Animator.CustomAnimation(triggerState: .returning, animates: { SKAction.moveBy(x: 0, y: -self.position.y, duration: self.position.y / 1200) }, or: nil, withCompletion: { GameView.game.changeState(.returningPT2) }, withKey: "movement", repeating: 1)
         ])
         animator.update()
     }
 
     func animateStretch() {
-        GameView.game.model.currentBall.yScale =  min(100, pow(2, GameView.game.model.currentBall.physicsBody!.velocity.dy / 1000))
+        let scale = 10 - ( 9 * ( ( 25000 -  GameView.game.model.currentBall.physicsBody!.velocity.dy) / 18750))
+        GameView.game.model.currentBall.yScale = max(1, scale)
     }
 
     func animateSpin() -> SKAction {
@@ -103,7 +104,9 @@ struct Ball: gameObject {
     let scale: CGFloat
     
     var isUnlocked = false
-    var isCurrent = false
+    var isCurrent = false {
+        didSet { if isCurrent { isUnlocked = true } }
+    }
     
     let mouthPos: CGFloat
     
@@ -115,7 +118,6 @@ struct Ball: gameObject {
     init(skin: String, shouldStretch stretch: Bool, cost: Int, mouth: CGFloat, scale: CGFloat = 1.3) {
         
         self.cost = cost
-    
         self.stretch = stretch
         self.skin = skin
         self.scale = scale

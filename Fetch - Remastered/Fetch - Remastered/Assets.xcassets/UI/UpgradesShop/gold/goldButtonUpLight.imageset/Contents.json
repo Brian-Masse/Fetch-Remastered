@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "goldButtonUpLight.png",
+      "filename" : "goldButtonDownLight.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
