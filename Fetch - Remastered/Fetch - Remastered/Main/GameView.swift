@@ -54,7 +54,7 @@ struct GameView: View {
         .alert(isPresented: hasLegacyDataBinding){
             Alert(title:
                 Text("Legacy data has been found"),
-                message: Text("\nIt looks like you've played before, so all your great data will be kept and stored in your profile! \n\nIf you wish to continue from where you left off, you can merge all of this data, however this is not gaurneteed to be seamless; the game progression may be off, and more importantly less fun. The recommendation is just to store this data and start fresh, but the choice is all up to you! \n\n( ps. you can always merge later in settings :) )"),
+                message: Text("\nIt looks like you've played before, so all your great data will be kept and stored in your profile! \n\nIf you wish to continue from where you left off, you can merge all of this data, however this is not gaurneteed to be seamless; the game progression may be off, and more importantly less fun. The recommendation is just to store this data and start fresh, but the choice is all up to you! \n\n( ps. you can always merge later in settings :) )  \n\n(pps. To keep your unlocks only, merge now, then, in settings, erase the game progress)"),
                 primaryButton:
                     .cancel(
                         Text("Just Store")) { test.dismissLegacyDataFoundAlert(with: false) },
@@ -107,6 +107,7 @@ struct GameView: View {
                     }
                     Spacer(minLength: 20)
                 }
+                emptySpace(with: 10)
             }
         }
     }
@@ -255,6 +256,7 @@ struct GameView: View {
         var body: some View {
             if test.currentState != .throwing {
                 PixelImage(appearanced ("coinIcon" ))
+//                    .onTapGesture { GameView.game.changeGold(with: 10000000) }
                     .frame(minWidth: geo.size.width, maxHeight: geo.size.height * 0.1, alignment: .leading)
                     .overlay( GeometryReader { coinGeo in
                         HStack(alignment: .center) {

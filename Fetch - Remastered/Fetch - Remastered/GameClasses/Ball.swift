@@ -84,7 +84,7 @@ class CurrentBall: SKSpriteNode, CurrentObject, ObservableObject {
     }
 
     func animateSpin() -> SKAction {
-        return SKAction.animate(with: type.ballAtlas, timePerFrame: 100 / Double(physicsBody!.velocity.dy))
+        SKAction.animate(with: type.flipRoll ? type.backAtlas : type.ballAtlas, timePerFrame: 100 / Double(physicsBody!.velocity.dy))
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -97,6 +97,9 @@ struct Ball: gameObject {
     let id: String
     
     let ballAtlas: [SKTexture]
+    var backAtlas: [SKTexture] = []
+    let flipRoll: Bool
+    
     let cost: Int
     let stretch: Bool
     let skin: String
@@ -115,7 +118,7 @@ struct Ball: gameObject {
         case isUnlocked
     }
     
-    init(skin: String, shouldStretch stretch: Bool, cost: Int, mouth: CGFloat, scale: CGFloat = 1.3) {
+    init(skin: String, shouldStretch stretch: Bool, cost: Int, mouth: CGFloat, scale: CGFloat = 1.3, flipRoll: Bool) {
         
         self.cost = cost
         self.stretch = stretch
@@ -127,6 +130,13 @@ struct Ball: gameObject {
         self.mouthPos = mouth
     
         ballAtlas = createTextureAtlas(atlasName: skin)
+        for index in 0...ballAtlas.count - 1 {
+            backAtlas.append(ballAtlas[ ballAtlas.count - 1 - index ])
+        }
+        self.flipRoll = flipRoll
+        
+        
+        
         
         guard let staticTexture = ballAtlas.first else { self.UIPreview = nil; return }
         self.UIPreview = UIImage(cgImage: staticTexture.cgImage())
@@ -145,6 +155,6 @@ struct Ball: gameObject {
         isCurrent = try values.decode(Bool.self, forKey: .isCurrent)
         isUnlocked = try values.decode(Bool.self, forKey: .isUnlocked)
         
-        id = ""; ballAtlas = []; cost = 0; stretch = false; skin = ""; mouthPos = 0; UIPreview = UIImage(); scale = 1
+        id = ""; ballAtlas = []; cost = 0; stretch = false; skin = ""; mouthPos = 0; UIPreview = UIImage(); scale = 1; backAtlas = []; flipRoll = false;
     }
 }

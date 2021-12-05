@@ -20,9 +20,7 @@ let globalScene = GameScene(size: UIScreen.main.bounds.size)
 
 
 var virtualCamera: CameraObject!
-
 var velocity = CGFloat(0)
-var velocityLabel: FlippingLabel?
 
 var pixelSize: CGFloat = 2.3
 

@@ -32,11 +32,10 @@ class CurrentDog: SKSpriteNode, CurrentObject {
         
         super.init(texture: nil, color: .white, size: CGSize(width: 100, height: 100))
         
-        if let staticTexture = dog.sitAtlas.first {
+        if let staticTexture = dog.runAtlas.first {
             staticTexture.filteringMode = .nearest
             self.texture = staticTexture
         }
-        
         setup()
     }
     

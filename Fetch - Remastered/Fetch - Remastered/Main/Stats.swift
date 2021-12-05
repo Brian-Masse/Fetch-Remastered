@@ -100,9 +100,9 @@ extension FetchClassic {
             legacyFarthestThrow = FetchClassic.retrieveData(defaultValue: 0, for: "farthestThrow")
             legacyMostGold = FetchClassic.retrieveData(defaultValue: 0, for: "mostGold")
             legacyCurrentGold = FetchClassic.retrieveData(defaultValue: 0, for: "SavedGold")
-            legacyStrength = FetchClassic.retrieveData(defaultValue: 0, for: "SavedModifier")
+            legacyStrength = max( FetchClassic.retrieveData(defaultValue: 0, for: "SavedModifier"), 10)
             legacyAero = FetchClassic.retrieveData(defaultValue: 0, for: "friction") / 100
-            legacyMagnet = FetchClassic.retrieveData(defaultValue: 0, for: "SavedProbability") / 100
+            legacyMagnet = max(FetchClassic.retrieveData(defaultValue: 0, for: "SavedProbability") / 100, 1)
             legacyMapDiscovered = FetchClassic.retrieveData(defaultValue: 0, for: "Discovered")
             
             updatingWidgetDataList = FetchClassic.retrieveComplexData(defaultValue: [UpdatingWidgetData(dataType: .data, accessorIndex: 0, widgetSize: .systemSmall, dataPosition: .topLeft)], for: "updatingWidgetDataList")

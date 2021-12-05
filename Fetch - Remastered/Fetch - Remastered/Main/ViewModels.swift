@@ -79,7 +79,6 @@ class FetchClassicInterpreter: ObservableObject {
     }
     
     func dismissLegacyDataFoundAlert(with merging: Bool) {
-        
         FetchClassic.saveData(data: true, for: "askedAboutMerging")
         if merging {
             mergeLegacyData()
@@ -87,32 +86,31 @@ class FetchClassicInterpreter: ObservableObject {
     }
     
     func mergeLegacyData() {
-        
         softWipe()
+        
+        model.mergeLegacyUnlocks()
+        model.setupLists()
         
         model.setGold(with: stats.legacyCurrentGold)
         
         self[.throwModifier].value = stats.legacyStrength
         self[.aeroModifier].value = stats.legacyAero
         self[.goldModifier].value = stats.legacyMagnet
-        
     }
     
     //MARK: erasing data
     
     func softWipe() {
-        
-        model.setGold(with: 0)
+        model.setGold(with: 100)
                 
         softWipeModifier(.throwModifier, with: FetchClassic.ThrowModifier.defaultValue)
         softWipeModifier(.aeroModifier, with: FetchClassic.AeroModifier.defaultValue)
         softWipeModifier(.goldModifier, with: FetchClassic.GoldModifier.defaultValue)
-        
     }
     
     func hardWipe() {
         
-        model.setGold(with: 0)
+        model.setGold(with: 100)
         
         softWipeModifier(.throwModifier, with: FetchClassic.ThrowModifier.defaultValue, true)
         softWipeModifier(.aeroModifier, with: FetchClassic.AeroModifier.defaultValue, true)
@@ -129,7 +127,6 @@ class FetchClassicInterpreter: ObservableObject {
         for enumeration in stats.propertyList.enumerated() {
             stats.propertyList[enumeration.offset].erase()
         }
-        
     }
     
     func eraseGameObject<objectType: gameObject>(_ object: inout objectType) {

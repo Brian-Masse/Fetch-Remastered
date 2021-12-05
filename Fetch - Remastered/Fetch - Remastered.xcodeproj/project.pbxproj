@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		41CC8F7976D19EAE759EA3FA /* Pods_Fetch___Remastered.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B2C114BEC5BA9CD572FD77 /* Pods_Fetch___Remastered.framework */; };
-		C9042C1124E5712200783805 /* gold1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9042C0E24E5712200783805 /* gold1.wav */; };
-		C9042C1224E5712200783805 /* gold2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9042C0F24E5712200783805 /* gold2.mp3 */; };
-		C9042C1324E5712200783805 /* wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9042C1024E5712200783805 /* wind.wav */; };
-		C9042C1624E5EC3800783805 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9042C1524E5EC3700783805 /* beep.mp3 */; };
 		C91D437A2675556D00B166A8 /* Universals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D43792675556D00B166A8 /* Universals.swift */; };
 		C9461F7E26B6D97500617412 /* FetchBoldDefault.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */; };
 		C9461F8026B7038B00617412 /* GamePrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9461F7F26B7038A00617412 /* GamePrefs.swift */; };
@@ -28,12 +24,9 @@
 		C94CADB426DD8DAD00E36499 /* fetchTitleFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9774DFE26A8846100CEA920 /* fetchTitleFont.ttf */; };
 		C94CADB526DD8DB000E36499 /* FetchBoldDefault.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */; };
 		C94CADB626DD8DB000E36499 /* FetchBoldDefault.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */; };
-		C94CC55C24D9DADF00C0274C /* GameModifiersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CC55B24D9DADF00C0274C /* GameModifiersExtension.swift */; };
-		C953C00C24DCDE9E0011F5F8 /* goldCoins.sks in Resources */ = {isa = PBXBuildFile; fileRef = C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */; };
 		C95AAB10268D2DC80063A62E /* UIUniversals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95AAB0F268D2DC80063A62E /* UIUniversals.swift */; };
 		C9662499267E4AE9002317D7 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9662498267E4AE9002317D7 /* Ball.swift */; };
 		C966652626FA1D8B00721B30 /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966652526FA1D8B00721B30 /* Particle.swift */; };
-		C9670B7624DC4ACA00BD5F7B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */; };
 		C971014E26D591540080A284 /* Fetch_Remastered_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F8B26D527D000C8C55B /* Fetch_Remastered_Widgets.swift */; };
 		C971015626D5B80C0080A284 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C971015526D5B80C0080A284 /* AudioToolbox.framework */; };
 		C971015926D5B8880080A284 /* appGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C971015826D5B8880080A284 /* appGroup.swift */; };
@@ -44,23 +37,16 @@
 		C971016526D7D78C0080A284 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F9926D52EEF00C8C55B /* WidgetView.swift */; };
 		C971016926D7D7CC0080A284 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F9926D52EEF00C8C55B /* WidgetView.swift */; };
 		C971016A26D7D7CC0080A284 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F9926D52EEF00C8C55B /* WidgetView.swift */; };
-		C977164926DFBD8800ED7F81 /* FetchClouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = C977164826DFBD8800ED7F81 /* FetchClouds.sks */; };
 		C9774DFD26A78A5E00CEA920 /* fetchLowerFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9774DFC26A78A5E00CEA920 /* fetchLowerFont.ttf */; };
 		C9774DFF26A8846100CEA920 /* fetchTitleFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9774DFE26A8846100CEA920 /* fetchTitleFont.ttf */; };
-		C97C0A8126FF704E004D51B1 /* speedLines.sks in Resources */ = {isa = PBXBuildFile; fileRef = C97C0A8026FF704E004D51B1 /* speedLines.sks */; };
 		C98C31D924E40FD500217317 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98C31D824E40FD500217317 /* Stickers.xcassets */; };
 		C98C31DD24E40FD500217317 /* Fetch - Remastered Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C98C31D624E40FD200217317 /* Fetch - Remastered Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C98F212124D4545200D709F9 /* GameModifiersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F212024D4545200D709F9 /* GameModifiersViewController.swift */; };
-		C98F212324D4546400D709F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F212224D4546400D709F9 /* ProfileViewController.swift */; };
-		C98F212524D4546E00D709F9 /* GoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F212424D4546E00D709F9 /* GoldViewController.swift */; };
 		C98F212924D4C62700D709F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F212824D4C62700D709F9 /* StoreKit.framework */; };
-		C99B9BCE2675BB1800B79947 /* Flipping Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9BCD2675BB1800B79947 /* Flipping Label.swift */; };
 		C99B9BD42679780800B79947 /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9BD32679780700B79947 /* CustomAnimation.swift */; };
 		C99B9F3526A351A900D9177A /* UpgradesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9F3426A351A900D9177A /* UpgradesSheet.swift */; };
 		C9A2227A26B87AA500D79FC1 /* ProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2227926B87AA500D79FC1 /* ProfileSheet.swift */; };
 		C9A9CA442671351100FF8199 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A9CA432671351100FF8199 /* Dog.swift */; };
 		C9AF7B8424D375A10030D5A9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF7B8324D375A10030D5A9 /* GameScene.swift */; };
-		C9AF7B8624D375A10030D5A9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF7B8524D375A10030D5A9 /* GameViewController.swift */; };
 		C9AF7B8B24D375A20030D5A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */; };
 		C9AF7B9924D392670030D5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9AF7B9724D392670030D5A9 /* Main.storyboard */; };
 		C9BC16E92687661700C81391 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BC16E82687661700C81391 /* model.swift */; };
@@ -81,7 +67,6 @@
 		C9CF453726DEA36100B50C79 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF453526DEA36100B50C79 /* WidgetData.swift */; };
 		C9CF453826DEA36100B50C79 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF453526DEA36100B50C79 /* WidgetData.swift */; };
 		C9CF55B326E52AF600AE28D9 /* FetchDefaultText.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9CF55AD26E5298600AE28D9 /* FetchDefaultText.ttf */; };
-		C9D9A47124DB8E39001784ED /* clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A46F24DB8E39001784ED /* clouds.sks */; };
 		C9D9A47224DB8E39001784ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D9A47024DB8E39001784ED /* Assets.xcassets */; };
 		C9DFBEF226857BD20046F8F4 /* Fetch-RemasteredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFBEF126857BD20046F8F4 /* Fetch-RemasteredApp.swift */; };
 		C9DFBEF7268699A30046F8F4 /* CosmeticsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFBEF6268699A30046F8F4 /* CosmeticsSheet.swift */; };
@@ -89,10 +74,6 @@
 		C9E98DB624FFE7380081FE9C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E98DB524FFE7380081FE9C /* GameView.swift */; };
 		C9F5143526D913F6009D91E8 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6FA426D543BA00C8C55B /* IntentHandler.swift */; };
 		C9F8CB7D26C0C98C009F5F22 /* Pods_Fetch___Remastered_Stickers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */; };
-		C9FD364824FE945B00409963 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364724FE945B00409963 /* Fire.sks */; };
-		C9FD364A24FE954000409963 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364924FE954000409963 /* Smoke.sks */; };
-		C9FD364C24FE9FB600409963 /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364B24FE9FB600409963 /* Snow.sks */; };
-		C9FD364E24FEA3ED00409963 /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9FD364D24FEA3ED00409963 /* Rain.sks */; };
 		C9FE93C8274D3E9100981F64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FE93C7274D3E9100981F64 /* LaunchScreen.storyboard */; };
 		C9FE93CA274D6A9500981F64 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FE93C9274D6A9500981F64 /* 1.png */; };
 /* End PBXBuildFile section */
@@ -152,48 +133,33 @@
 		24B2C114BEC5BA9CD572FD77 /* Pods_Fetch___Remastered.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Fetch___Remastered.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F129A63FD81F5274790A73 /* Pods-Fetch - Remastered.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered.release.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered.release.xcconfig"; sourceTree = "<group>"; };
 		7F39160D1199E40C84AB5A8B /* Pods-Fetch - Remastered Stickers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered Stickers.debug.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered Stickers/Pods-Fetch - Remastered Stickers.debug.xcconfig"; sourceTree = "<group>"; };
-		C9042C0E24E5712200783805 /* gold1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gold1.wav; sourceTree = "<group>"; };
-		C9042C0F24E5712200783805 /* gold2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gold2.mp3; sourceTree = "<group>"; };
-		C9042C1024E5712200783805 /* wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wind.wav; sourceTree = "<group>"; };
-		C9042C1524E5EC3700783805 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		C91D43792675556D00B166A8 /* Universals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universals.swift; sourceTree = "<group>"; };
-		C92C43A824D79810003EF9CC /* Fetch-Remastered.kra */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fetch-Remastered.kra"; sourceTree = "<group>"; };
 		C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FetchBoldDefault.ttf; sourceTree = "<group>"; };
 		C9461F7F26B7038A00617412 /* GamePrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePrefs.swift; sourceTree = "<group>"; };
 		C9461F8126B7042500617412 /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		C94CADAB26DD6F2C00E36499 /* WidgetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSelector.swift; sourceTree = "<group>"; };
 		C94CADAD26DD7DCC00E36499 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		C94CC55B24D9DADF00C0274C /* GameModifiersExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModifiersExtension.swift; sourceTree = "<group>"; };
-		C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = goldCoins.sks; sourceTree = "<group>"; };
 		C95AAB0F268D2DC80063A62E /* UIUniversals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUniversals.swift; sourceTree = "<group>"; };
 		C9662498267E4AE9002317D7 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		C966652526FA1D8B00721B30 /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
-		C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C971015326D5B78F0080A284 /* Fetch - Remastered.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fetch - Remastered.entitlements"; sourceTree = "<group>"; };
 		C971015526D5B80C0080A284 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C971015726D5B8240080A284 /* Fetch-RemasteredIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fetch-RemasteredIntents.entitlements"; sourceTree = "<group>"; };
 		C971015826D5B8880080A284 /* appGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appGroup.swift; sourceTree = "<group>"; };
 		C971015E26D722DC0080A284 /* WidgetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBuilder.swift; sourceTree = "<group>"; };
-		C977164826DFBD8800ED7F81 /* FetchClouds.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FetchClouds.sks; sourceTree = "<group>"; };
 		C9774DFC26A78A5E00CEA920 /* fetchLowerFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fetchLowerFont.ttf; sourceTree = "<group>"; };
 		C9774DFE26A8846100CEA920 /* fetchTitleFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fetchTitleFont.ttf; sourceTree = "<group>"; };
-		C97C0A8026FF704E004D51B1 /* speedLines.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = speedLines.sks; sourceTree = "<group>"; };
 		C98C31D624E40FD200217317 /* Fetch - Remastered Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Fetch - Remastered Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98C31D824E40FD500217317 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
 		C98C31DA24E40FD500217317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C98F212024D4545200D709F9 /* GameModifiersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModifiersViewController.swift; sourceTree = "<group>"; };
-		C98F212224D4546400D709F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		C98F212424D4546E00D709F9 /* GoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldViewController.swift; sourceTree = "<group>"; };
 		C98F212824D4C62700D709F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C99B9BCB2675B68300B79947 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
-		C99B9BCD2675BB1800B79947 /* Flipping Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flipping Label.swift"; sourceTree = "<group>"; };
 		C99B9BD32679780700B79947 /* CustomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
 		C99B9F3426A351A900D9177A /* UpgradesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesSheet.swift; sourceTree = "<group>"; };
 		C9A2227926B87AA500D79FC1 /* ProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheet.swift; sourceTree = "<group>"; };
 		C9A9CA432671351100FF8199 /* Dog.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		C9AF7B7A24D375A10030D5A9 /* Fetch - Remastered.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch - Remastered.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AF7B8324D375A10030D5A9 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		C9AF7B8524D375A10030D5A9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9AF7B8F24D375A20030D5A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9AF7B9824D392670030D5A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -214,16 +180,11 @@
 		C9BF843726B2E210001EDF07 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		C9CF453526DEA36100B50C79 /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
 		C9CF55AD26E5298600AE28D9 /* FetchDefaultText.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FetchDefaultText.ttf; sourceTree = "<group>"; };
-		C9D9A46F24DB8E39001784ED /* clouds.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = clouds.sks; sourceTree = "<group>"; };
 		C9D9A47024DB8E39001784ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9DFBEF126857BD20046F8F4 /* Fetch-RemasteredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fetch-RemasteredApp.swift"; sourceTree = "<group>"; };
 		C9DFBEF6268699A30046F8F4 /* CosmeticsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticsSheet.swift; sourceTree = "<group>"; };
 		C9DFBEF82686A7330046F8F4 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		C9E98DB524FFE7380081FE9C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		C9FD364724FE945B00409963 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
-		C9FD364924FE954000409963 /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
-		C9FD364B24FE9FB600409963 /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
-		C9FD364D24FEA3ED00409963 /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
 		C9FE93C7274D3E9100981F64 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9FE93C9274D6A9500981F64 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Fetch___Remastered_Stickers.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,25 +241,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C9042C1424E5712700783805 /* Music and Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				C9042C0E24E5712200783805 /* gold1.wav */,
-				C9042C0F24E5712200783805 /* gold2.mp3 */,
-				C9042C1024E5712200783805 /* wind.wav */,
-				C9042C1524E5EC3700783805 /* beep.mp3 */,
-			);
-			path = "Music and Sounds";
-			sourceTree = "<group>";
-		};
-		C92C43A924D79813003EF9CC /* Drawings */ = {
-			isa = PBXGroup;
-			children = (
-				C92C43A824D79810003EF9CC /* Fetch-Remastered.kra */,
-			);
-			path = Drawings;
-			sourceTree = "<group>";
-		};
 		C98C31D724E40FD200217317 /* Fetch - Remastered Stickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,20 +250,14 @@
 			path = "Fetch - Remastered Stickers";
 			sourceTree = "<group>";
 		};
-		C98F212624D4548000D709F9 /* View Controllers */ = {
+		C98F212624D4548000D709F9 /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
 				C95AAB0F268D2DC80063A62E /* UIUniversals.swift */,
 				C9461F7F26B7038A00617412 /* GamePrefs.swift */,
 				C99B9F3326A3518100D9177A /* Sheets */,
-				C9AF7B8524D375A10030D5A9 /* GameViewController.swift */,
-				C98F212024D4545200D709F9 /* GameModifiersViewController.swift */,
-				C94CC55B24D9DADF00C0274C /* GameModifiersExtension.swift */,
-				C98F212224D4546400D709F9 /* ProfileViewController.swift */,
-				C98F212424D4546E00D709F9 /* GoldViewController.swift */,
-				C9670B7524DC4ACA00BD5F7B /* SettingsViewController.swift */,
 			);
-			path = "View Controllers";
+			path = Sheets;
 			sourceTree = "<group>";
 		};
 		C98F212724D4C62700D709F9 /* Frameworks */ = {
@@ -355,9 +291,7 @@
 		C9AF7B7124D375A10030D5A9 = {
 			isa = PBXGroup;
 			children = (
-				C9042C1424E5712700783805 /* Music and Sounds */,
 				C9D9A47324DB8E44001784ED /* Particles */,
-				C92C43A924D79813003EF9CC /* Drawings */,
 				C9AF7B7C24D375A10030D5A9 /* Fetch - Remastered */,
 				C98C31D724E40FD200217317 /* Fetch - Remastered Stickers */,
 				C9BD6F8A26D527D000C8C55B /* Fetch-Remastered-Widgets */,
@@ -387,7 +321,7 @@
 				C971015826D5B8880080A284 /* appGroup.swift */,
 				C9DFBEF52685966B0046F8F4 /* Main */,
 				C9DFBEF3268596290046F8F4 /* GameClasses */,
-				C98F212624D4548000D709F9 /* View Controllers */,
+				C98F212624D4548000D709F9 /* Sheets */,
 				C9AF7B8A24D375A20030D5A9 /* Assets.xcassets */,
 				C9AF7B9724D392670030D5A9 /* Main.storyboard */,
 				C9FE93C7274D3E9100981F64 /* LaunchScreen.storyboard */,
@@ -433,15 +367,7 @@
 		C9D9A47324DB8E44001784ED /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				C9D9A46F24DB8E39001784ED /* clouds.sks */,
-				C977164826DFBD8800ED7F81 /* FetchClouds.sks */,
 				C9D9A47024DB8E39001784ED /* Assets.xcassets */,
-				C953C00B24DCDE9E0011F5F8 /* goldCoins.sks */,
-				C9FD364724FE945B00409963 /* Fire.sks */,
-				C9FD364924FE954000409963 /* Smoke.sks */,
-				C9FD364B24FE9FB600409963 /* Snow.sks */,
-				C9FD364D24FEA3ED00409963 /* Rain.sks */,
-				C97C0A8026FF704E004D51B1 /* speedLines.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -461,7 +387,6 @@
 			isa = PBXGroup;
 			children = (
 				C9BCEB18267318F6002DF882 /* CameraObject.swift */,
-				C99B9BCD2675BB1800B79947 /* Flipping Label.swift */,
 				C99B9BD32679780700B79947 /* CustomAnimation.swift */,
 				C94CADAD26DD7DCC00E36499 /* Colors.swift */,
 			);
@@ -620,26 +545,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9461F7E26B6D97500617412 /* FetchBoldDefault.ttf in Resources */,
-				C9042C1124E5712200783805 /* gold1.wav in Resources */,
 				C9FE93CA274D6A9500981F64 /* 1.png in Resources */,
-				C977164926DFBD8800ED7F81 /* FetchClouds.sks in Resources */,
-				C97C0A8126FF704E004D51B1 /* speedLines.sks in Resources */,
-				C9042C1624E5EC3800783805 /* beep.mp3 in Resources */,
-				C9FD364A24FE954000409963 /* Smoke.sks in Resources */,
-				C9D9A47124DB8E39001784ED /* clouds.sks in Resources */,
 				C9AF7B9924D392670030D5A9 /* Main.storyboard in Resources */,
 				C9774DFF26A8846100CEA920 /* fetchTitleFont.ttf in Resources */,
 				C9CF55B326E52AF600AE28D9 /* FetchDefaultText.ttf in Resources */,
 				C9D9A47224DB8E39001784ED /* Assets.xcassets in Resources */,
 				C9AF7B8B24D375A20030D5A9 /* Assets.xcassets in Resources */,
-				C9FD364C24FE9FB600409963 /* Snow.sks in Resources */,
 				C9774DFD26A78A5E00CEA920 /* fetchLowerFont.ttf in Resources */,
-				C9042C1224E5712200783805 /* gold2.mp3 in Resources */,
-				C9FD364E24FEA3ED00409963 /* Rain.sks in Resources */,
-				C9042C1324E5712200783805 /* wind.wav in Resources */,
 				C9FE93C8274D3E9100981F64 /* LaunchScreen.storyboard in Resources */,
-				C9FD364824FE945B00409963 /* Fire.sks in Resources */,
-				C953C00C24DCDE9E0011F5F8 /* goldCoins.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,19 +655,13 @@
 				C9A9CA442671351100FF8199 /* Dog.swift in Sources */,
 				C971015926D5B8880080A284 /* appGroup.swift in Sources */,
 				C9DFBEF7268699A30046F8F4 /* CosmeticsSheet.swift in Sources */,
-				C99B9BCE2675BB1800B79947 /* Flipping Label.swift in Sources */,
 				C95AAB10268D2DC80063A62E /* UIUniversals.swift in Sources */,
 				C9CF453626DEA36100B50C79 /* WidgetData.swift in Sources */,
 				C9A2227A26B87AA500D79FC1 /* ProfileSheet.swift in Sources */,
-				C94CC55C24D9DADF00C0274C /* GameModifiersExtension.swift in Sources */,
 				C9F5143526D913F6009D91E8 /* IntentHandler.swift in Sources */,
 				C9461F8026B7038B00617412 /* GamePrefs.swift in Sources */,
-				C98F212124D4545200D709F9 /* GameModifiersViewController.swift in Sources */,
 				C9BC16E92687661700C81391 /* model.swift in Sources */,
 				C966652626FA1D8B00721B30 /* Particle.swift in Sources */,
-				C98F212324D4546400D709F9 /* ProfileViewController.swift in Sources */,
-				C9AF7B8624D375A10030D5A9 /* GameViewController.swift in Sources */,
-				C98F212524D4546E00D709F9 /* GoldViewController.swift in Sources */,
 				C971015F26D722DC0080A284 /* WidgetBuilder.swift in Sources */,
 				C971016126D7D6A00080A284 /* Stats.swift in Sources */,
 				C9DFBEF92686A7330046F8F4 /* ViewModels.swift in Sources */,
@@ -767,7 +674,6 @@
 				C99B9BD42679780800B79947 /* CustomAnimation.swift in Sources */,
 				C99B9F3526A351A900D9177A /* UpgradesSheet.swift in Sources */,
 				C9461F8226B7042500617412 /* SettingsSheet.swift in Sources */,
-				C9670B7624DC4ACA00BD5F7B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,11 +747,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered Stickers/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch---Remastered-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -862,11 +768,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered Stickers/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch---Remastered-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1006,7 +912,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered/Fetch - Remastered.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1014,7 +920,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1034,7 +940,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered/Fetch - Remastered.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1042,7 +948,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1060,7 +966,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-Remastered-WidgetsExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-Remastered-Widgets/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1069,7 +975,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-Remastered-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1087,7 +993,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-Remastered-WidgetsExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-Remastered-Widgets/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1096,7 +1002,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-Remastered-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1112,7 +1018,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-RemasteredIntents/Fetch-RemasteredIntents.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-RemasteredIntents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1121,7 +1027,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-RemasteredIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1137,7 +1043,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-RemasteredIntents/Fetch-RemasteredIntents.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.8;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-RemasteredIntents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1146,7 +1052,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-RemasteredIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

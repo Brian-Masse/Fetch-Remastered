@@ -12,37 +12,37 @@ import SwiftUI
 import WidgetKit
 
 struct FetchClassic {
-    var rubberBall  = Ball(skin: "Rubber", shouldStretch: true, cost: 0, mouth: 19)
-    let clock       = Ball(skin: "Clock", shouldStretch: false, cost: 50, mouth: 20)
-    let tennisBall  = Ball(skin: "Tennis", shouldStretch: true, cost: 100, mouth: 22)
-    let disk        = Ball(skin: "Disk", shouldStretch: true, cost: 100, mouth: 25)
-    let lemon       = Ball(skin: "Lemon", shouldStretch: false, cost: 500, mouth: 27, scale: 0.9)
-    let orange      = Ball(skin: "Orange", shouldStretch: true, cost: 500, mouth: 24)
-    let baseBall    = Ball(skin: "Base", shouldStretch: true, cost: 500, mouth: 19, scale: 0.9)
-    let beachBall   = Ball(skin: "Beach", shouldStretch: true, cost: 700, mouth: 19, scale: 1.8)
-    let deathStar   = Ball(skin: "Death", shouldStretch: false, cost: 700, mouth: 30)
-    let footBall    = Ball(skin: "Foot", shouldStretch: true, cost: 1000, mouth: 37, scale: 0.9)
-    let basketBall  = Ball(skin: "Basket", shouldStretch: true, cost: 2000, mouth: 19, scale: 1.8)
-    let moon        = Ball(skin: "Moon", shouldStretch: false, cost: 4000, mouth: 20)
-    let spikeBall   = Ball(skin: "Spike", shouldStretch: true, cost: 9000, mouth: 27)
-    let apple       = Ball(skin: "Apple", shouldStretch: false, cost: 100000, mouth: 20)
-    let disco       = Ball(skin: "Disco", shouldStretch: true, cost: 200000, mouth: 24)
-    let saturn      = Ball(skin: "Saturn", shouldStretch: false, cost: 500000, mouth: 27)
-    let earth       = Ball(skin: "Earth", shouldStretch: true, cost: 1000000, mouth: 19)
-    let puffer      = Ball(skin: "Puffer", shouldStretch: true, cost: 2000000, mouth: 23)
-    let rubix       = Ball(skin: "Rubix", shouldStretch: true, cost: 3000000, mouth: 25)
-    let air         = Ball(skin: "Air", shouldStretch: false, cost: 9999999, mouth: 30)
+    var rubberBall  = Ball(skin: "Rubber", shouldStretch: true, cost: 0, mouth: 19, flipRoll: false)
+    var clock       = Ball(skin: "Clock", shouldStretch: false, cost: 2000, mouth: 20, flipRoll: false)
+    var tennisBall  = Ball(skin: "Tennis", shouldStretch: true, cost: 100, mouth: 22, flipRoll: false)
+    var disk        = Ball(skin: "Disk", shouldStretch: true, cost: 8000, mouth: 25, flipRoll: false)
+    var lemon       = Ball(skin: "Lemon", shouldStretch: false, cost: 70000, mouth: 27, scale: 0.9, flipRoll: true)
+    var orange      = Ball(skin: "Orange", shouldStretch: true, cost: 20000, mouth: 24, flipRoll: true)
+    var baseBall    = Ball(skin: "Base", shouldStretch: true, cost: 300000, mouth: 19, scale: 0.9, flipRoll: true)
+    var beachBall   = Ball(skin: "Beach", shouldStretch: true, cost: 1000, mouth: 19, scale: 1.8, flipRoll: true)
+    var deathStar   = Ball(skin: "Death", shouldStretch: false, cost: 1000000, mouth: 30, flipRoll: true)
+    var footBall    = Ball(skin: "Foot", shouldStretch: true, cost: 5000, mouth: 37, scale: 0.9, flipRoll: false)
+    var basketBall  = Ball(skin: "Basket", shouldStretch: true, cost: 100000, mouth: 19, scale: 1.8, flipRoll: true)
+    var moon        = Ball(skin: "Moon", shouldStretch: false, cost: 800000, mouth: 20, flipRoll: true)
+    var spikeBall   = Ball(skin: "Spike", shouldStretch: true, cost: 200000, mouth: 27, flipRoll: true)
+    var apple       = Ball(skin: "Apple", shouldStretch: false, cost: 40000, mouth: 20, flipRoll: true)
+    var disco       = Ball(skin: "Disco", shouldStretch: true, cost: 3000000, mouth: 24, flipRoll: false)
+    var saturn      = Ball(skin: "Saturn", shouldStretch: false, cost: 5000000, mouth: 27, flipRoll: true)
+    var earth       = Ball(skin: "Earth", shouldStretch: true, cost: 10000000, mouth: 19, flipRoll: true)
+    var puffer      = Ball(skin: "Puffer", shouldStretch: true, cost: 99000000, mouth: 23, flipRoll: true)
+    var rubix       = Ball(skin: "Rubix", shouldStretch: true, cost: 500000, mouth: 25, flipRoll: true)
+    var air         = Ball(skin: "Air", shouldStretch: false, cost: 50000000, mouth: 30, flipRoll: false)
     
-    let mickey      = Dog(skin: "Mickey", cost: 0, mouth: CGPoint(x: 13, y: 26))
-    let space       = Dog(skin: "Space", cost: 100, mouth: CGPoint(x: 17, y: 28))
-    let bud         = Dog(skin: "Bud", cost: 200, mouth: CGPoint(x: 14, y: 27))
-    let fox         = Dog(skin: "Fox", cost: 10000, mouth: CGPoint(x: 13, y: 23))
-    let hound       = Dog(skin: "Hound", cost: 1000000, mouth: CGPoint(x: 17, y: 29))
-    let black       = Dog(skin: "Black", cost: 400000, mouth: CGPoint(x: 18, y: 30))
-    let poddle      = Dog(skin: "Poodle", cost: 90000, mouth: CGPoint(x: 20, y: 40))
-    let bull        = Dog(skin: "Bull", cost: 90000, mouth: CGPoint(x: 13, y: 25))
-    let dal         = Dog(skin: "Dal", cost: 90000, mouth: CGPoint(x: 22, y: 42))
-    let bot         = Dog(skin: "Bot", cost: 90000, mouth: CGPoint(x: 12, y: 26))
+    var mickey      = Dog(skin: "Mickey", cost: 0, mouth: CGPoint(x: 13, y: 26))
+    var space       = Dog(skin: "Space", cost: 99000000, mouth: CGPoint(x: 19, y: 28))
+    var bud         = Dog(skin: "Bud", cost: 1000, mouth: CGPoint(x: 14, y: 27))
+    var fox         = Dog(skin: "Fox", cost: 1000000, mouth: CGPoint(x: 13, y: 23))
+    var hound       = Dog(skin: "Hound", cost: 10000000, mouth: CGPoint(x: 17, y: 29))
+    var black       = Dog(skin: "Black", cost: 20000, mouth: CGPoint(x: 18, y: 30))
+    var poddle      = Dog(skin: "Poodle", cost: 100000, mouth: CGPoint(x: 20, y: 40))
+    var bull        = Dog(skin: "Bull", cost: 500000, mouth: CGPoint(x: 13, y: 25))
+    var dal         = Dog(skin: "Dal", cost: 70000, mouth: CGPoint(x: 22, y: 42))
+    var bot         = Dog(skin: "Bot", cost: 5000000, mouth: CGPoint(x: 12, y: 26))
     
     let defaultDog = 0
     let defaultBall = 0
@@ -217,7 +217,7 @@ struct FetchClassic {
     init() {
         modifiers = [throwModifier, aeroModifier, goldModifier]
         dogs = [ mickey, space, bud, fox, hound, black, poddle, bull, dal, bot ]
-        balls = [ rubberBall, tennisBall, clock, disk, lemon, orange, baseBall, beachBall, deathStar, footBall, basketBall, moon, spikeBall, apple, disco, saturn, earth, puffer, rubix, air ]
+        balls = [ rubberBall, tennisBall, beachBall, disk, clock, footBall, orange, apple, lemon, basketBall, spikeBall, baseBall, rubix, moon, deathStar, disco, saturn, earth, air, puffer ]
 
         loadDogsAndBalls(in: &dogs)
         loadDogsAndBalls(in: &balls)
@@ -244,6 +244,11 @@ struct FetchClassic {
         
     }
 
+    mutating func setupLists() {
+        dogs = [ mickey, space, bud, fox, hound, black, poddle, bull, dal, bot ]
+        balls = [ rubberBall, tennisBall, beachBall, disk, clock, footBall, orange, apple, lemon, basketBall, spikeBall, baseBall, rubix, moon, deathStar, disco, saturn, earth, air, puffer ]
+    }
+    
     //MARK: Save Functions
     
     static func saveData<testType>(data: testType, for key: String) {
@@ -314,7 +319,6 @@ struct FetchClassic {
                 currentBall.removeAllActions()
                 currentBall.defineTextureAndSize()
                 globalScene.checkForGold(distance: Int(currentBall.position.y))
-                velocityLabel?.update(newAmount: 0.00, usingQueue: true, speed: 1)
                 GameView.game.updateStatsAtEndOfThrow()
                 
             case .caught:
@@ -379,4 +383,39 @@ struct FetchClassic {
             FetchClassic.saveData(data: encodedData, for: "\(enumeration.element.id)")
         }
     }
+    
+    mutating func mergeLegacyUnlocks() {
+        rubberBall.isUnlocked = FetchClassic.retrieveData(defaultValue: true, for: "rubberBallLock")
+        disco.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "discoBallLock")
+        footBall.isUnlocked =   FetchClassic.retrieveData(defaultValue: false, for: "footBallLock")
+        baseBall.isUnlocked =   FetchClassic.retrieveData(defaultValue: false, for: "baseBallLock")
+        basketBall.isUnlocked = FetchClassic.retrieveData(defaultValue: false, for: "basketBallLock")
+        earth.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "earthLock")
+        disk.isUnlocked =       FetchClassic.retrieveData(defaultValue: false, for: "diskLock")
+        orange.isUnlocked =     FetchClassic.retrieveData(defaultValue: false, for: "orangeLock")
+        apple.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "appleLock")
+        lemon.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "lemonLock")
+        beachBall.isUnlocked =  FetchClassic.retrieveData(defaultValue: false, for: "beachLock")
+        deathStar.isUnlocked =  FetchClassic.retrieveData(defaultValue: false, for: "deathLock")
+        puffer.isUnlocked =     FetchClassic.retrieveData(defaultValue: false, for: "pufferLock")
+        spikeBall.isUnlocked =  FetchClassic.retrieveData(defaultValue: false, for: "spikeLock")
+        clock.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "clockLock")
+        saturn.isUnlocked =     FetchClassic.retrieveData(defaultValue: false, for: "saturnLock")
+        moon.isUnlocked =       FetchClassic.retrieveData(defaultValue: false, for: "moonLock")
+        air.isUnlocked =        FetchClassic.retrieveData(defaultValue: false, for: "airLock")
+        rubix.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "rubixLock")
+
+        mickey.isUnlocked =     FetchClassic.retrieveData(defaultValue: true, for: "MickeyLock")
+        bull.isUnlocked =       FetchClassic.retrieveData(defaultValue: false, for: "bullLock")
+        poddle.isUnlocked =     FetchClassic.retrieveData(defaultValue: false, for: "poodleLock")
+        black.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "blackLock")
+        dal.isUnlocked =        FetchClassic.retrieveData(defaultValue: false, for: "dalLock")
+        hound.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "houndLock")
+        fox.isUnlocked =        FetchClassic.retrieveData(defaultValue: false, for: "foxLock")
+        bot.isUnlocked =        FetchClassic.retrieveData(defaultValue: false, for: "botLock")
+        bud.isUnlocked =        FetchClassic.retrieveData(defaultValue: false, for: "budLock")
+        space.isUnlocked =      FetchClassic.retrieveData(defaultValue: false, for: "spaceLock")
+    }
 }
+
+
