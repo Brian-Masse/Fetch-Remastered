@@ -327,7 +327,9 @@ class GameScene: SKScene {
 
             if let currentTouchPosition = touches.first?.location(in: self) {
                 if firstSwipePositon.y < currentTouchPosition.y && firstSwipePositon != CGPoint(x: -444, y: -444) {
-                    velocity = (currentTouchPosition.y - firstSwipePositon.y) / CGFloat(timePassedSinceThrow)
+                    
+                    print((414 / size.height))
+                    velocity = ((currentTouchPosition.y - firstSwipePositon.y) * max((869 / size.height), 1) ) / CGFloat(timePassedSinceThrow)
          
                     //reset the firstSwipePosition to arbitrary value:
                     firstSwipePositon = CGPoint(x: -444, y: -444)

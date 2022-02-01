@@ -82,12 +82,12 @@ struct Settings: View {
             GeometryReader { geo in
                 VStack(alignment: .center, spacing: 10) {
                     Spacer()
-                    Settings.createSettingsText("ME", with: titleFont, in: 100).frame(width: 220).minimumScaleFactor(0.1)
-                    Settings.createSettingsText("[Brian Masse]", with: titleFont, in: 100).frame(width: 220).minimumScaleFactor(0.1)
-                    Settings.createSettingsText("[[A pretty cool dude]]", with: titleFont, in: 100).frame(width: 220).minimumScaleFactor(0.1)
+                    Settings.createSettingsText("ME", with: titleFont, in: 100).frame(width: 220)
+                    Settings.createSettingsText("[Brian Masse]", with: titleFont, in: 100).frame(width: 220)
+                    Settings.createSettingsText("[[A pretty cool dude]]", with: titleFont, in: 100).frame(width: 220)
                     emptySpace(with: 100)
-                    Settings.createSettingsText("inspired by my dog", with: titleFont, in: 100).frame(width: 220).minimumScaleFactor(0.1)
-                    Settings.createSettingsText("MICKEY", with: titleFont, in: 100).frame(width: 220).minimumScaleFactor(0.1)
+                    Settings.createSettingsText("inspired by my dog", with: titleFont, in: 100).frame(width: 220)
+                    Settings.createSettingsText("MICKEY", with: titleFont, in: 100).frame(width: 220)
                     Spacer()
                 }.frame(width: geo.size.width)
             }.background(PixelImage( appearanced( "settingsBack") ).ignoresSafeArea().aspectRatio(contentMode: .fill))

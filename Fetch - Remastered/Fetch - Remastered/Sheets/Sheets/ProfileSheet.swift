@@ -20,9 +20,10 @@ struct ProfileSheet: View {
 
                 VStack(alignment: .leading, spacing: 5) {
 
-                    constants.createStatsText("Profile", with: titleFont, in: 50)
+                    constants.createStatsText("Profile", with: titleFont, in: 40)
                         .padding(.leading)
-//
+                    
+
                     emptySpace(with: 50)
                     throwData(geo: geo)
 
@@ -40,7 +41,7 @@ struct ProfileSheet: View {
                         legacyData()
                     }
                 }
-            }
+            }.frame(maxWidth: geo.size.width)
         }
         .background(PixelImage( appearanced("ProfileBack") )
                         .ignoresSafeArea()
@@ -52,6 +53,11 @@ struct ProfileSheet: View {
         static func createStatsText(_ text: String, with font: ShadowedFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
             ShadowFont(text, with: font, in: size, shadowColor: Colors.cosmeticsLighShadow, lineLimit: lineLimit, darkShadowColor: Colors.profilePink )
                 .modifier(appearancedMod(lightColor: Colors.cosmeticsLightColor, darkColor: .white, colorColor: Colors.profileLightPink))
+        }
+        
+        static func createSettingsText(_ text: String, with font: ShadowedFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
+            ShadowFont(text, with: font, in: size, shadowColor: Colors.settingsShadow, lineLimit: lineLimit, lightShadowColor: Colors.settingsShadow, darkShadowColor: Colors.darkTextGrey)
+                .modifier(appearancedMod(lightColor: Colors.settingsLightPink, darkColor: .white, colorColor: .white))
         }
         
         @ViewBuilder
@@ -79,12 +85,12 @@ struct ProfileSheet: View {
                     emptySpace(with: 5)
                     HStack {
                         VStack(alignment: .leading) {
-                            constants.createStatsText("Farthest \nThrow", with: titleFont, in: 20, lineLimit: 2).fixedSize()
+                            constants.createStatsText("Farthest \nThrow", with: titleFont, in: 20, lineLimit: 2)
                             constants.createStatsText("\(game.stats.legacyFarthestThrow.trimCGFloat(2)) ft.", with: titleFont, in: 20)
                         }
                         VStack(alignment: .leading) {
                             constants.createStatsText("\(game.stats.legacyMapDiscovered.trimCGFloat(2))%", with: titleFont, in: 20)
-                            constants.createStatsText("of the map \nwas \ndiscovered", with: titleFont, in: 20, lineLimit: 3).fixedSize()
+                            constants.createStatsText("of the map \nwas \ndiscovered", with: titleFont, in: 20, lineLimit: 3)
                         }
                     }
                 }.modifier(framify(ProfileSheet.frameColor) { constants.defaullFrameFill() } )
@@ -93,12 +99,12 @@ struct ProfileSheet: View {
                     emptySpace(with: 5)
                     HStack(spacing: 20) {
                         VStack(alignment: .leading) {
-                            constants.createStatsText("Most \ngold", with: titleFont, in: 20, lineLimit: 2).fixedSize()
+                            constants.createStatsText("Most \ngold", with: titleFont, in: 20, lineLimit: 2)
                             constants.createStatsText("\(Int(game.stats.legacyMostGold))", with: titleFont, in: 20)
                         }
                         
                         VStack(alignment: .leading) {
-                            constants.createStatsText("current \ngold", with: titleFont, in: 20, lineLimit: 2).fixedSize()
+                            constants.createStatsText("current \ngold", with: titleFont, in: 20, lineLimit: 2)
                             constants.createStatsText("\(Int(game.stats.legacyCurrentGold))", with: titleFont, in: 20)
                         }
                     }
@@ -109,9 +115,9 @@ struct ProfileSheet: View {
                     emptySpace(with: 5)
                     constants.createStatsText("x \(game.stats.legacyStrength) on all throws!", with: titleFont, in: 20)
                     emptySpace(with: 1)
-                    constants.createStatsText("\(game.stats.legacyAero)% slow reduction \n    on all throws!", with: titleFont, in: 20, lineLimit: 2).fixedSize()
+                    constants.createStatsText("\(game.stats.legacyAero)% slow reduction \n    on all throws!", with: titleFont, in: 20, lineLimit: 2)
                     emptySpace(with: 1)
-                    constants.createStatsText("\(game.stats.legacyMagnet)% chance of gold \n    every foot!", with: titleFont, in: 20, lineLimit: 2).fixedSize()
+                    constants.createStatsText("\(game.stats.legacyMagnet)% chance of gold \n    every foot!", with: titleFont, in: 20, lineLimit: 2)
                 }.modifier(framify(ProfileSheet.frameColor) { constants.defaullFrameFill() } )
                 
                 
@@ -168,7 +174,7 @@ struct ProfileSheet: View {
             var body: some View {
                 VStack(alignment: .leading) {
                     constants.createStatsText(name, with: titleFont, in: 25)
-                    constants.createStatsText( game[modifier].description, with: titleFont, in: 21, lineLimit: 2).fixedSize()
+                    constants.createStatsText( game[modifier].description, with: titleFont, in: 21, lineLimit: 2)
                     emptySpace(with: 10)
                     grapher()
                     constants.createStatsText("current cost: \(game[modifier].returnCurrentPrice())", with: titleFont, in: 20)
@@ -213,7 +219,7 @@ struct ProfileSheet: View {
             var body: some View {
                 VStack(alignment: .leading) {
                     constants.createStatsText(name, with: titleFont, in: 25)
-                    constants.createStatsText( game[modifier].description, with: titleFont, in: 21, lineLimit: 2).fixedSize()
+                    constants.createStatsText( game[modifier].description, with: titleFont, in: 21, lineLimit: 2)
                     emptySpace(with: 10)
                     grapher()
                     constants.createStatsText("current cost: \(game[modifier].returnCurrentPrice())", with: titleFont, in: 20)
@@ -251,7 +257,6 @@ struct ProfileSheet: View {
                         emptySpace(with: 20)
                         
                         constants.createStatsText("most \nexpensive \npruchase:", with: titleFont, in: 20, lineLimit: 3)
-                            .fixedSize()
                         constants.createStatsText("\(game.stats[.biggestPruchase])", with: titleFont, in: 20)
                         
                         Spacer()
@@ -279,37 +284,30 @@ struct ProfileSheet: View {
                 constants.createStatsText("\(game.stats[.distanceAverage].trimCGFloat(2)) ft.", with: titleFont, in: 20)
                 Grapher(graphableData: game.model.stats[.distanceAverage, true].history, fullWidth: geo.size.width  )
                     .frame(height: 200)
-            
+
 
                 HStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         constants.createStatsText("Farthest \nThrows", with: titleFont, in: 20, lineLimit: 2)
-                            .fixedSize()
                         Grapher(graphableData: game.stats[.farthestThrow, true].history, fullWidth: geo.size.width / 2 )
                             .frame(height: 250)
-
                         constants.createStatsText("Best Throw", with: titleFont, in: 18)
                         constants.createStatsText("\(game.stats[.farthestThrow].trimCGFloat(2)) \nft.", with: titleFont, in: 20, lineLimit: 2)
-                            .fixedSize()
                         emptySpace(with: 10)
                         constants.createStatsText("Last Throw", with: titleFont, in: 18)
                         constants.createStatsText("\(game.stats[.throwDistance].trimCGFloat(2)) \nft.", with: titleFont, in: 20, lineLimit: 2)
-                            .fixedSize()
                     }
 
                     VStack(alignment: .leading) {
                         constants.createStatsText("Fastest \nThrows", with: titleFont, in: 20, lineLimit: 2)
-                            .fixedSize()
                         Grapher(graphableData: game.model.stats[.fastestThrow, true].history, fullWidth: geo.size.width / 2 )
                             .frame(height: 250)
 
                         constants.createStatsText(":", with: titleFont, in: 20)
                         constants.createStatsText("\(game.stats[.fastestThrow].trimCGFloat(2)) \nft. / s", with: titleFont, in: 20, lineLimit: 2)
-                            .fixedSize()
                         emptySpace(with: 10)
                         constants.createStatsText(":", with: titleFont, in: 20)
                         constants.createStatsText("\(game.stats[.throwDistance].trimCGFloat(2)) \nft. / s", with: titleFont, in: 20, lineLimit: 2)
-                            .fixedSize()
                     }
                 } .modifier(framify(ProfileSheet.frameColor) { constants.defaullFrameFill() })
 
@@ -317,11 +315,10 @@ struct ProfileSheet: View {
                 constants.createStatsText("All Distances: ", with: titleFont, in: 20)
                 Grapher(graphableData: game.model.stats[.throwDistance, true].history, fullWidth: geo.size.width  )
                     .frame(height: 200)
-                
                 constants.createStatsText("Total number of throws: ", with: titleFont, in: 20).minimumScaleFactor(0.7)
                 constants.createStatsText("\(game.model.stats[.throwDistance, true].history.count - 1)", with: titleFont, in: 20)
             }.modifier(framify(ProfileSheet.frameColor))
-            
+
         }
         
     }
@@ -399,7 +396,6 @@ struct Grapher: View {
                     HStack(spacing: 0) {
                         
                         leftLabels(aliveHeight: aliveSpace.height, emptyHeight: emptySpace.height, extremum: extremum, textSize: textSize )
-                            .fixedSize()
                         VStack {
                             Rectangle()
                                 .frame(width: 5, height: aliveSpace.height)
@@ -605,6 +601,8 @@ struct Grapher: View {
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ProfileSheet()
+//
 //            .environmentObject(GameView.game)
+//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
 //    }
 //}

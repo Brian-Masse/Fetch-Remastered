@@ -44,8 +44,8 @@ struct WidgetView: View {
                 SingleDataView(data: data, dataPosition: .topRight, b: inBuildingMode, activePos: $activeDataPosition)
             }
             case .systemLarge:
-                VStack {
-                    HStack {
+                VStack(spacing: 0)  {
+                    HStack(spacing: 0) {
                         SingleDataView(data: data, dataPosition: .topLeft, b: inBuildingMode, activePos: $activeDataPosition)
                         SingleDataView(data: data, dataPosition: .topRight, b: inBuildingMode, activePos: $activeDataPosition)
                     }
@@ -101,7 +101,11 @@ struct WidgetView: View {
         
         func body(content: Content) -> some View {
             content
-                .onTapGesture { if b { currentPos = dataPos } }
+                .overlay(GeometryReader { geo in
+                    Rectangle()
+                        .opacity(0.01)
+                        .onTapGesture { if b { currentPos = dataPos } }
+                })
                 .overlay(VStack {
                     if b { GeometryReader { geo in
                         RoundedRectangle(cornerRadius: 10)

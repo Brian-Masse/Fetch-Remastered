@@ -83,15 +83,17 @@ struct ShadowFont: View {
             .font(Font.custom(fontStruct.font, size: fontSize))
     }
     var body: some View {
-        textStruct
-            .background(
-                GeometryReader { reducedGeo in
-                    textStruct
-                        .offset(x:0, y: reducedGeo.size.height * (0.1431 / CGFloat(lineLimit)))
-                        .modifier(appearancedMod(lightColor: lightShadow, darkColor: darkShadow, colorColor: shadowColor))
-                        
-                }
-            )
+        VStack {
+            textStruct
+                .background(
+                    GeometryReader { reducedGeo in
+                        textStruct
+                            .offset(x:0, y: reducedGeo.size.height * (0.1431 / CGFloat(lineLimit)))
+                            .modifier(appearancedMod(lightColor: lightShadow, darkColor: darkShadow, colorColor: shadowColor))
+                            
+                    }
+                )
+        }.minimumScaleFactor(0.01)
     }
 }
 
@@ -458,35 +460,44 @@ struct framify<someView: View>: ViewModifier{
     let color: Color
     let width: CGFloat
     let changeForegroundColor: Bool
+    let opacity: CGFloat
     
     @ViewBuilder var fill: () -> someView
     @ObservedObject var acessor = widgetAcessor
     
-    init(_ color: Color, in width: CGFloat = 414, padded: Bool = true, @ViewBuilder and fill: @escaping () -> someView = { defaultFill as! someView }, changeForegroundColor: Bool = true ) {
+    init(_ color: Color, in width: CGFloat = 414, padded: Bool = true, @ViewBuilder and fill: @escaping () -> someView = { defaultFill as! someView }, changeForegroundColor: Bool = true, opacity: CGFloat = 1 ) {
         self.color = color
         self.fill = fill
         self.padded = padded
         self.width = width
         self.changeForegroundColor = changeForegroundColor
+        self.opacity = opacity
     }
     
     func body(content: Content) -> some View {
         
+        let lightColor = opacity == 1 ? (changeForegroundColor ? .white: color) : Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0))
+        let darkColor = opacity == 1 ? (changeForegroundColor ? Colors.darkTextGrey: color) : Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0))
+        let colorColor = opacity == 1 ? color : Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0))
+        
         content
+            .opacity(1)
             .padding(padded ? width * (10 / 414): 0)
             .background( GeometryReader { geo in
                 fill()
             })
             .overlay(Rectangle()
                     .strokeBorder(style: StrokeStyle(lineWidth: min(width * (5 / 414), 10), lineCap: .square, lineJoin: .miter, miterLimit: 5))
+                    .modifier(appearancedMod(lightColor: lightColor, darkColor:  darkColor, colorColor: colorColor)))
+                    
+        
                         
-                        .modifier(appearancedMod(lightColor: changeForegroundColor ? .white: color, darkColor:  changeForegroundColor ? Colors.darkTextGrey: color, colorColor: color)))
     }
 }
 
 extension framify where someView == SwiftUI.ModifiedContent<SwiftUI.Rectangle, SwiftUI._EnvironmentKeyWritingModifier<Swift.Optional<SwiftUI.Color>>> {
-    init(_ color: Color, in width: CGFloat = 414, padded: Bool = true, changeForegroundColor: Bool = true) {
-        self.init(color, in: width, padded: padded, and: { Rectangle().foregroundColor(.clear) as! ModifiedContent<Rectangle, _EnvironmentKeyWritingModifier<Optional<Color>>> }, changeForegroundColor: changeForegroundColor)
+    init(_ color: Color, in width: CGFloat = 414, padded: Bool = true, opacity: CGFloat = 1, changeForegroundColor: Bool = true) {
+        self.init(color, in: width, padded: padded, and: { Rectangle().foregroundColor(.clear) as! ModifiedContent<Rectangle, _EnvironmentKeyWritingModifier<Optional<Color>>> }, changeForegroundColor: changeForegroundColor, opacity: opacity)
     }
 }
 
@@ -496,7 +507,6 @@ extension framify where someView == SwiftUI.ModifiedContent<SwiftUI.Rectangle, S
 struct notification<someView: View>: View {
     
     let duration: Double
-    let placementIndex: CGFloat
     
     @Binding var binding: Bool
     @State var showing = false
@@ -504,7 +514,7 @@ struct notification<someView: View>: View {
     @ViewBuilder let content: () -> someView
     
     var body: some View {
-        VStack {
+        ZStack {
             if showing {
                 content()
                     .modifier(Bounce(currentOffSet: 25))
@@ -516,7 +526,6 @@ struct notification<someView: View>: View {
         }
         .onAppear() { if binding { showing = binding }}
         .onChange(of: binding) { _ in withAnimation { if binding { showing = binding } } }
-        .padding(.bottom, placementIndex * 100)
     }
 }
 
@@ -604,14 +613,22 @@ struct BouncingText<someView: View>: View {
     @Binding var shouldAnimate: Bool
     let text: String
     let stallTime: Double
+    let width: CGFloat
     let textStyle: (String) -> someView
+    
 
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(text.getEnumeration(), id: \.0) { enumeration in
-                SubBouncingText(shouldAnimate: $shouldAnimate, text: enumeration.1, content: textStyle, offSet: Double(enumeration.0) / 10, stallTime: stallTime)
+//        SubBouncingText(shouldAnimate: $shouldAnimate, text: "a", content: textStyle, offSet: 0, stallTime: 0)
+//        GeometryReader { geo in
+//            let width = geo.size.width / CGFloat(text.getEnumeration().count)
+            HStack(spacing: 0) {
+                ForEach(text.getEnumeration(), id: \.0) { enumeration in
+                    SubBouncingText(shouldAnimate: $shouldAnimate, text: enumeration.1, content: textStyle, offSet: Double(enumeration.0) / 10, stallTime: stallTime)
+                }
             }
-        }
+            
+            .frame(maxWidth: width)
+//        }
     }
     
     struct SubBouncingText: View {
@@ -634,8 +651,7 @@ struct BouncingText<someView: View>: View {
         
         var body: some View {
             content(text)
-                .fixedSize()
-                .minimumScaleFactor(1)
+                .frame(maxHeight: 40)
                 .offset(y: shouldBounce ? -15: 0)
                 .animation( shouldAnimate ?  .easeInOut(duration: 0.3 ).delay(offSet): nil  )
                 .onAppear() { if shouldAnimate { runSingleBounce() } }

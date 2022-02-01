@@ -17,16 +17,16 @@ struct GameView: View {
     @State var shouldAnimate = false
     
     var hasLegacyDataBinding = Binding { game.stats.legacyFarthestThrow != 0 && !game.model.askedAboutMerging } set: { _ in }
-    var notificationManager = NotificationManager()
+//    var notificationManager = NotificationManager()
+    
+    var trueBinidng = Binding { true } set: { _ in }
     
     @ViewBuilder
     static func createText(_ text: String, with font: ShadowedFont = titleFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
         ShadowFont(text, with: font, in: size, shadowColor: Colors.settingsShadow, lineLimit: lineLimit, lightShadowColor: Colors.settingsShadow, darkShadowColor: Colors.darkTextGrey)
             .modifier(appearancedMod(lightColor: .white, darkColor: .white, colorColor: .white))
-            .fixedSize()
     }
     
-    var trueBinidng = Binding { true } set: { _ in }
     func createGameScene(in size: CGSize) -> GameScene {
         if size != globalFrame.size {
             globalScene.size = size
@@ -42,12 +42,14 @@ struct GameView: View {
                 SpriteView(scene: createGameScene(in: geo.size))
                     .ignoresSafeArea()
                 
+//                Rectangle().fill(.red)
+                
                 if geo.size.width > 500 {
                     wideDisplay(geo: geo)
                 }else {
                     narrowDisplay(geo: geo)
                 }
-                notificationManager
+                PopupManager(geo: geo)
             }
             .ignoresSafeArea()
         }
@@ -81,21 +83,22 @@ struct GameView: View {
                 goldDisplayer(geo: geo)
                     .padding(.leading, 20)
                     .padding([.top], 50)
-
-                Spacer(minLength: (400 / 869) * geo.size.height)
+                
+                Spacer(minLength: (300 / 869) * geo.size.height)
                 HStack {
                     Spacer()
                     returnButton()
                     Spacer()
-                }
+                }.frame(width: geo.size.width)
                 Spacer()
-
+                
+                VelocityLabel(width: geo.size.width * 0.8)
+                DistanceLabel(width: geo.size.width)
+                
+                NotificationManager(geo: geo)
+                
                 HStack {
                     Spacer()
-                    VStack {
-                        VelocityLabel()
-                        DistanceLabel()
-                    }.padding(.bottom, 20)
                     if environmentGame.currentState == .home {
                         menuButton(imageName: "settings", viewToPresent: Settings().environmentObject(GameView.game))
                         Spacer()
@@ -107,7 +110,6 @@ struct GameView: View {
                     }
                     Spacer(minLength: 20)
                 }
-                emptySpace(with: 10)
             }
         }
     }
@@ -123,10 +125,11 @@ struct GameView: View {
                 
                 if environmentGame.currentState != .home { emptySpace(with: 55) }
                 
-                VelocityLabel()
+                VelocityLabel(width: geo.size.width * (1 / 5))
                 emptySpace(with: 1)
-                DistanceLabel()
-                
+                DistanceLabel(width: geo.size.width * (1 / 5))
+                NotificationManager(geo: geo)
+
                 if environmentGame.currentState == .home {
                     menuButton(imageName: "profile", viewToPresent: ProfileSheet().environmentObject(GameView.game))
                     menuButton(imageName: "cosmetics", viewToPresent:
@@ -163,6 +166,7 @@ struct GameView: View {
     struct VelocityLabel: View {
         @ObservedObject var observedBall = game.currentBall
         @EnvironmentObject var environmentGame: FetchClassicInterpreter
+        var width: CGFloat
 
         var body: some View {
             VStack() {
@@ -170,54 +174,72 @@ struct GameView: View {
                     GameView.createText("Velocity", in: 33)
                     GameView.createText(correctDigitCount(for: "\(game.currentBall.physicsBody!.velocity.dy.trimCGFloat(2))", with: 2) + " ft / s", in: 33)
                 }
-            }
+            }.frame(width: width)
         }
     }
     
     struct DistanceLabel: View {
         @ObservedObject var observedBall = game.currentBall
         @EnvironmentObject var environmentGame: FetchClassicInterpreter
+        let width: CGFloat
         var shouldAnimate = Binding {game.masterState == .throwOver } set: { _ in }
         
         var body: some View {
-            VStack() {
-                if game.preferenceModel.distanceLabel &&  (game.masterState == .throwing || game.masterState == .throwOver ) {
-                    BouncingText(shouldAnimate: shouldAnimate, text: "Distance", stallTime: 2) {  text in GameView.createText(text, with: titleFont, in: 33) }
-                    BouncingText(shouldAnimate: shouldAnimate, text: correctDigitCount(for: "\(observedBall.position.y.trimCGFloat(2))", with: 2) + " ft.", stallTime: 2) {  text in GameView.createText(text, with: titleFont, in: 33) }
+            if game.preferenceModel.distanceLabel &&  (game.masterState == .throwing || game.masterState == .throwOver ) {
+                HStack {
+                    Spacer()
+                    VStack(alignment: .center) {
+                        BouncingText(shouldAnimate: shouldAnimate, text: "Distance", stallTime: 2, width: width) {  text in GameView.createText(text, with: titleFont, in: 33) }
+                        BouncingText(shouldAnimate: shouldAnimate, text: correctDigitCount(for: "\(observedBall.position.y.trimCGFloat(2))", with: 2) + " ft.", stallTime: 2, width: width) {  text in GameView.createText(text, with: titleFont, in: 33) }
+                    }
+                    .modifier(ConfettiBurstModifier(showing: GameView.game.preferenceModel.particles && game.masterState == .throwOver, delay: 1.9, repeatCount: -1))
+                        .modifier(appearancedMod(lightColor: Colors.settingsShadow, darkColor: Colors.darkTextGrey, colorColor: Colors.settingsShadow))
+                    Spacer()
                 }
-            }.modifier(ConfettiBurstModifier(showing: GameView.game.preferenceModel.particles && game.masterState == .throwOver, delay: 1.9, repeatCount: -1))
-                .modifier(appearancedMod(lightColor: Colors.settingsShadow, darkColor: Colors.darkTextGrey, colorColor: Colors.settingsShadow))
+                .frame(width: width)
+            }
+        }
+    }
+    
+    struct PopupManager: View {
+        @ObservedObject var observedBall = game.currentBall
+        
+        var geo: GeometryProxy
+        var farthestThrowBinding = Binding { game.model.currentBall.position.y > GameView.game.model.stats[.farthestThrow] && GameView.game.masterState == .throwing} set: { _ in }
+        var fastestThrowBinding = Binding {game.model.stats[.fastestThrow, true].history.last!.date > Date() - 1 } set: { _ in }
+        var trueBinidng = Binding { true } set: { _ in }
+        
+        var body : some View {
+            VStack {
+                Spacer()
+                HStack(alignment: .center, spacing: 0) {
+                    Spacer()
+                    notification(duration: 4, binding: fastestThrowBinding ) { GameView.createText("Fastest \nThrow!", with: boldDefaultFont, in: 25, lineLimit: 2) }
+                    .frame(width: geo.size.width / 2.2)
+                    Spacer()
+                    notification(duration: 4, binding: farthestThrowBinding ) { GameView.createText("Farthest\n Throw!", with: boldDefaultFont, in: 25, lineLimit: 2) }
+                    .frame(width: geo.size.width / 2.2)
+                    Spacer()
+                }
+            }.frame(height: geo.size.height / 2.7)
         }
     }
         
     struct NotificationManager: View {
         @ObservedObject var observedBall = game.currentBall
     
+        var geo: GeometryProxy
         var farthestThrowBinding = Binding { game.model.currentBall.position.y > GameView.game.model.stats[.farthestThrow] && GameView.game.masterState == .throwing} set: { _ in }
         var fastestThrowBinding = Binding {game.model.stats[.fastestThrow, true].history.last!.date > Date() - 1 } set: { _ in }
         var trueBinidng = Binding { true } set: { _ in }
         
         var body: some View {
-            GeometryReader { screenGeo in
-                ZStack {
-                    HStack(alignment: .center, spacing: 0) {
-                        notification(duration: 4, placementIndex: -4, binding: fastestThrowBinding ) { GameView.createText("Fastest \nThrow!", with: boldDefaultFont, in: 25, lineLimit: 2) }
-                        .frame(width: screenGeo.size.width / 2)
-                        notification(duration: 4, placementIndex: -4, binding: farthestThrowBinding ) { GameView.createText("Farthest\n Throw!", with: boldDefaultFont, in: 25, lineLimit: 2) }
-                        .frame(width: screenGeo.size.width / 2)
-                    }
-                    VStack {
-                               
-                        Spacer(minLength: screenGeo.size.height * 0.75)
-                        
-                        StateBasedNotifcation(entranceState: .caught, exitState: .returning, triggerEvent: fastestThrowBinding) {
-                            BouncingText(shouldAnimate: trueBinidng, text: "Fastest Throw!", stallTime: 2.5) { text in GameView.createText(text, in: 25) } }
-                        
-                        StateBasedNotifcation(entranceState: .caught, exitState: .returning, triggerEvent: farthestThrowBinding) {
-                            BouncingText(shouldAnimate: trueBinidng, text: "Farthest Throw!", stallTime: 2.5) { text in GameView.createText(text, in: 25) } }
-                        
-                    }.frame(maxHeight: screenGeo.size.height * 0.85)
-                }
+            VStack(spacing: 2) {
+                StateBasedNotifcation(entranceState: .caught, exitState: .returning, triggerEvent: fastestThrowBinding) {
+                    BouncingText(shouldAnimate: trueBinidng, text: "Fastest Throw!", stallTime: 2.5, width: geo.size.width) { text in GameView.createText(text, in: 25) } }
+                
+                StateBasedNotifcation(entranceState: .caught, exitState: .returning, triggerEvent: farthestThrowBinding) {
+                    BouncingText(shouldAnimate: trueBinidng, text: "Farthest Throw!", stallTime: 2.5, width: geo.size.width) { text in GameView.createText(text, in: 25) } }
             }
         }
     }
@@ -264,7 +286,7 @@ struct GameView: View {
 
                             VStack(alignment: .leading) {
                                 RollingNumber(newNumber: $test.gold) { text in ShadowFont(text, with: titleFont, in: 30, shadowColor: Colors.goldShadow, lightShadowColor: Colors.goldShadow, darkShadowColor: Colors.darkTextGrey) }
-                                    .frame(height: coinGeo.size.height)
+                                .frame(height: coinGeo.size.height * 0.9)
                                     .padding(.horizontal)
                                     .modifier(appearancedMod(lightColor: Colors.settingsShadow, darkColor: .white, colorColor: .white))
                                     .background( GeometryReader { textGeo in
@@ -277,11 +299,13 @@ struct GameView: View {
                                             Spacer()
                                         }
                                     })
-                                notification(duration: 4, placementIndex: 0, binding: trueBinidng ) {
+                                notification(duration: 4, binding: trueBinidng ) {
                                        let goldPointsCount = test.stats[.gold, true].history.count - 1
-                                       GameView.createText("+ \(Int( CGFloat(test.gold) - (test.stats[.gold, true].history[goldPointsCount - 1].value))) gold!", in: 25)
-                                }.padding(.leading)
-                                .modifier(ConfettiBurstModifier(showing: GameView.game.preferenceModel.particles, delay: 0, repeatCount: 1))
+                                       GameView.createText("+ \(Int( CGFloat(test.gold) - (test.stats[.gold, true].history[goldPointsCount - 1].value))) gold!", in: 30)
+                                }
+                                .offset(x: 0, y: -125 * ( geo.size.height / 2048 ))
+                                .frame(width: geo.size.width * 0.6, height: 100)
+//                                .modifier(ConfettiBurstModifier(showing: GameView.game.preferenceModel.particles, delay: 0, repeatCount: 1))
                             }
                         }
                     })

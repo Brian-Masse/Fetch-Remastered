@@ -128,7 +128,7 @@ struct FetchClassic {
     
     struct ThrowModifier: Upgradable {
         let accessor: Stats.SubscriptAcessor = .throwModifier
-        static let defaultValue: CGFloat = 10
+        static let defaultValue: CGFloat = 50
         var iteration = 0
         var value: CGFloat {
             get { GameView.game.stats[.throwModifier] }

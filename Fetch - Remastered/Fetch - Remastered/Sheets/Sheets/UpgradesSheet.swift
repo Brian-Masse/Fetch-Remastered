@@ -19,7 +19,9 @@ struct UpgradesSheet: View {
             VStack(alignment: .leading) {
                 ShadowFont("Upgrades:", with: titleFont, in: 40, lightShadowColor: constants.titleShadow, darkShadowColor: Colors.darkShadow)
                     .padding(.leading)
+                    .minimumScaleFactor(0.1)
                     .modifier(appearancedMod(lightColor: constants.titleColor, darkColor: .white))
+                    
                 
                 ScrollView {
                     ForEach(game.modifiers, id: \.id) { modifier in
@@ -42,6 +44,7 @@ struct UpgradesSheet: View {
         @ViewBuilder
         static func createModifierText(_ modifier: Upgradable, for text: String, with font: ShadowedFont = titleFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
             ShadowFont(text, with: font, in: size, shadowColor: modifier.darkShadow, lineLimit: lineLimit, lightShadowColor: modifier.lightShadow, darkShadowColor: modifier.darkShadow)
+                .minimumScaleFactor(0.1)
         }
         
     }
@@ -57,13 +60,10 @@ struct UpgradesSheet: View {
         var body: some View {
             VStack(alignment: .leading) {
                 HStack {
-                    PixelImage("\(object.id)Icon").frame(maxWidth: 40)
+                    PixelImage("\(object.id)Icon").frame(maxWidth: 55)
                     constants.createModifierText(object, for: object.title, in: 25)
-                        .minimumScaleFactor(0.8)
                 }
-
                 constants.createModifierText(object, for: object.description, in: 20, lineLimit: 2)
-                    .fixedSize()
 
                 PixelImage("sliderGrey")
                     .overlay(
@@ -75,6 +75,7 @@ struct UpgradesSheet: View {
                     .aspectRatio(contentMode: .fill)
                     .modifier(framify(object.darkShadow, in: 414, padded: false))
             
+                Spacer()
                 Button(action: {
                     if game.canPruchase(cost: object.returnCurrentPrice(), for: false) { game.incrementModifier(object) }
                     else { showingAlert = true }
@@ -97,41 +98,23 @@ struct UpgradesSheet: View {
             }
             
             func makeBody(configuration: Configuration) -> some View {
-                ZStack(alignment: .bottom) {
-                    
-                    PixelImage(object.id+"ButtonUp").opacity(0).frame(maxWidth: topLevelGeo.size.width * constants.paddedWidth)
-                    
-                    PixelImage(appearanced( configuration.isPressed ? object.id+"ButtonDown": object.id+"ButtonUp"))
-                        .frame(width: topLevelGeo.size.width * constants.paddedWidth)
-                        .aspectRatio(contentMode: .fill)
-                        .modifier(framify(object.darkShadow, in: 414, padded: false))
-                        .transition(.identity)
-                    
-                        .overlay(GeometryReader { geo in
+//                GeometryReader { geo in
+                    let maxxedBinding = Binding { object.maxxed } set: { _ in }
+                    ZStack( alignment: configuration.isPressed ? .bottom : .top) {
+                        PixelImage(object.id+"ButtonUp").frame(maxWidth: topLevelGeo.size.width * constants.paddedWidth).opacity(configuration.isPressed ? 0 : 1)
+                        PixelImage(object.id+"ButtonDown").frame(maxWidth: topLevelGeo.size.width * constants.paddedWidth).overlay(GeometryReader { geo in
                             HStack {
                                 Spacer()
-                                let middle = ((geo.size.height * (8 / 13)) / 2) - 10
-                                
-                                let fastestThrowBinding = Binding { object.maxxed } set: { _ in }
-                                
-                                
-                                if object.maxxed {
-                                    BouncingText(shouldAnimate: fastestThrowBinding, text: "Maxxed!", stallTime: 5) { text in UpgradesSheet.constants.createModifierText(object, for: text, in: 20) }
-                                        .frame(maxWidth: geo.size.width * 0.9)
-                                        .padding( [.horizontal])
-                                        .offset( x: 0, y: configuration.isPressed ? middle + (geo.size.height * (3 / 13))   : middle )
-                                        .minimumScaleFactor(0.5)
-                                }else {
-                                    UpgradesSheet.constants.createModifierText(object, for: "\(object.buttonText)", in: 20)
-                                        .frame(maxWidth: geo.size.width * 0.9)
-                                        .padding( [.horizontal])
-                                        .offset( x: 0, y: configuration.isPressed ? middle + (geo.size.height * (3 / 13))   : middle )
-                                        .minimumScaleFactor(0.5)
-                                    Spacer()
-                                }
+                                if object.maxxed { BouncingText(shouldAnimate: maxxedBinding, text: "Maxxed!", stallTime: 5, width: geo.size.width) { text in UpgradesSheet.constants.createModifierText(object, for: text, in: 20) }
+                                }else { UpgradesSheet.constants.createModifierText(object, for: "\(object.buttonText)", in: 20).foregroundColor(.white) }
+                                Spacer()
                             }
-                        })
-                }
+                            .padding(.top, 5)
+                            .minimumScaleFactor(0.1)
+                            .padding(.horizontal)
+                        }.modifier(framify(object.darkShadow, in: 414, padded: false, opacity: configuration.isPressed ? 1: 0)) )
+                    }.animation(nil).modifier(framify(object.darkShadow, in: 414, padded: false, opacity: configuration.isPressed ? 0: 1).animation(nil))
+//                }
             }
         }
     }
