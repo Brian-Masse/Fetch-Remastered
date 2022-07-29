@@ -106,8 +106,10 @@ class GameScene: SKScene {
         guard let _ = virtualCamera else { return }
         
         virtualCamera.setScale(414 / size.width)
-        markerManager.destory()
-        createDistanceMarkers()
+//        DispatchQueue.main.async {
+//            self.markerManager.destory()
+//            self.createDistanceMarkers()
+//        }
     }
     
     func holdBall() {
@@ -328,7 +330,6 @@ class GameScene: SKScene {
             if let currentTouchPosition = touches.first?.location(in: self) {
                 if firstSwipePositon.y < currentTouchPosition.y && firstSwipePositon != CGPoint(x: -444, y: -444) {
                     
-                    print((414 / size.height))
                     velocity = ((currentTouchPosition.y - firstSwipePositon.y) * max((869 / size.height), 1) ) / CGFloat(timePassedSinceThrow)
          
                     //reset the firstSwipePosition to arbitrary value:

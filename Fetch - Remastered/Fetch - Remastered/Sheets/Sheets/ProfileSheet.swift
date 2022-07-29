@@ -12,6 +12,8 @@ struct ProfileSheet: View {
 
     @EnvironmentObject var game: FetchClassicInterpreter
     
+    @Environment(\.presentationMode) var presentationMode
+    
     static let frameColor = Colors.profileLightPink
     
     var body: some View {
@@ -21,6 +23,7 @@ struct ProfileSheet: View {
                 VStack(alignment: .leading, spacing: 5) {
 
                     constants.createStatsText("Profile", with: titleFont, in: 40)
+                        .onTapGesture { presentationMode.wrappedValue.dismiss() }
                         .padding(.leading)
                     
 
@@ -398,7 +401,7 @@ struct Grapher: View {
                         leftLabels(aliveHeight: aliveSpace.height, emptyHeight: emptySpace.height, extremum: extremum, textSize: textSize )
                         VStack {
                             Rectangle()
-                                .frame(width: 5, height: aliveSpace.height)
+                                .frame(width: 5, height: max(aliveSpace.height, 0))
                                 .modifier(appearancedMod(lightColor: .white, darkColor: Colors.darkTextGrey, colorColor: Colors.profilePink))
                             Spacer()
                         }
@@ -488,7 +491,7 @@ struct Grapher: View {
                 let extraBars = CGFloat(max(combinedDataPoints.count - Int(((scrollGeo.size.width / 282) * 20)), 0 ))
         
                 ScrollView(.horizontal) {
-                    HStack(spacing: 5) {
+                    LazyHStack(spacing: 5) {
                         ForEach(combinedDataPoints.indices, id: \.self) { index in
                             let label = combinedDataPoints[index].date.localizeDescription(with: unit)
                             VStack(alignment: .leading, spacing: 0) {
@@ -497,7 +500,7 @@ struct Grapher: View {
 
                                 }
                         }
-                    }.frame(width: scrollGeo.size.width + (extraBars * 20))
+                    }.frame(width: scrollGeo.size.width + (extraBars * 15.2))
                 }
             }
         }
@@ -525,12 +528,12 @@ struct Grapher: View {
                     let incriment = difference / ( displayedDigits + 1)
 
                     if difference > 0 {
-                        ForEach(1...Int(displayedDigits), id: \.self) { index in
+                        ForEach(1...Int(max(displayedDigits, 1)), id: \.self) { index in
                             ProfileSheet.constants.createStatsText("\(Int(extremum.x + (CGFloat(index) * incriment)))", with: defaultFont, in: textSize)
                                 .offset(x: 0, y: -aliveHeight * ((CGFloat( index ) * incriment) / difference))
                         }
                     }
-                }.frame(height: aliveHeight)
+                }.frame(height: max(1, aliveHeight))
                 Spacer(minLength: emptyHeight)
             }
         }

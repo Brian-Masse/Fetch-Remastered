@@ -110,7 +110,7 @@ struct IconEnumSelector< EnumType: CaseIterable, someView: View >: View where En
             design(title, 20, 1)
                 
                 .padding(.bottom)
-            ForEach( EnumType.allCases.indices as! Range<Int> ) { index in
+            ForEach( EnumType.allCases.indices as! Range<Int>, id: \.self) { index in
             
                 HStack {
                     PixelImage(icons[index])
@@ -168,7 +168,7 @@ struct EnumSelector< EnumType: CaseIterable, someView: View >: View where EnumTy
             HStack(spacing: 10) {
                 Spacer()
             
-                ForEach( EnumType.allCases.indices as! Range<Int> ) { index in
+                ForEach( EnumType.allCases.indices as! Range<Int>, id: \.self ) { index in
                 
                     IndividualEnumSelector(displayName: names[index], enumValue: EnumType.allCases[index as! EnumType.AllCases.Index], currentvalue: $currentEnumValue, design: design, accent: accent)
                 }

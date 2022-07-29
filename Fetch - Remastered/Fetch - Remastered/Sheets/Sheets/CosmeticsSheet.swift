@@ -12,6 +12,8 @@ struct CosmeticsSheet: View {
     
     @EnvironmentObject var game: FetchClassicInterpreter
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @ViewBuilder
     static func createCosmeticsText(_ text: String, with font: ShadowedFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
         ShadowFont(text, with: font, in: size, shadowColor: Colors.cosmeticsShadow, lineLimit: lineLimit, lightShadowColor: Colors.cosmeticsLighShadow, darkShadowColor: Colors.darkShadow)
@@ -27,7 +29,7 @@ struct CosmeticsSheet: View {
         GeometryReader { geo in
             VStack(alignment: .leading) {
                 
-                CosmeticsSheet.createCosmeticsText("Cosmetics:", with: titleFont, in: 40)
+                CosmeticsSheet.createCosmeticsText("Cosmetics:", with: titleFont, in: 40).onTapGesture { presentationMode.wrappedValue.dismiss() }
                     .padding([.top, .leading])
                             
                 GeometryReader() { geometry in

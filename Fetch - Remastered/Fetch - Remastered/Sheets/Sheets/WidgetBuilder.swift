@@ -18,6 +18,8 @@ struct WidgetBuilder: View {
 
     @EnvironmentObject var game: FetchClassicInterpreter
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @ViewBuilder
     static func createWidgetBuilderText(_ text: String, with font: ShadowedFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
         ShadowFont(text, with: font, in: size, shadowColor: Colors.builderShadowColor, lineLimit: lineLimit, lightShadowColor: Colors.builderShadowColor, darkShadowColor: Colors.darkTextGrey)
@@ -36,7 +38,7 @@ struct WidgetBuilder: View {
     var body: some View {
         GeometryReader { topLevelGeo in
             VStack(alignment: .leading) {
-                WidgetBuilder.createWidgetBuilderText("Widget \nBuilder", with: titleFont, in: 40, lineLimit: 2).padding(.leading)
+                WidgetBuilder.createWidgetBuilderText("Widget \nBuilder", with: titleFont, in: 40, lineLimit: 2).padding(.leading).onTapGesture { presentationMode.wrappedValue.dismiss() }
                 
                 HStack {
                     Spacer()
@@ -160,7 +162,7 @@ struct WidgetBuilder: View {
                 
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 150), spacing: 5)], spacing: 5) {
                     
-                    ForEach(Colors.WidgetColors.indices) { i in
+                    ForEach(Colors.WidgetColors.indices, id: \.self) { i in
                         Button(action: {
                             switch currentColorOption {
                             case .background: activeWidgetData.background = Colors.compressColorData(index: i)
@@ -197,7 +199,7 @@ struct WidgetBuilder: View {
                     DataDisplay(for: type, with: "Current \n\(type)", and: game.model.determineCurrentObjects().1!.skin, at: -1)
                 }
                 
-                ForEach(list.indices) { index in
+                ForEach(list.indices, id: \.self) { index in
                     DataDisplay(for: type, with: displayNameGetter(index), and: valueGetter(index), at: index, isUnlocked: unlockedGetter(index))
                 }
             }

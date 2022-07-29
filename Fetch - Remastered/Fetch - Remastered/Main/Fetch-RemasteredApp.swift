@@ -16,6 +16,14 @@ struct FetchRemastered: App {
     var body: some Scene {
         WindowGroup {
             gameView
+                .onAppear() {
+                    UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
+                        windowScene.sizeRestrictions?.minimumSize = CGSize(width: 220, height: 440)
+                    }
+                }
         }
     }
+    
+    
+    
 }

@@ -13,11 +13,14 @@ struct UpgradesSheet: View {
     
     @EnvironmentObject var game: FetchClassicInterpreter
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         
         GeometryReader { topLevelGeo in
             VStack(alignment: .leading) {
                 ShadowFont("Upgrades:", with: titleFont, in: 40, lightShadowColor: constants.titleShadow, darkShadowColor: Colors.darkShadow)
+                    .onTapGesture { presentationMode.wrappedValue.dismiss() }
                     .padding(.leading)
                     .minimumScaleFactor(0.1)
                     .modifier(appearancedMod(lightColor: constants.titleColor, darkColor: .white))

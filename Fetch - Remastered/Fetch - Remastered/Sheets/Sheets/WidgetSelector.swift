@@ -16,11 +16,13 @@ struct widgetSelector: View {
     @Binding var currentWidget: Int
     @EnvironmentObject var game: FetchClassicInterpreter
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading) {
                 
-                WidgetBuilder.createWidgetBuilderText(title, with: titleFont, in: geo.size.width * 0.1, lineLimit: 2)
+                WidgetBuilder.createWidgetBuilderText(title, with: titleFont, in: geo.size.width * 0.1, lineLimit: 2).onTapGesture { presentationMode.wrappedValue.dismiss() }
                     .fixedSize()
                     .padding()
                 

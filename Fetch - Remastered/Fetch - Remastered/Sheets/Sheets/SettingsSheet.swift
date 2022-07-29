@@ -17,6 +17,8 @@ struct Settings: View {
     @State var showingWidgetBuilder = false
     @State var showingCredits = false
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @ViewBuilder
     
     static func createSettingsText(_ text: String, with font: ShadowedFont, in size: CGFloat, lineLimit: Int = 1) -> some View {
@@ -37,7 +39,7 @@ struct Settings: View {
         let iconBinding = Binding { game.preferenceModel.icon } set: { newValue in game.changeAppIcon(with: newValue) }
         
         VStack(alignment: .leading) {
-            Settings.createSettingsText("Settings", with: titleFont, in: 40).padding(.leading)
+            Settings.createSettingsText("Settings", with: titleFont, in: 40).padding(.leading).onTapGesture { presentationMode.wrappedValue.dismiss() }
             
             emptySpace(with: 1)
             
@@ -78,6 +80,8 @@ struct Settings: View {
     }
     
     struct Credits:View {
+        @Environment(\.presentationMode) var presentationMode
+        
         var body: some View {
             GeometryReader { geo in
                 VStack(alignment: .center, spacing: 10) {
@@ -87,7 +91,7 @@ struct Settings: View {
                     Settings.createSettingsText("[[A pretty cool dude]]", with: titleFont, in: 100).frame(width: 220)
                     emptySpace(with: 100)
                     Settings.createSettingsText("inspired by my dog", with: titleFont, in: 100).frame(width: 220)
-                    Settings.createSettingsText("MICKEY", with: titleFont, in: 100).frame(width: 220)
+                    Settings.createSettingsText("MICKEY", with: titleFont, in: 100).frame(width: 220).onTapGesture { presentationMode.wrappedValue.dismiss() }
                     Spacer()
                 }.frame(width: geo.size.width)
             }.background(PixelImage( appearanced( "settingsBack") ).ignoresSafeArea().aspectRatio(contentMode: .fill))
