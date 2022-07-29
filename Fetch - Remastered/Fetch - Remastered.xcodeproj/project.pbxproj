@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41CC8F7976D19EAE759EA3FA /* Pods_Fetch___Remastered.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B2C114BEC5BA9CD572FD77 /* Pods_Fetch___Remastered.framework */; };
 		C91D437A2675556D00B166A8 /* Universals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D43792675556D00B166A8 /* Universals.swift */; };
 		C9461F7E26B6D97500617412 /* FetchBoldDefault.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */; };
 		C9461F8026B7038B00617412 /* GamePrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9461F7F26B7038A00617412 /* GamePrefs.swift */; };
@@ -40,7 +39,7 @@
 		C9774DFD26A78A5E00CEA920 /* fetchLowerFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9774DFC26A78A5E00CEA920 /* fetchLowerFont.ttf */; };
 		C9774DFF26A8846100CEA920 /* fetchTitleFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9774DFE26A8846100CEA920 /* fetchTitleFont.ttf */; };
 		C98C31D924E40FD500217317 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98C31D824E40FD500217317 /* Stickers.xcassets */; };
-		C98C31DD24E40FD500217317 /* Fetch - Remastered Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C98C31D624E40FD200217317 /* Fetch - Remastered Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C98C31DD24E40FD500217317 /* Fetch - Remastered Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C98C31D624E40FD200217317 /* Fetch - Remastered Stickers.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C98F212924D4C62700D709F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F212824D4C62700D709F9 /* StoreKit.framework */; };
 		C99B9BD42679780800B79947 /* CustomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9BD32679780700B79947 /* CustomAnimation.swift */; };
 		C99B9F3526A351A900D9177A /* UpgradesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B9F3426A351A900D9177A /* UpgradesSheet.swift */; };
@@ -57,10 +56,10 @@
 		C9BD6F8F26D527D600C8C55B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BD6F8E26D527D600C8C55B /* Assets.xcassets */; };
 		C9BD6F9126D527D600C8C55B /* Fetch_Remastered_Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F8D26D527D000C8C55B /* Fetch_Remastered_Widgets.intentdefinition */; };
 		C9BD6F9226D527D600C8C55B /* Fetch_Remastered_Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F8D26D527D000C8C55B /* Fetch_Remastered_Widgets.intentdefinition */; };
-		C9BD6F9526D527D600C8C55B /* Fetch-Remastered-WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9BD6F8526D527D000C8C55B /* Fetch-Remastered-WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C9BD6F9526D527D600C8C55B /* Fetch-Remastered-WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9BD6F8526D527D000C8C55B /* Fetch-Remastered-WidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C9BD6FA226D543BA00C8C55B /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD6FA126D543BA00C8C55B /* Intents.framework */; };
 		C9BD6FA526D543BA00C8C55B /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6FA426D543BA00C8C55B /* IntentHandler.swift */; };
-		C9BD6FA926D543BA00C8C55B /* Fetch-RemasteredIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9BD6FA026D543BA00C8C55B /* Fetch-RemasteredIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C9BD6FA926D543BA00C8C55B /* Fetch-RemasteredIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9BD6FA026D543BA00C8C55B /* Fetch-RemasteredIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C9BD6FAE26D5454C00C8C55B /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6FA426D543BA00C8C55B /* IntentHandler.swift */; };
 		C9BD6FAF26D546FA00C8C55B /* Fetch_Remastered_Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6F8D26D527D000C8C55B /* Fetch_Remastered_Widgets.intentdefinition */; };
 		C9CF453626DEA36100B50C79 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF453526DEA36100B50C79 /* WidgetData.swift */; };
@@ -73,7 +72,6 @@
 		C9DFBEF92686A7330046F8F4 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DFBEF82686A7330046F8F4 /* ViewModels.swift */; };
 		C9E98DB624FFE7380081FE9C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E98DB524FFE7380081FE9C /* GameView.swift */; };
 		C9F5143526D913F6009D91E8 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6FA426D543BA00C8C55B /* IntentHandler.swift */; };
-		C9F8CB7D26C0C98C009F5F22 /* Pods_Fetch___Remastered_Stickers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */; };
 		C9FE93C8274D3E9100981F64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FE93C7274D3E9100981F64 /* LaunchScreen.storyboard */; };
 		C9FE93CA274D6A9500981F64 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FE93C9274D6A9500981F64 /* 1.png */; };
 /* End PBXBuildFile section */
@@ -129,10 +127,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1537978B994E633AB3040499 /* Pods-Fetch - Remastered Stickers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered Stickers.release.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered Stickers/Pods-Fetch - Remastered Stickers.release.xcconfig"; sourceTree = "<group>"; };
-		24B2C114BEC5BA9CD572FD77 /* Pods_Fetch___Remastered.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Fetch___Remastered.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76F129A63FD81F5274790A73 /* Pods-Fetch - Remastered.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered.release.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered.release.xcconfig"; sourceTree = "<group>"; };
-		7F39160D1199E40C84AB5A8B /* Pods-Fetch - Remastered Stickers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered Stickers.debug.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered Stickers/Pods-Fetch - Remastered Stickers.debug.xcconfig"; sourceTree = "<group>"; };
 		C91D43792675556D00B166A8 /* Universals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universals.swift; sourceTree = "<group>"; };
 		C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FetchBoldDefault.ttf; sourceTree = "<group>"; };
 		C9461F7F26B7038A00617412 /* GamePrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePrefs.swift; sourceTree = "<group>"; };
@@ -187,8 +181,6 @@
 		C9E98DB524FFE7380081FE9C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		C9FE93C7274D3E9100981F64 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9FE93C9274D6A9500981F64 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Fetch___Remastered_Stickers.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F32032213D10C29FFEE270AB /* Pods-Fetch - Remastered.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fetch - Remastered.debug.xcconfig"; path = "Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98F212924D4C62700D709F9 /* StoreKit.framework in Frameworks */,
-				41CC8F7976D19EAE759EA3FA /* Pods_Fetch___Remastered.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +214,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F8CB7D26C0C98C009F5F22 /* Pods_Fetch___Remastered_Stickers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,10 +223,6 @@
 		9EEFAA530CB7594466B22AB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F32032213D10C29FFEE270AB /* Pods-Fetch - Remastered.debug.xcconfig */,
-				76F129A63FD81F5274790A73 /* Pods-Fetch - Remastered.release.xcconfig */,
-				7F39160D1199E40C84AB5A8B /* Pods-Fetch - Remastered Stickers.debug.xcconfig */,
-				1537978B994E633AB3040499 /* Pods-Fetch - Remastered Stickers.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -266,8 +252,6 @@
 				C971015526D5B80C0080A284 /* AudioToolbox.framework */,
 				C99B9BCB2675B68300B79947 /* GoogleMobileAds.xcframework */,
 				C98F212824D4C62700D709F9 /* StoreKit.framework */,
-				24B2C114BEC5BA9CD572FD77 /* Pods_Fetch___Remastered.framework */,
-				CF2ECECC7528590D8C35F81A /* Pods_Fetch___Remastered_Stickers.framework */,
 				C9BD6F8626D527D000C8C55B /* WidgetKit.framework */,
 				C9BD6F8826D527D000C8C55B /* SwiftUI.framework */,
 				C9BD6FA126D543BA00C8C55B /* Intents.framework */,
@@ -415,7 +399,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C98C31E024E40FD500217317 /* Build configuration list for PBXNativeTarget "Fetch - Remastered Stickers" */;
 			buildPhases = (
-				756F432E49413E73B29D3F21 /* [CP] Check Pods Manifest.lock */,
 				C98C31D424E40FD200217317 /* Resources */,
 				CCA81482816D666CFE0D1996 /* Frameworks */,
 				C9F8CB7F26C0C98C009F5F22 /* Embed Frameworks */,
@@ -433,12 +416,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9AF7B9224D375A20030D5A9 /* Build configuration list for PBXNativeTarget "Fetch - Remastered" */;
 			buildPhases = (
-				B4BA9275BC23A8B6946C3211 /* [CP] Check Pods Manifest.lock */,
 				C9AF7B7624D375A10030D5A9 /* Sources */,
 				C9AF7B7724D375A10030D5A9 /* Frameworks */,
 				C9AF7B7824D375A10030D5A9 /* Resources */,
 				C9CAC16524DF7B2E00C9E543 /* Embed App Extensions */,
-				AEBE618436D8388E5097F958 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -579,70 +560,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		756F432E49413E73B29D3F21 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Fetch - Remastered Stickers-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEBE618436D8388E5097F958 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fetch - Remastered/Pods-Fetch - Remastered-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4BA9275BC23A8B6946C3211 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Fetch - Remastered-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		C9AF7B7624D375A10030D5A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -712,16 +629,19 @@
 /* Begin PBXTargetDependency section */
 		C98C31DC24E40FD500217317 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = C98C31D524E40FD200217317 /* Fetch - Remastered Stickers */;
 			targetProxy = C98C31DB24E40FD500217317 /* PBXContainerItemProxy */;
 		};
 		C9BD6F9426D527D600C8C55B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = C9BD6F8426D527D000C8C55B /* Fetch-Remastered-WidgetsExtension */;
 			targetProxy = C9BD6F9326D527D600C8C55B /* PBXContainerItemProxy */;
 		};
 		C9BD6FA826D543BA00C8C55B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = C9BD6F9F26D543BA00C8C55B /* Fetch-RemasteredIntents */;
 			targetProxy = C9BD6FA726D543BA00C8C55B /* PBXContainerItemProxy */;
 		};
@@ -741,7 +661,6 @@
 /* Begin XCBuildConfiguration section */
 		C98C31DE24E40FD500217317 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F39160D1199E40C84AB5A8B /* Pods-Fetch - Remastered Stickers.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
@@ -756,13 +675,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch---Remastered-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		C98C31DF24E40FD500217317 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1537978B994E633AB3040499 /* Pods-Fetch - Remastered Stickers.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
@@ -776,6 +695,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch---Remastered-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -904,9 +824,7 @@
 		};
 		C9AF7B9324D375A20030D5A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F32032213D10C29FFEE270AB /* Pods-Fetch - Remastered.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered/Fetch - Remastered.entitlements";
@@ -925,6 +843,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -932,9 +852,7 @@
 		};
 		C9AF7B9424D375A20030D5A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76F129A63FD81F5274790A73 /* Pods-Fetch - Remastered.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered/Fetch - Remastered.entitlements";
@@ -952,6 +870,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -979,6 +899,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-Remastered-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1006,6 +927,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-Remastered-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1031,6 +953,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-RemasteredIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1056,6 +979,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-RemasteredIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -6,6 +6,7 @@ target 'Fetch - Remastered' do
   use_frameworks!
 
 pod 'Google-Mobile-Ads-SDK'
+pod 'Promises'
   # Pods for Fetch - Remastered
 
 end
