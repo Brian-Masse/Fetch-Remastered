@@ -128,6 +128,7 @@
 
 /* Begin PBXFileReference section */
 		C91D43792675556D00B166A8 /* Universals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universals.swift; sourceTree = "<group>"; };
+		C9371412289475760060BA4F /* Fetch - Remastered Stickers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fetch - Remastered Stickers.entitlements"; sourceTree = "<group>"; };
 		C9461F7D26B6D97400617412 /* FetchBoldDefault.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FetchBoldDefault.ttf; sourceTree = "<group>"; };
 		C9461F7F26B7038A00617412 /* GamePrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePrefs.swift; sourceTree = "<group>"; };
 		C9461F8126B7042500617412 /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		C98C31D724E40FD200217317 /* Fetch - Remastered Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				C9371412289475760060BA4F /* Fetch - Remastered Stickers.entitlements */,
 				C98C31D824E40FD500217317 /* Stickers.xcassets */,
 				C98C31DA24E40FD500217317 /* Info.plist */,
 			);
@@ -664,19 +666,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered Stickers/Fetch - Remastered Stickers.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered Stickers/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch---Remastered-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = 1;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -685,18 +689,20 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered Stickers/Fetch - Remastered Stickers.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered Stickers/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch---Remastered-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = 1;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -830,15 +836,16 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered/Fetch - Remastered.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -858,15 +865,16 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch - Remastered/Fetch - Remastered.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch - Remastered/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -886,20 +894,22 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-Remastered-WidgetsExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-Remastered-Widgets/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-Remastered-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -914,20 +924,22 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-Remastered-WidgetsExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-Remastered-Widgets/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-Remastered-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -940,7 +952,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-RemasteredIntents/Fetch-RemasteredIntents.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-RemasteredIntents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -949,11 +961,12 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-RemasteredIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -966,7 +979,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Fetch-RemasteredIntents/Fetch-RemasteredIntents.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.10;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = LN4JU8GNV7;
 				INFOPLIST_FILE = "Fetch-RemasteredIntents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -975,11 +988,12 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Masse.Fetch---Remastered.Fetch-RemasteredIntents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

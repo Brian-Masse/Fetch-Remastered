@@ -190,7 +190,7 @@ struct ObjectPreview<objectType: gameObject>: View {
         PixelImage(object.skin)
             .frame(width: width / 3)
             .background( CosmeticsSheet.createGlow() )
-            .animation(nil)
+            .transaction { transaction in transaction.animation = nil }
             .onChange(of: object) { value in animatingPoof = true }
             .overlay(
                 GeometryReader { _ in

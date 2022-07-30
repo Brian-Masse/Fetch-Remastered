@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import WidgetKit
 
+@available(macCatalyst 14.0, *)
 struct WidgetBuilder: View {
     @State var currentSize: WidgetFamily = .systemSmall
     @State var currentWidget: Int = 0

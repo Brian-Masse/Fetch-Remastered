@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import WidgetKit
 
+@available(macCatalyst 14.0, *)
 struct WidgetView: View {
     
     let inBuildingMode: Bool

@@ -10,6 +10,7 @@ import Foundation
 import WidgetKit
 import SwiftUI
 
+@available(macCatalyst 14.0, *)
 struct widgetSelector: View {
     let title: String
     @Binding var size: WidgetFamily

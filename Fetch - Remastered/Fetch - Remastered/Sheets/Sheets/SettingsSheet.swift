@@ -45,7 +45,12 @@ struct Settings: View {
             
             ScrollView(.vertical) {
                 DesignedButton(accent: .white, design: { Settings.createSettingsText("Widget Builder", with: titleFont, in: 15) }) { showingWidgetBuilder = true }
-                    .sheet(isPresented: $showingWidgetBuilder) { WidgetBuilder().environmentObject(GameView.game) }
+                    .sheet(isPresented: $showingWidgetBuilder) { if #available(macCatalyst 14.0, *) {
+                        WidgetBuilder().environmentObject(GameView.game)
+                    } else {
+                        
+                        // Fallback on earlier versions
+                    } }
                     .padding(.horizontal)
                 
                 
@@ -94,12 +99,15 @@ struct Settings: View {
                     Settings.createSettingsText("MICKEY", with: titleFont, in: 100).frame(width: 220).onTapGesture { presentationMode.wrappedValue.dismiss() }
                     Spacer()
                 }.frame(width: geo.size.width)
-            }.background(PixelImage( appearanced( "settingsBack") ).ignoresSafeArea().aspectRatio(contentMode: .fill))
+            }.background(
+                PixelImage( appearanced( "settingsBack") )
+                    .ignoresSafeArea()
+                    .aspectRatio(contentMode: .fill)
+            )
         }
     }
     
     struct UIAppearance: View {
-        
         let particlesBinding = Binding { GameView.game.preferenceModel.particles } set: { newValue in GameView.game.toggleParticles() }
         let distanceLabelBinding = Binding { GameView.game.preferenceModel.distanceLabel } set: { newValue in GameView.game.toggleDistanceLabel() }
         let velocityLabelBinding = Binding { GameView.game.preferenceModel.velocityLabel } set: { newValue in GameView.game.toggleVelocityLabel() }
