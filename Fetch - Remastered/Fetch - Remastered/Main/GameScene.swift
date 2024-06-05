@@ -22,6 +22,9 @@ class GameScene: SKScene {
     var dateOfThrow = Date.init()
     var firstSwipePositon = CGPoint(x: -444, y: -444)
     
+    private var offsetAnimationFrame: Int = 0
+    private var offset: CGFloat = 0
+    
     enum ZLayer: CGFloat {
         case background
         case belowBall
@@ -44,6 +47,14 @@ class GameScene: SKScene {
     func updates() {
         GameView.game.duringThrowCheckStats() 
         GameView.game.model.currentBall.monitorSelf()
+        
+        let moveAction = SKAction.moveTo(y: -835 + GameView.game.mapOffset, duration: 0.45)
+        
+        let background = self.childNode(withName: "Bottom")
+        background?.run(moveAction)
+        
+        let topBackground = self.childNode(withName: "Top")
+        topBackground?.run(moveAction)
     }
     
     override func didSimulatePhysics() {
@@ -92,6 +103,7 @@ class GameScene: SKScene {
         background.anchorPoint = CGPoint(x: 0.5, y: 0)
         background.position.y = -835
         background.zPosition = zIndex.rawValue
+        background.name = root
         
         let white = SKSpriteNode(color: .white, size: CGSize(width: 414, height: 100))
         white.position.y = -840
@@ -153,19 +165,21 @@ class GameScene: SKScene {
                 marker.anchorPoint = CGPoint(x: 1, y: 0.5)
                 marker.position = CGPoint(x: halfWidth, y: CGFloat(i))
                 marker.zPosition = ZLayer.UI.rawValue
+                marker.color = .clear
                 
-                if i.isMultiple(of: 100) {
-                    marker.size = CGSize(width: 30, height: 2)
-                    
-                    let markerNumber = SKLabelNode(text: "\(i)")
-                    markerNumber.fontName = defaultFont.font
-                    markerNumber.fontSize = 10
-                    markerNumber.horizontalAlignmentMode = .right
-                    markerNumber.position = CGPoint(x: halfWidth, y: marker.position.y + width(c: 1))
-                    markerNumber.zPosition = ZLayer.UI.rawValue
-                    
-                    markerList.append(markerNumber)
-                }
+//                if i.isMultiple(of: 100) {
+//                    marker.size = CGSize(width: 30, height: 2)
+//                    
+//                    let markerNumber = SKLabelNode(text: "\(i)")
+//                    markerNumber.fontName = defaultFont.font
+//                    markerNumber.fontSize = 10
+//                    markerNumber.horizontalAlignmentMode = .right
+//                    markerNumber.position = CGPoint(x: halfWidth, y: marker.position.y + width(c: 1))
+//                    markerNumber.zPosition = ZLayer.UI.rawValue
+//                    markerNumber.color = .clear
+//                    
+//                    markerList.append(markerNumber)
+//                }
                 if !(i - 10).isMultiple(of: 100) { markerList.append(marker) }
             }
         }

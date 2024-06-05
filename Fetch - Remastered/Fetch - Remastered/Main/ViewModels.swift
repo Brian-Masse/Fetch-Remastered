@@ -18,6 +18,8 @@ class FetchClassicInterpreter: ObservableObject {
     }
     @Published private(set) var preferenceModel = FetchClassicPrefs()
     
+    @Published var mapOffset: CGFloat = 0
+    
     let onModelChanged: (_ old: FetchClassic, _ new: FetchClassic) -> Void
     
     //MARK: Quick acess to model

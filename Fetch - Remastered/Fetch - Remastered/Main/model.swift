@@ -59,6 +59,7 @@ struct FetchClassic {
     
     enum StateEnum {
         case home
+        case map
         case throwing
         case throwOver
         case caught

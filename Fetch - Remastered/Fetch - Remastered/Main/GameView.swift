@@ -9,7 +9,7 @@
 import SpriteKit
 import SwiftUI
 
-
+ 
 struct GameView: View {
     
     static let game: FetchClassicInterpreter = FetchClassicInterpreter()
@@ -36,13 +36,85 @@ struct GameView: View {
         return globalScene
     }
     
+    @ViewBuilder
+    private func makeMapToggle() -> some View {
+        if GameView.game.masterState == .home {
+            Image(systemName: "globe.europe.africa")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .padding()
+                .foregroundColor(.white)
+                .opacity( GameView.game.currentState == .map ? 1 : 0.5 )
+                .onTapGesture {
+                    if GameView.game.currentState != .map {
+                        GameView.game.changeState(.map)
+                    } else {
+                        withAnimation {
+                            GameView.game.mapOffset = 0
+                            GameView.game.changeState(.home)
+                        }
+                    }
+                }
+        }
+    }
+    
+    @State var movingDirection: Int = 0
+    
+    private func updateOffset() {
+        withAnimation(.linear(duration: 0.5)) {
+            let proposal = GameView.game.mapOffset + (100 * -CGFloat(movingDirection))
+            GameView.game.mapOffset = min( proposal, 0 )
+        }
+    }
+    
+    private func holdGesture(_ dir: Int) -> some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                movingDirection = dir
+                updateOffset()
+            }
+            .onEnded { value in
+                movingDirection = 0
+            }
+    }
+    
+    @ViewBuilder
+    private func makeMapHandle(_ direction: Int) -> some View {
+        Image(systemName: direction == 1 ? "chevron.up" : "chevron.down")
+            .resizable()
+            .frame(width: 30)
+            .aspectRatio(contentMode: .fit)
+            .foregroundColor(.white)
+            .padding(20)
+            .contentShape(Rectangle())
+            .gesture(holdGesture(direction))
+    }
+    
+    @ViewBuilder
+    private func makeMapViewerOverlay() -> some View {
+        if GameView.game.currentState == .map {
+            VStack {
+                makeMapHandle(1)
+                
+                Spacer()
+                
+                makeMapHandle(-1)
+            }
+            .padding(100)
+            .onChange(of: GameView.game.mapOffset) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    updateOffset()
+                }
+            }
+        }
+    }
+    
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topTrailing) {
             GeometryReader { geo in
                 SpriteView(scene: createGameScene(in: geo.size))
                     .ignoresSafeArea()
-                
-//                Rectangle().fill(.red)
+                    .overlay( makeMapViewerOverlay() )
                 
                 if geo.size.width > 500 {
                     wideDisplay(geo: geo)
@@ -52,6 +124,8 @@ struct GameView: View {
                 PopupManager(geo: geo)
             }
             .ignoresSafeArea()
+            
+            makeMapToggle()
         }
         .alert(isPresented: hasLegacyDataBinding){
             Alert(title:
@@ -276,7 +350,7 @@ struct GameView: View {
         var trueBinidng = Binding { GameView.game.masterState == .throwOver } set: { _ in }
         
         var body: some View {
-            if test.currentState != .throwing {
+            if test.currentState != .throwing && test.currentState != .map {
                 PixelImage(appearanced ("coinIcon" ))
 //                    .onTapGesture { GameView.game.changeGold(with: 10000000) }
                     .frame(minWidth: geo.size.width, maxHeight: geo.size.height * 0.1, alignment: .leading)
